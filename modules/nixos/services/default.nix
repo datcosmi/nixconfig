@@ -14,6 +14,7 @@ in {
     ./flatpak.nix
     ./keyring.nix
     ./polkit.nix
+    ./desktop.nix
   ];
 
   options.my.features.system.services.enable = lib.mkEnableOption "System services";
