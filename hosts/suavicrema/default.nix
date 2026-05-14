@@ -14,6 +14,19 @@
 
   my.hardware = {
     gpu = "nvidia";
+    ssd = true;
+    hasBattery = false;
+
+    memory = {
+      enable = true;
+      memoryHightLimit = "12G";
+      zram.memoryPercent = 50;
+
+      swap = {
+        device = "/swapfile";
+        size = 8192;
+      };
+    };
 
     display = {
       internalBacklight = false;

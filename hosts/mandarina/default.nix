@@ -15,6 +15,19 @@
   my.hardware = {
     gpu = "nvidia";
     hybrid = true;
+    ssd = true;
+    hasBattery = true;
+
+    memory = {
+      enable = true;
+      memoryHightLimit = "12G";
+      zram.memoryPercent = 50;
+
+      swap = {
+        device = "/swapfile";
+        size = 8192;
+      };
+    };
 
     prime.intelBusId = "PCI:0:2:0";
     prime.nvidiaBusId = "PCI:1:0:0";
