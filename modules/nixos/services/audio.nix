@@ -3,9 +3,9 @@
   config,
   ...
 }: let
-  cfg = my.features.system.audio;
+  cfg = config.my.features.system.services.audio;
 in {
-  options.my.features.system.audio.enable = lib.mkEnableOption "Audio service";
+  options.my.features.system.services.audio.enable = lib.mkEnableOption "Audio service";
 
   config = lib.mkIf cfg.enable {
     services.pulseaudio.enable = false;
