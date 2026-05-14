@@ -1,5 +1,11 @@
 {lib, ...}:
 with lib; {
+  imports = [
+    ./ssd.nix
+    ./power.nix
+    ./memory.nix
+  ];
+
   options.my.hardware = {
     display = {
       internalBacklight = mkOption {
