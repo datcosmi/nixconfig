@@ -6,7 +6,6 @@
 
     ./networking
     ./services
-    ./memory.nix
     ./env
     ./utils
     ./gaming.nix
