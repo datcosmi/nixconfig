@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.my.features.system.security.gnomeKeyring;
+  cfg = config.my.features.system.services.security.gnomeKeyring;
 in {
-  options.my.features.system.security.gnomeKeyring.enable = lib.mkEnableOption "GNOME keyring service";
+  options.my.features.system.services.security.gnomeKeyring.enable = lib.mkEnableOption "GNOME keyring service";
 
   config = lib.mkIf cfg.enable {
     services.gnome.gnome-keyring.enable = true;

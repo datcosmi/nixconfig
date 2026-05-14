@@ -25,11 +25,11 @@ in {
         audio.enable = lib.mkDefault true;
         flatpak.enable = lib.mkDefault true;
         printing.enable = lib.mkDefault true;
-      };
 
-      security = {
-        gnomeKeyring.enable = lib.mkDefault true;
-        polkitAgent.enable = lib.mkDefault true;
+        security = {
+          gnomeKeyring.enable = lib.mkDefault true;
+          polkitAgent.enable = lib.mkDefault true;
+        };
       };
     };
   };
