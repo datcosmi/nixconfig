@@ -16,6 +16,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     my.features.wayland.enable = lib.mkDefault true;
+    my.features.system.services.security.polkitAgent.enable = lib.mkDefault true;
 
     nixpkgs.overlays = [inputs.niri.overlays.niri];
 
