@@ -3,6 +3,8 @@
   inputs,
 }: let
   hmModule = inputs.home-manager.nixosModules.home-manager;
+  diskoModule = inputs.disko.nixosModules.disko;
+  catpModule = inputs.catppuccin.nixosModules.catppuccin;
 in rec {
   mkHost = {
     hostname,
@@ -18,12 +20,10 @@ in rec {
         [
           ../hosts/${hostname}
           ../modules/nixos/common.nix
-          ../users
-
-          inputs.disko.nixosModules.disko
-          inputs.catppuccin.nixosModules.catppuccin
 
           hmModule
+          diskoModule
+          catpModule
 
           {my.users = users;}
 
