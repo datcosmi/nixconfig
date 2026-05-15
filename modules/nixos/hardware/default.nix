@@ -21,6 +21,19 @@ with lib; {
       };
     };
 
+    keyboard = {
+      layout = lib.mkOption {
+        type = lib.types.str;
+        default = "us";
+        description = "XKB keyboard layout";
+      };
+      variant = lib.mkOption {
+        type = lib.types.str;
+        default = "";
+        description = "XKB keyboard variant";
+      };
+    };
+
     gpu = mkOption {
       type = types.enum ["nvidia" "amd" "intel" "none"];
       default = "none";

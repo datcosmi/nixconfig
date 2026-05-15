@@ -4,23 +4,15 @@
   lib,
   ...
 }: let
-  host = config.my.hardware.host;
+  kbd = config.my.hardware.keyboard;
 in {
-  imports = [
-    ./nvidia.nix
-  ];
+  imports = [./nvidia.nix];
 
   services.xserver.enable = true;
-
-  services.xserver.xkb =
-    if host == "desktop"
-    then {
-      layout = "us";
-      variant = "altgr-intl";
-    }
-    else {
-      layout = "latam";
-    };
+  services.xserver.xkb = {
+    layout = kbd.layout;
+    variant = kbd.variant;
+  };
 
   hardware.graphics = {
     enable = true;
@@ -29,10 +21,7 @@ in {
 
   xdg.portal = {
     enable = true;
-    # wlr.enable = false;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-gtk
-    ];
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
     config.common.default = "gtk";
   };
 }
