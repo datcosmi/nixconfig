@@ -1,4 +1,8 @@
 {...}: {
+  imports = [
+    ./shell.nix
+  ];
+
   home = {
     username = "ivan";
     homeDirectory = "/home/ivan";
