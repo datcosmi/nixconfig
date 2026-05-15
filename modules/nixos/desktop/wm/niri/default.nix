@@ -8,6 +8,10 @@
   system = pkgs.stdenv.hostPlatform.system;
   cfg = config.my.features.desktop.niri;
 in {
+  imports = [
+    inputs.niri.nixosModules.niri
+  ];
+
   options.my.features.desktop.niri.enable = lib.mkEnableOption "Niri window manager";
 
   config = lib.mkIf cfg.enable {
