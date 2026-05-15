@@ -3,7 +3,7 @@
     ./hardware-configuration.nix
     ./disko.nix
 
-    ../../modules/nixos/default.nix
+    ../../modules/nixos
     ../../profiles/personal.nix
     ../../profiles/gaming.nix
   ];
