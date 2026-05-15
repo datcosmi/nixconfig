@@ -4,8 +4,10 @@
   pkgs,
   ...
 }: let
-  cfg = config.my.terminal.ghostty;
+  cfg = config.my.features.terminal.ghostty;
 in {
+  options.my.features.terminal.ghostty.enable = lib.mkEnableOption "Enable ghostty terminal";
+
   config = lib.mkIf cfg.enable {
     programs.ghostty = {
       enable = true;
