@@ -19,4 +19,10 @@
       };
     };
   };
+
+  my.theme = {
+    palette = "catppuccin-mocha";
+    gtk = "adwaita";
+    cursor = "bibata-ice";
+  };
 }

@@ -35,12 +35,72 @@ in
       crust = "#11111b";
     };
 
-    my.theme.wallpaper = ../wallpapers/blue-landscape-cat.png;
-    my.theme.rofi-bg = ../wallpapers/rofi-bg.jpg;
+    my.theme = {
+      wallpaper = ../wallpapers/blue-landscape-cat.png;
+      rofi-bg = ../wallpapers/rofi-bg.jpg;
+    };
 
     catppuccin = {
-      enable = true;
-      flavor = "mocha";
-      accent = "pink";
+      bat = {
+        enable = true;
+        flavor = "mocha";
+      };
+
+      lazygit = {
+        enable = true;
+        flavor = "mocha";
+        accent = "pink";
+      };
+
+      fzf = {
+        enable = true;
+        flavor = "mocha";
+      };
+
+      eza = {
+        enable = true;
+        flavor = "mocha";
+        accent = "mauve";
+      };
+
+      wleave = {
+        enable = true;
+        flavor = "mocha";
+        accent = "pink";
+        iconStyle = "wleave";
+      };
+
+      btop = {
+        enable = true;
+        flavor = "mocha";
+      };
+
+      yazi = {
+        enable = true;
+        flavor = "mocha";
+        accent = "pink";
+      };
+
+      kitty = {
+        enable = true;
+        flavor = "mocha";
+      };
+
+      ghostty = {
+        enable = true;
+        flavor = "mocha";
+      };
+
+      swaync = {
+        enable = true;
+        flavor = "mocha";
+        font = "CommitMono Nerd Font";
+      };
+
+      librewolf = {
+        enable = true;
+        flavor = "mocha";
+        accent = "pink";
+      };
     };
   }
