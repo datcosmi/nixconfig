@@ -14,6 +14,5 @@
 
     ./desktop
     ./cachix.nix
-    ./common.nix
   ];
 }
