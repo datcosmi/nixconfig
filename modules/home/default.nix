@@ -4,5 +4,6 @@
     ./dev
     ./themes
     ./terminal
+    ./desktop
   ];
 }
