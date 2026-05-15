@@ -14,36 +14,35 @@ in rec {
 
       specialArgs = {inherit inputs;};
 
-      modules = [
-        ./hosts/${hostname}
-        ./modules/nixos/common.nix
+      modules =
+        [
+          ../hosts/${hostname}
+          ../modules/nixos/common.nix
+          ../users
 
-        inputs.disko.nixosModules.disko
-        inputs.catppuccin.nixosModules.catppuccin
+          inputs.disko.nixosModules.disko
+          inputs.catppuccin.nixosModules.catppuccin
 
-        hmModule
-        {
-          home-manager = {
-            useGlobalPkgs = true;
-            useUserPackages = true;
-            backupFileExtension = "backup";
-            extraSpecialArgs = {inherit inputs;};
-            inherit users;
-            sharedModules = [
-              inputs.catppuccin.homeModules.catppuccin
-            ];
-            users =
-              lib.genAttrs users
-              (u: import ./users/${u}/home.nix);
-          };
-        }
+          hmModule
 
-        {
-          users.users =
-            lib.genAttrs users
-            (u: import ./users/${u}/default.nix {inherit lib;});
-        }
-      ];
+          {my.users = users;}
+
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              backupFileExtension = "backup";
+              extraSpecialArgs = {inherit inputs;};
+              sharedModules = [
+                inputs.catppuccin.homeModules.catppuccin
+              ];
+              users =
+                lib.genAttrs users
+                (u: import ../users/${u}/home.nix);
+            };
+          }
+        ]
+        ++ map (u: ../users/${u}/default.nix) users;
     };
 
   mkUser = {
