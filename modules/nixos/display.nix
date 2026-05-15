@@ -6,11 +6,6 @@
   ...
 }: let
   cfg = config.my.hardware.display;
-  userNames = lib.attrNames users;
-
-  i2cUsers = lib.genAttrs userNames (_: {
-    extraGroups = lib.mkAfter ["i2c"];
-  });
 in {
   config = lib.mkMerge [
     (lib.mkIf cfg.internalBacklight {
@@ -28,8 +23,6 @@ in {
         ddcutil
         i2c-tools
       ];
-
-      users.users = i2cUsers;
 
       services.udev.extraRules = ''
         KERNEL=="i2c-[0-9]*", GROUP="i2c", MODE="0660"

@@ -1,6 +1,6 @@
 {
-  lib,
   pkgs,
+  lib,
   ...
 }: {
   users.users.ivan = {
@@ -18,6 +18,7 @@
       "input"
       "networkmanager"
       "bluetooth"
+      "i2c"
     ];
   };
 
