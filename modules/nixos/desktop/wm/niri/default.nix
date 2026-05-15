@@ -12,7 +12,21 @@ in {
     inputs.niri.nixosModules.niri
   ];
 
-  options.my.features.desktop.niri.enable = lib.mkEnableOption "Niri window manager";
+  options.my.features.desktop.niri = {
+    enable = lib.mkEnableOption "Niri window manager";
+
+    monitorsConfig = lib.mkOption {
+      type = lib.types.lines;
+      default = "";
+      description = "Host-specific KDL monitor configuration";
+    };
+
+    inputsConfig = lib.mkOption {
+      type = lib.types.lines;
+      default = "";
+      description = "Host-specific KDL input device configuration";
+    };
+  };
 
   config = lib.mkIf cfg.enable {
     my.features.wayland.enable = lib.mkDefault true;

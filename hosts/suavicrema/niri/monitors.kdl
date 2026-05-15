@@ -1,0 +1,90 @@
+output "DP-1" {
+    mode "1920x1080@165.000"
+    scale 1
+    position x=1920 y=0
+    variable-refresh-rate on-demand=true
+    focus-at-startup
+    backdrop-color "#11111b"
+    layout {
+        background-color "#11111b"
+    }
+}
+output "HDMI-A-1" {
+    mode "1920x1080@60.000"
+    scale 1
+    position x=0 y=0
+    backdrop-color "#11111b"
+    layout {
+        background-color "#11111b"
+    }
+}
+workspace "1" {
+    open-on-output "DP-1"
+}
+workspace "2" {
+    // Discord, Spotify — DP-1 (workspace 2 in Hyprland)
+    open-on-output "DP-1"
+}
+workspace "3" {
+    // Browsers — DP-1 (workspace 3 in Hyprland)
+    open-on-output "DP-1"
+}
+workspace "4" {
+    // Zathura, Stremio — DP-1 (workspace 4 in Hyprland)
+    open-on-output "DP-1"
+}
+window-rule {
+    match app-id="(firefox|zen|librewolf)$"
+    opacity 1.0
+    open-maximized true
+    open-maximized-to-edges false
+    open-on-workspace "1"
+ // open-on-workspace "オ"
+}
+// Zen "Library" popup — floating
+window-rule {
+    match app-id="zen" title="Library"
+    open-floating true
+}
+// ── Chromium-based browsers ─────────────────────────────────────────────────
+window-rule {
+    match app-id="^(google-chrome|chromium|brave-browser|microsoft-edge|vivaldi-stable|helium)$"
+    opacity 1.0
+    open-maximized true
+    open-maximized-to-edges false
+    open-on-workspace "1"
+ // open-on-workspace "オ"
+}
+// ── Discord and Spotify ─────────────────────────────────────────────────────
+window-rule {
+    match app-id="tidal-hifi"
+    open-on-workspace "2"
+    opacity 0.96
+    open-maximized true
+    open-focused true
+ // open-on-workspace "ユ"
+}
+window-rule {
+    match app-id="^(discord|com\\.discordapp\\.Discord)$"
+    open-on-output "HDMI-A-1"
+    opacity 1.0
+    open-maximized true
+    open-focused true
+    draw-border-with-background false
+ // open-on-workspace "ユ"
+}
+// ── Zathura and Stremio ─────────────────────────────────────────────────────
+window-rule {
+    match app-id="^(org\\.pwmt\\.zathura|com\\.stremio\\.stremio|obsidian)$"
+    open-on-workspace "4"
+    open-maximized true
+ // open-on-workspace "ウ"
+}
+// ── Steam ───────────────────────────────────────────────────────────────────
+window-rule {
+    match app-id="steam"
+    open-on-workspace "3"
+    // open-on-workspace "ヨ"
+    open-floating true
+    opacity 1.0
+}
