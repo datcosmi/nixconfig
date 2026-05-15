@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ../../modules/home
     ./shell.nix
   ];
 
