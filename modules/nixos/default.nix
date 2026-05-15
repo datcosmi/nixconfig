@@ -10,7 +10,7 @@
     ./utils
     ./gaming.nix
     ./display.nix
-    ./login/tuigreet.nix
+    ./login
 
     ./desktop
     ./cachix.nix
