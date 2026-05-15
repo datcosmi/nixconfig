@@ -8,7 +8,7 @@
 in {
   options.my.features.dev.lsp.enable = lib.mkEnableOption "Install lsp's and formatters";
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       # LSP's
       lua-language-server

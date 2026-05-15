@@ -8,7 +8,7 @@
 in {
   options.my.features.ssh.enable = lib.mkEnableOption "SSH service";
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     programs.ssh = {
       enable = true;
       enableDefaultConfig = false;

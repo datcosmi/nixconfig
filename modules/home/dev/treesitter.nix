@@ -8,7 +8,7 @@
 in {
   options.my.features.dev.treesitter.enable = lib.mkEnableOption "Install treesitter and it's necessary packages";
 
-  config = mkIf cfg.enable {
+  config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       tree-sitter
       gcc
