@@ -19,7 +19,7 @@
 
     memory = {
       enable = true;
-      memoryHightLimit = "12G";
+      memoryHighLimit = "12G";
       zram.memoryPercent = 50;
 
       swap = {
@@ -31,6 +31,11 @@
     display = {
       internalBacklight = false;
       ddc = true;
+    };
+
+    keyboard = {
+      layout = "us";
+      variant = "altgr-intl";
     };
   };
 
