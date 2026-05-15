@@ -5,6 +5,7 @@
   ...
 }: let
   kbd = config.my.hardware.keyboard;
+  cfg = config.my.features.wayland;
 in {
   imports = [./nvidia.nix];
 
@@ -19,9 +20,11 @@ in {
     enable32Bit = true;
   };
 
-  xdg.portal = {
-    enable = true;
-    extraPortals = [pkgs.xdg-desktop-portal-gtk];
-    config.common.default = "gtk";
+  config = lib.mkIf cfg.enable {
+    xdg.portal = {
+      enable = true;
+      extraPortals = [pkgs.xdg-desktop-portal-gtk];
+      config.common.default = "gtk";
+    };
   };
 }
