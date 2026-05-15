@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  cfg = config.my.features.services.jsystem.printing;
+  cfg = config.my.features.system.services.printing;
 in {
   options.my.features.system.services.printing.enable = lib.mkEnableOption "Printing support";
 

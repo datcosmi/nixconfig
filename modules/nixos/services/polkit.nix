@@ -6,7 +6,7 @@
 }: let
   cfg = config.my.features.system.services.security.polkitAgent;
 in {
-  options.my.features.system.security.services.polkitAgent.enable = lib.mkEnableOption "Polkit authentication agent";
+  options.my.features.system.services.security.polkitAgent.enable = lib.mkEnableOption "Polkit authentication agent";
 
   config = lib.mkIf cfg.enable {
     systemd.user.services.polkit-gnome-authentication-agent-1 = {

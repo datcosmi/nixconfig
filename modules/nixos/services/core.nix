@@ -1,4 +1,8 @@
-{lib, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   cfg = config.my.features.system.services.core;
 in {
   options.my.features.system.services.core.enable = lib.mkEnableOption "Core system services";
