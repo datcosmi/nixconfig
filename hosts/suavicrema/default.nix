@@ -14,6 +14,7 @@
 
   my.hardware = {
     gpu = "nvidia";
+    openDrivers = true;
     ssd = true;
     hasBattery = false;
 

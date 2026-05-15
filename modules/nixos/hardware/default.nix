@@ -40,6 +40,12 @@ with lib; {
       description = "GPU vendor";
     };
 
+    openDrivers = mkOption {
+      type = types.bool;
+      default = false;
+      description = "Use open-source NVIDIA kernel modules (Turing/RTX 20xx+ only)";
+    };
+
     hybrid = mkOption {
       type = types.bool;
       default = false;

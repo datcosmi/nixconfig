@@ -11,7 +11,7 @@ in {
       services.xserver.videoDrivers = ["nvidia"];
 
       hardware.nvidia = {
-        open = true;
+        open = cfg.openDrivers;
         modesetting.enable = true;
         videoAcceleration = true;
         nvidiaSettings = true;
