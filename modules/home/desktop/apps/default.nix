@@ -11,6 +11,9 @@ in {
     my.features.desktop.apps = {
       music.enable = lib.mkDefault true;
       browsers.enable = lib.mkDefault true;
+      file-managers.enable = lib.mkDefault true;
+      communication.enable = lib.mkDefault true;
+      media.enable = lib.mkDefault true;
     };
   };
 
@@ -18,5 +21,7 @@ in {
     ./music
     ./browsers
     ./file-managers
+    ./communication
+    ./media
   ];
 }
