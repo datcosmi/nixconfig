@@ -14,6 +14,11 @@ in {
       file-managers.enable = lib.mkDefault true;
       communication.enable = lib.mkDefault true;
       media.enable = lib.mkDefault true;
+      auth.enable = lib.mkDefault true;
+      notes.enable = lib.mkDefault true;
+      pdf.enable = lib.mkDefault true;
+      torrent.enable = lib.mkDefault true;
+      vpn.enable = lib.mkDefault true;
     };
   };
 
@@ -23,5 +28,10 @@ in {
     ./file-managers
     ./communication
     ./media
+    ./auth
+    ./notes
+    ./pdf
+    ./torrent
+    ./vpn
   ];
 }
