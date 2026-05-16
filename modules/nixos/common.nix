@@ -37,7 +37,13 @@
 
     nixpkgs.config.allowUnfree = true;
 
-    environment.systemPackages = with pkgs; [git vim curl];
+    environment.systemPackages = with pkgs; [
+      git
+      vim
+      curl
+      wget
+      cachix
+    ];
 
     security.sudo.wheelNeedsPassword = true;
     services.openssh.enable = true;
