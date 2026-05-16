@@ -16,5 +16,6 @@ in {
   imports = [
     ./apps
     ./wm
+    ./launchers
   ];
 }
