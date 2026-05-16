@@ -17,5 +17,6 @@ in {
     ./apps
     ./wm
     ./launchers
+    ./clipboard
   ];
 }
