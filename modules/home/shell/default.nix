@@ -26,14 +26,14 @@ in {
   imports = [
     ./starship.nix
     ./fastfetch
-    ./bash
     ./zsh
-    ./bat
-    ./eza
-    ./fzf
-    ./ripgrep
-    ./jq
-    ./fd
-    ./zoxide
+    ./bash.nix
+    ./bat.nix
+    ./eza.nix
+    ./fzf.nix
+    ./ripgrep.nix
+    ./jq.nix
+    ./fd.nix
+    ./zoxide.nix
   ];
 }
