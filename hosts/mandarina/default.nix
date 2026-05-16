@@ -44,10 +44,14 @@
     };
   };
 
-  my.features.desktop.niri = {
-    enable = true;
-    monitorsConfig = builtins.readFile ./niri/monitors.kdl;
-    inputsConfig = builtins.readFile ./niri/inputs.kdl;
+  my.features = {
+    desktop.niri = {
+      enable = true;
+      monitorsConfig = builtins.readFile ./niri/monitors.kdl;
+      inputsConfig = builtins.readFile ./niri/inputs.kdl;
+    };
+
+    system.login.tuigreet.enable = true;
   };
 
   system.stateVersion = "26.05";
