@@ -19,6 +19,7 @@ in {
       pdf.enable = lib.mkDefault true;
       torrent.enable = lib.mkDefault true;
       vpn.enable = lib.mkDefault true;
+      tui.enable = lib.mkDefault true;
     };
   };
 
@@ -33,5 +34,6 @@ in {
     ./pdf
     ./torrent
     ./vpn
+    ./tui
   ];
 }
