@@ -11,7 +11,6 @@
   };
 
   programs.git = {
-    enable = true;
     settings = {
       user = {
         email = "garcia.cli@pm.me";
