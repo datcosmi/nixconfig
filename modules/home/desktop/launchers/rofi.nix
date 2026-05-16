@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  wallpaper = config.my.theme.rofi-bg;
+  wallpaper = config.my.features.theme.rofi-bg;
   cfg = config.my.features.desktop.launchers.rofi;
 in {
   options.my.features.desktop.launchers.rofi.enable = lib.mkEnableOption "Use rofi launcher";
