@@ -1,16 +1,5 @@
 {pkgs, ...}: {
   programs.zsh = {
-    enable = true;
-
-    defaultKeymap = "viins";
-    enableCompletion = true;
-    autosuggestion.enable = true;
-    syntaxHighlighting.enable = true;
-
-    history.size = 10000;
-    history.ignoreAllDups = true;
-    history.path = "$HOME/.zsh_history";
-
     shellAliases = {
       ll = "ls -l";
       la = "eza --icons=always -a";
@@ -40,17 +29,6 @@
       desk-names-user = "ls /etc/profiles/per-user/$(id -n -u)/share/applications";
     };
 
-    oh-my-zsh = {
-      enable = true;
-      plugins = [
-        "git"
-        "dirhistory"
-        "history"
-        "ssh-agent"
-      ];
-      theme = "robbyrussell";
-    };
-
     initContent = ''
       if [[ -o interactive ]]; then
         bindkey -v
@@ -58,24 +36,5 @@
         fastfetch
       fi
     '';
-  };
-
-  programs.zoxide.enable = true;
-  programs.bat.enable = true;
-  programs.eza.enable = true;
-  programs.fzf.enable = true;
-  programs.bash.enable = true;
-  programs.ripgrep.enable = true;
-  programs.jq.enable = true;
-  programs.fd.enable = true;
-
-  programs.tealdeer = {
-    enable = true;
-
-    settings = {
-      settings = {
-        auto_update = true;
-      };
-    };
   };
 }
