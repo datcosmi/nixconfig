@@ -62,5 +62,11 @@ with lib; {
         default = null;
       };
     };
+
+    hasWifi = mkOption {
+      type = types.bool;
+      default = false;
+      description = "Has a wifi antenna";
+    };
   };
 }
