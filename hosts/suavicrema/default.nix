@@ -17,6 +17,7 @@
     openDrivers = true;
     ssd = true;
     hasBattery = false;
+    hasWifi = true;
 
     memory = {
       enable = true;

@@ -18,6 +18,7 @@
     hybrid = true;
     ssd = true;
     hasBattery = true;
+    hasWifi = true;
 
     memory = {
       enable = true;
