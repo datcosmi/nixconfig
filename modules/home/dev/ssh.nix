@@ -15,12 +15,5 @@ in {
     };
 
     services.gpg-agent.enable = true;
-
-    programs.ssh.matchBlocks = {
-      "github.com" = {
-        addKeysToAgent = "yes";
-        identityFile = "~/.ssh/github";
-      };
-    };
   };
 }
