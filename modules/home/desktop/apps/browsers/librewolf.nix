@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.my.features.browsers.librewolf;
+  cfg = config.my.features.desktop.apps.browsers.librewolf;
 in {
-  options.my.features.browsers.librewolf.enable = lib.mkEnableOption "Enable librewolf app";
+  options.my.features.desktop.apps.browsers.librewolf.enable = lib.mkEnableOption "Enable librewolf app";
 
   config = lib.mkIf cfg.enable {
     programs.librewolf = {

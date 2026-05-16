@@ -4,9 +4,9 @@
   pkgs,
   ...
 }: let
-  cfg = config.my.features.music.spotify;
+  cfg = config.my.features.desktop.apps.music.spotify;
 in {
-  options.my.features.music.spotify.enable = lib.mkEnableOption "Enable spotify app";
+  options.my.features.desktop.apps.music.spotify.enable = lib.mkEnableOption "Enable spotify app";
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
