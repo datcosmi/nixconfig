@@ -4,7 +4,7 @@
   ...
 }:
 with lib; {
-  options.my.theme = {
+  options.my.features.theme = {
     palette = mkOption {
       type = types.enum ["catppuccin-mocha"];
       default = "catppuccin-mocha";

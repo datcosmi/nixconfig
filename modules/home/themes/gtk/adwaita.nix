@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  cfg = config.my.theme;
+  cfg = config.my.features.theme;
 in
   with lib;
     mkIf (cfg.gtk == "adwaita")

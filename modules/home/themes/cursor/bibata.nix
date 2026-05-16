@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  cfg = config.my.theme;
+  cfg = config.my.features.theme;
 in {
   config = lib.mkMerge [
     (lib.mkIf (cfg.cursor == "bibata-classic") {

@@ -3,10 +3,10 @@
   config,
   ...
 }: let
-  cfg = config.my.theme;
+  cfg = config.my.features.theme;
 in
   lib.mkIf (cfg.palette == "catppuccin-mocha") {
-    my.theme.colors = {
+    my.features.theme.colors = {
       rosewater = "#f5e0dc";
       flamingo = "#f2cdcd";
       pink = "#f5c2e7";
@@ -35,7 +35,7 @@ in
       crust = "#11111b";
     };
 
-    my.theme = {
+    my.features.theme = {
       wallpaper = ../wallpapers/blue-landscape-cat.png;
       rofi-bg = ../wallpapers/rofi-bg.jpg;
     };

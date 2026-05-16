@@ -5,7 +5,7 @@
   ...
 }: let
   cfg = config.my.features.dev.tmux;
-  theme = config.my.theme;
+  theme = config.my.features.theme;
 in {
   options.my.features.dev.tmux.enable = lib.mkEnableOption "Enable tmux";
 

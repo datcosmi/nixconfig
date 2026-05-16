@@ -20,7 +20,7 @@
     };
   };
 
-  my.theme = {
+  my.features.theme = {
     palette = "catppuccin-mocha";
     gtk = "adwaita";
     cursor = "bibata-ice";
