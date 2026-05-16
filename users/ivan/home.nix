@@ -25,4 +25,9 @@
     gtk = "adwaita";
     cursor = "bibata-ice";
   };
+
+  home.packages = with pkgs; [
+    stow
+    exfatprogs
+  ];
 }
