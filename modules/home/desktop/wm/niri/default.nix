@@ -14,5 +14,31 @@ in {
       cfg.monitorsConfig
       cfg.inputsConfig
     ];
+
+    my.features = {
+      desktop = {
+        launchers.rofi.enable = lib.mkDefault true;
+        clipboard.cliphist.enable = lib.mkDefault true;
+        wallpaper.awww.enable = lib.mkDefault true;
+
+        ui = {
+          waybar.enable = lib.mkDefault true;
+          swaync.enable = lib.mkDefault true;
+          swayosd.enable = lib.mkDefault true;
+          wleave.enable = lib.mkDefault true;
+        };
+
+        apps = {
+          file-managers.nautilus.enable = lib.mkDefault true;
+          media.loupe.enable = lib.mkDefault true;
+          media.localsend.enable = lib.mkDefault true;
+          pdf.zathura.enable = lib.mkDefault true;
+
+          tui.enable = lib.mkDefault true;
+        };
+      };
+
+      shell.bash.enable = lib.mkDefault true;
+    };
   };
 }
