@@ -9,8 +9,8 @@ in {
 
   config = lib.mkIf cfg.enable {
     my.features.desktop.apps.media = {
-      localsend.enable = mkDefault true;
-      vlc.enable = mkDefault true;
+      localsend.enable = lib.mkDefault true;
+      vlc.enable = lib.mkDefault true;
     };
   };
 

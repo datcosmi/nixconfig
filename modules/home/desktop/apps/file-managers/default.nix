@@ -9,7 +9,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     my.features.desktop.apps.file-managers = {
-      nautilus.enable = mkDefault true;
+      nautilus.enable = lib.mkDefault true;
     };
   };
 

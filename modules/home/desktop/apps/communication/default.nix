@@ -9,7 +9,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     my.features.desktop.apps.communication = {
-      discord.enable = mkDefault true;
+      discord.enable = lib.mkDefault true;
     };
   };
 
