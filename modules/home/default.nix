@@ -5,5 +5,6 @@
     ./themes
     ./terminal
     ./desktop
+    ./shell
   ];
 }
