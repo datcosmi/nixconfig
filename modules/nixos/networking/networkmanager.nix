@@ -22,7 +22,7 @@ in {
       ];
     })
 
-    (lib.mkIf wifi {
+    (lib.mkIf (cfg.enable && wifi) {
       networking.wireless.iwd.enable = true;
       networking.networkmanager.wifi.backend = "iwd";
     })
