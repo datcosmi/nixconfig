@@ -6,5 +6,6 @@
     ./terminal
     ./desktop
     ./shell
+    ./scripts
   ];
 }
