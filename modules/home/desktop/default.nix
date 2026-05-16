@@ -5,5 +5,6 @@
     ./launchers
     ./clipboard
     ./wallpaper
+    ./ui
   ];
 }
