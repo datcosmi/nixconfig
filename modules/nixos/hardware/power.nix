@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.my.hardware.hasBattery;
+  cfg = config.my.hardware.needSuspend;
 in {
-  options.my.hardware.hasBattery = lib.mkEnableOption "Battery/power management";
+  options.my.hardware.needSuspend = lib.mkEnableOption "Battery/power management";
 
   config = lib.mkIf cfg {
     services.upower.enable = true;

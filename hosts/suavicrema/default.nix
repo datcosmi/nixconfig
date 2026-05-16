@@ -16,7 +16,7 @@
     gpu = "nvidia";
     openDrivers = true;
     ssd = true;
-    hasBattery = false;
+    needSuspend = false;
     hasWifi = true;
 
     memory = {

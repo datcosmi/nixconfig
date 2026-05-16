@@ -17,7 +17,7 @@
     openDrivers = false;
     hybrid = true;
     ssd = true;
-    hasBattery = true;
+    needSuspend = true;
     hasWifi = true;
 
     memory = {
