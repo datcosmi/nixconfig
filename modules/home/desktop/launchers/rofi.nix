@@ -13,6 +13,7 @@ in {
       enable = true;
       plugins = [
         pkgs.rofi-calc
+        pkgs.rofimoji
       ];
 
       font = "JetBrains Mono Nerd Font 10";
