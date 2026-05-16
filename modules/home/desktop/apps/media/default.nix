@@ -11,11 +11,13 @@ in {
     my.features.desktop.apps.media = {
       localsend.enable = lib.mkDefault true;
       vlc.enable = lib.mkDefault true;
+      loupe.enable = lib.mkDefault true;
     };
   };
 
   imports = [
     ./localsend.nix
     ./vlc.nix
+    ./loupe.nix
   ];
 }
