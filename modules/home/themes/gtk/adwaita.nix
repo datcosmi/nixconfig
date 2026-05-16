@@ -44,13 +44,6 @@ in
           text-scaling-factor = 1.0;
         };
 
-        "org/gnome/nautilus/preferences" = {
-          default-folder-viewer = "icon-view";
-          show-hidden-files = false;
-        };
-        "org/gnome/nautilus/icon-view" = {
-          default-zoom-level = "medium";
-        };
         "org/gtk/settings/file-chooser" = {
           show-hidden = false;
           sort-directories-first = true;

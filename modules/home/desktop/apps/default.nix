@@ -17,5 +17,6 @@ in {
   imports = [
     ./music
     ./browsers
+    ./file-managers
   ];
 }
