@@ -10,7 +10,7 @@
   };
 
   config = {
-    nix.registry.nixpkgs.flake = import <nixpkgs> {};
+    # nix.registry.nixpkgs.flake = import <nixpkgs> {};
 
     nix.settings = {
       experimental-features = ["nix-command" "flakes"];
