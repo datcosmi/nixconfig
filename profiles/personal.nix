@@ -1,10 +1,10 @@
-{
+{lib, ...}: {
   my.features = {
-    desktop.enable = true;
+    desktop.enable = lib.mkDefault true;
 
     system = {
-      services.enable = true;
-      networking.enable = true;
+      services.enable = lib.mkDefault true;
+      networking.enable = lib.mkDefault true;
     };
   };
 }

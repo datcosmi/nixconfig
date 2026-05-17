@@ -1,3 +1,3 @@
-{
-  my.features.gaming.enable = true;
+{lib, ...}: {
+  my.features.gaming.enable = lib.mkDefault true;
 }
