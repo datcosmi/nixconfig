@@ -17,7 +17,7 @@ with lib; {
 
     cursor = mkOption {
       type = types.enum ["bibata-classic" "bibata-ice" "nordzy"];
-      default = "bibata-modern";
+      default = "bibata-ice";
     };
 
     wallpaper = mkOption {
