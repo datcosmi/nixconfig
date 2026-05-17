@@ -14,6 +14,6 @@ in {
   };
 
   imports = [
-    ./proton-vpn.nix
+    ./proton
   ];
 }
