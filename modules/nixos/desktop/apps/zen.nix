@@ -17,7 +17,7 @@
 
   prefs = {
     # Privacy & Fingerprinting Resistance
-    "privacy.resistFingerprinting" = true;
+    "privacy.resistFingerprinting" = false;
     "privacy.trackingprotection.enabled" = true;
     "privacy.trackingprotection.socialtracking.enabled" = true;
     "privacy.trackingprotection.fingerprinting.enabled" = true;
