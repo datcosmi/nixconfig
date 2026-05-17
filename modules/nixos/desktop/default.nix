@@ -7,7 +7,6 @@
 in {
   imports = [
     ./apps
-    ./fonts.nix
     ./wm
   ];
 
@@ -16,7 +15,6 @@ in {
   config = lib.mkIf cfg.enable {
     my.features.desktop = {
       apps.enable = lib.mkDefault true;
-      fonts.enable = lib.mkDefault true;
     };
   };
 }
