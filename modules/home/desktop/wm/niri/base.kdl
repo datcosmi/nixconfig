@@ -158,7 +158,7 @@ window-rule {
 }
 // ── Floating utility windows (btop, wiremix, bluetui) ──────────────────────
 window-rule {
-    match app-id="^(btop|wiremix|bluetui)$"
+    match app-id="^(btop|wiremix|bluetui|impala)$"
     open-floating true
     draw-border-with-background false
     default-column-width {
@@ -293,6 +293,9 @@ binds {
     }
     Mod+Shift+E hotkey-overlay-title="Bluetooth TUI: bluetui" {
         spawn "kitty" "--class" "bluetui" "-e" "bluetui"
+    }
+    Mod+Shift+W hotkey-overlay-title="Wifi TUI: impala" {
+        spawn "kitty" "--class" "impala" "-e" "impala"
     }
     // ── System Controls ──────────────────────────────────────────────────────
     Mod+Shift+N hotkey-overlay-title="Notification Center: swaync" {
