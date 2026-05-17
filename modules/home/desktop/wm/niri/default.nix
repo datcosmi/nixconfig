@@ -20,6 +20,7 @@ in {
         launchers.rofi.enable = lib.mkDefault true;
         clipboard.cliphist.enable = lib.mkDefault true;
         wallpaper.awww.enable = lib.mkDefault true;
+        fonts.enable = lib.mkDefault true;
 
         ui = {
           waybar.enable = lib.mkDefault true;
