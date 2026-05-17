@@ -6,5 +6,6 @@
     ./clipboard
     ./wallpaper
     ./ui
+    ./fonts
   ];
 }
