@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  cfg = config.custom.waylandLockSuspend;
+  cfg = config.my.features.custom.niriLockSuspend;
 
   hyprlock = "${pkgs.hyprlock}/bin/hyprlock";
   wlopm = "${pkgs.wlopm}/bin/wlopm";
@@ -13,7 +13,7 @@
 in {
   # Options
 
-  options.custom.waylandLockSuspend = {
+  options.my.features.custom.niriLockSuspend = {
     enable = lib.mkEnableOption "screen lock and suspend (hyprlock + swayidle)";
 
     lockTimeout = lib.mkOption {
@@ -68,13 +68,14 @@ in {
 
       settings = {
         general = {
-          disable_loading_bar = false;
           hide_cursor = true;
-          grace = cfg.gracePeriod;
-          no_fade_in = false;
-          no_fade_out = false;
+          fail_timeout = 2000;
           # Ensure hyprlock stays on top even on niri
           immediate_render = true;
+        };
+
+        animations = {
+          enabled = true;
         };
 
         # Blurred screenshot as background on every monitor
@@ -114,7 +115,6 @@ in {
 
             fail_color = "rgb(237, 135, 150)";
             fail_text = "<i>Incorrect</i>";
-            fail_transition = 300;
           }
         ];
 
@@ -122,7 +122,7 @@ in {
         label = [
           {
             monitor = "";
-            text = ''cmd[update:18000000] echo "$(date +'%H:%M')"'';
+            text = ''cmd[update:1000] echo "$(${pkgs.coreutils}/bin/date +'%H:%M')"'';
             color = "rgb(202, 211, 245)";
             font_size = 88;
             font_family = cfg.fontFamily;
@@ -133,7 +133,7 @@ in {
           }
           {
             monitor = "";
-            text = ''cmd[update:18000000] echo "$(date +'%A, %B %-d')"'';
+            text = ''cmd[update:60000] echo "$(${pkgs.coreutils}/bin/date +'%A, %B %-d')"'';
             color = "rgb(166, 173, 200)";
             font_size = 22;
             font_family = cfg.fontFamily;
@@ -154,7 +154,7 @@ in {
       timeouts = [
         {
           timeout = cfg.lockTimeout;
-          command = "${hyprlock}";
+          command = "${hyprlock} --grace ${toString cfg.gracePeriod}";
         }
 
         {
@@ -165,13 +165,13 @@ in {
 
         {
           timeout = cfg.suspendTimeout;
-          command = "${hyprlock} & sleep 2 && ${systemctl} suspend";
+          command = "${systemctl} suspend";
         }
       ];
 
       events = {
-        lock = "${hyprlock}";
-        before-sleep = "${hyprlock} & sleep 2";
+        lock = "${hyprlock} --grace ${toString cfg.gracePeriod}";
+        before-sleep = "${hyprlock} --grace ${toString cfg.gracePeriod}";
         after-resume = "${wlopm} --on '*'";
       };
     };
