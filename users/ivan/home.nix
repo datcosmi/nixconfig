@@ -21,6 +21,7 @@
 
   my.features = {
     theme = {
+      dark = true;
       palette = "catppuccin-mocha";
       gtk = "adwaita";
       cursor = "bibata-ice";
