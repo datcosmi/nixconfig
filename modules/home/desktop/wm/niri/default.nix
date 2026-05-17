@@ -38,6 +38,10 @@ in {
         };
       };
 
+      custom = {
+        niriLockSuspend.enable = lib.mkDefault true;
+      };
+
       shell.bash.enable = lib.mkDefault true;
     };
   };
