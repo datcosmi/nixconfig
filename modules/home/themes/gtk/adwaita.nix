@@ -5,15 +5,34 @@
   ...
 }: let
   cfg = config.my.features.theme;
+  gtkTheme =
+    if cfg.dark
+    then "adw-gtk3-dark"
+    else "adw-gtk3";
+  colorScheme =
+    if cfg.dark
+    then "prefer-dark"
+    else "prefer-light";
 in
-  with lib;
-    mkIf (cfg.gtk == "adwaita")
-    {
+  with lib; {
+    options.my.features.theme.dark = mkOption {
+      type = types.bool;
+      default = true;
+      description = "Whether to use dark mode.";
+    };
+
+    config = mkIf (cfg.gtk == "adwaita") {
+      my.features.theme.cursor = lib.mkDefault (
+        if cfg.dark
+        then "bibata-classic"
+        else "bibata-ice"
+      );
+
       gtk = {
         enable = true;
 
         theme = {
-          name = "adw-gtk3";
+          name = gtkTheme;
           package = pkgs.adw-gtk3;
         };
 
@@ -23,18 +42,18 @@ in
         };
 
         gtk3.extraConfig = {
-          gtk-application-prefer-dark-theme = true;
+          gtk-application-prefer-dark-theme = cfg.dark;
         };
 
         gtk4.extraConfig = {
-          gtk-application-prefer-dark-theme = true;
+          gtk-application-prefer-dark-theme = cfg.dark;
         };
       };
 
       dconf.settings = {
         "org/gnome/desktop/interface" = {
-          color-scheme = "prefer-dark";
-          gtk-theme = "adw-gtk3";
+          color-scheme = colorScheme;
+          gtk-theme = gtkTheme;
           icon-theme = "Adwaita";
           font-name = "Cantarell 11";
           document-font-name = "Cantarell 11";
@@ -53,7 +72,7 @@ in
       services.xsettingsd = {
         enable = true;
         settings = {
-          "Net/ThemeName" = "adw-gtk3";
+          "Net/ThemeName" = gtkTheme;
           "Net/IconThemeName" = "Adwaita";
           "Xft/Antialias" = 1;
           "Xft/Hinting" = 1;
@@ -63,10 +82,11 @@ in
         };
       };
 
-      home.sessionVariables.GTK_THEME = "adw-gtk3";
+      home.sessionVariables.GTK_THEME = gtkTheme;
 
       home.packages = with pkgs; [
         cantarell-fonts
         source-code-pro
       ];
-    }
+    };
+  }
