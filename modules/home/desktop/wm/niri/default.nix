@@ -33,7 +33,6 @@ in {
           file-managers.nautilus.enable = lib.mkDefault true;
           media.loupe.enable = lib.mkDefault true;
           media.localsend.enable = lib.mkDefault true;
-          pdf.zathura.enable = lib.mkDefault true;
 
           tui.enable = lib.mkDefault true;
         };
