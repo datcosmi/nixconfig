@@ -4,6 +4,7 @@ with lib; {
     ./ssd.nix
     ./power.nix
     ./memory.nix
+    ./keyboard.nix
   ];
 
   options.my.hardware = {
@@ -27,6 +28,13 @@ with lib; {
         default = "us";
         description = "XKB keyboard layout";
       };
+
+      keyMap = lib.mkOption {
+        type = lib.types.str;
+        default = "us";
+        description = "Console keyboard layout";
+      };
+
       variant = lib.mkOption {
         type = lib.types.str;
         default = "";
@@ -40,6 +48,7 @@ with lib; {
         default = "none";
         description = "GPU vendor";
       };
+
       openDrivers = mkOption {
         type = types.bool;
         default = false;
