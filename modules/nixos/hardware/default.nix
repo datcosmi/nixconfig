@@ -34,16 +34,17 @@ with lib; {
       };
     };
 
-    gpu = mkOption {
-      type = types.enum ["nvidia" "amd" "intel" "none"];
-      default = "none";
-      description = "GPU vendor";
-    };
-
-    openDrivers = mkOption {
-      type = types.bool;
-      default = false;
-      description = "Use open-source NVIDIA kernel modules (Turing/RTX 20xx+ only)";
+    gpu = {
+      vendor = mkOption {
+        type = types.enum ["nvidia" "amd" "intel" "none"];
+        default = "none";
+        description = "GPU vendor";
+      };
+      openDrivers = mkOption {
+        type = types.bool;
+        default = false;
+        description = "Use open-source NVIDIA kernel modules (Turing/RTX 20xx+ only)";
+      };
     };
 
     hybrid = mkOption {
