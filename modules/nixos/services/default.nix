@@ -13,7 +13,7 @@ in {
     ./audio.nix
     ./flatpak.nix
     ./keyring.nix
-    ./polkit.nix
+    ./polkit-agent.nix
     ./desktop.nix
   ];
 
@@ -22,7 +22,7 @@ in {
   config = lib.mkIf cfg.enable {
     my.features.system = {
       services = {
-        core.enable = lib.mkDefault true;
+        core.enable = lib.mkForce true;
         bluetooth.enable = lib.mkDefault true;
         audio.enable = lib.mkDefault true;
         flatpak.enable = lib.mkDefault true;
