@@ -3,9 +3,9 @@
   config,
   ...
 }: let
-  cfg = config.my.hardware;
+  cfg = config.my.hardware.gpu.vendor;
 in {
-  config = lib.mkIf (cfg.gpu == "nvidia") {
+  config = lib.mkIf (cfg == "nvidia") {
     boot.initrd.kernelModules = lib.mkAfter [
       "nvidia"
       "nvidia_modeset"

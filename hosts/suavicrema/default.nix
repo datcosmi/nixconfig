@@ -13,8 +13,11 @@
   i18n.defaultLocale = "en_US.UTF-8";
 
   my.hardware = {
-    gpu = "nvidia";
-    openDrivers = true;
+    gpu = {
+      vendor = "nvidia";
+      openDrivers = true;
+    };
+
     ssd = true;
     needSuspend = false;
     hasWifi = true;

@@ -3,9 +3,9 @@
   lib,
   ...
 }: let
-  cfg = config.my.hardware;
+  cfg = config.my.hardware.gpu.vendor;
 in {
-  config = lib.mkIf (cfg.gpu == "nvidia") {
+  config = lib.mkIf (cfg == "nvidia") {
     environment.sessionVariables = {
       LIBVA_DRIVER_NAME = "nvidia";
       GBM_BACKEND = "nvidia-drm";
