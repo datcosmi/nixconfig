@@ -20,6 +20,7 @@ in {
       torrent.enable = lib.mkDefault true;
       vpn.enable = lib.mkDefault true;
       tui.enable = lib.mkDefault true;
+      remote.enable = lib.mkDefault true;
     };
   };
 
@@ -35,5 +36,6 @@ in {
     ./torrent
     ./vpn
     ./tui
+    ./remote
   ];
 }
