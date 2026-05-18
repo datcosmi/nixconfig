@@ -57,7 +57,7 @@ window-rule {
 }
 // ── Discord and Spotify ─────────────────────────────────────────────────────
 window-rule {
-    match app-id="tidal-hifi"
+    match app-id="spotify"
     open-on-workspace "2"
     opacity 0.96
     open-maximized true
@@ -88,3 +88,4 @@ window-rule {
     open-floating true
     opacity 1.0
 }
+

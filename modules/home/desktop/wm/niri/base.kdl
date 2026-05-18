@@ -276,7 +276,7 @@ binds {
         spawn-sh "steam"
     }
     Mod+Shift+M hotkey-overlay-title="Open Spotify" {
-        spawn-sh "tidal-hifi"
+        spawn-sh "spotify"
     }
     Mod+Shift+A hotkey-overlay-title="Authenticator: Ente Auth" {
         spawn-sh "enteauth"
