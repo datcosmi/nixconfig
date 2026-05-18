@@ -15,8 +15,7 @@ in {
       communication.enable = lib.mkDefault true;
       media.enable = lib.mkDefault true;
       auth.enable = lib.mkDefault true;
-      notes.enable = lib.mkDefault true;
-      pdf.enable = lib.mkDefault true;
+      productivity.enable = lib.mkDefault true;
       torrent.enable = lib.mkDefault true;
       vpn.enable = lib.mkDefault true;
       tui.enable = lib.mkDefault true;
@@ -31,8 +30,7 @@ in {
     ./communication
     ./media
     ./auth
-    ./notes
-    ./pdf
+    ./productivity
     ./torrent
     ./vpn
     ./tui
