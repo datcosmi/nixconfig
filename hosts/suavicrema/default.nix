@@ -4,7 +4,7 @@
     ./disko.nix
 
     ../../modules/nixos
-    ../../profiles/personal.nix
+    ../../profiles/desktop.nix
     ../../profiles/gaming.nix
   ];
 
