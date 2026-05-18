@@ -4,15 +4,15 @@
     ./boot
     ./graphics
 
+    ./desktop
     ./networking
     ./services
     ./env
-    ./utils
+    ./clipboard
+    ./login
     ./gaming.nix
     ./display.nix
-    ./login
 
-    ./desktop
     ./cachix.nix
   ];
 }
