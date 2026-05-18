@@ -29,8 +29,9 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    my.features.wayland.enable = lib.mkDefault true;
-    my.features.system.services.security.polkitAgent.enable = lib.mkDefault true;
+    my.features.wayland.enable = lib.mkForce true;
+    my.features.system.services.security.polkitAgent.enable = lib.mkForce true;
+    my.features.system.services.security.gnomeKeyring.enable = lib.mkDefault true;
 
     nixpkgs.overlays = [inputs.niri.overlays.niri];
 
