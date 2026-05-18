@@ -21,13 +21,9 @@
 
     memory = {
       enable = true;
-      memoryHighLimit = "12G";
-      zram.memoryPercent = 50;
-
-      swap = {
-        device = "/swapfile";
-        size = 8192;
-      };
+      totalRamGb = 16;
+      zram.enable = true;
+      swap.device = "/swapfile";
     };
 
     display = {
