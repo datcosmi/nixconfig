@@ -5,33 +5,35 @@
   ...
 }: let
   cfg = config.my.hardware;
+  isNvidia = cfg.gpu.vendor == "nvidia";
 in {
-  config = lib.mkMerge [
-    (lib.mkIf (cfg.gpu == "nvidia") {
-      services.xserver.videoDrivers = ["nvidia"];
+  config = lib.mkIf isNvidia {
+    services.xserver.videoDrivers = ["nvidia"];
 
-      hardware.nvidia = {
-        open = cfg.openDrivers;
-        modesetting.enable = true;
-        videoAcceleration = true;
-        nvidiaSettings = true;
-        powerManagement.enable = true;
-        package = config.boot.kernelPackages.nvidiaPackages.stable;
+    hardware.nvidia = {
+      open = cfg.gpu.openDrivers;
+      modesetting.enable = true;
+      videoAcceleration = true;
+      nvidiaSettings = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+
+      powerManagement = lib.mkIf cfg.needSuspend {
+        enable = true;
+        finegrained = cfg.hybrid && cfg.gpu.openDrivers;
       };
 
-      hardware.graphics.extraPackages = with pkgs; [
-        nvidia-vaapi-driver
-      ];
-    })
-
-    (lib.mkIf (cfg.gpu == "nvidia" && cfg.hybrid) {
-      hardware.nvidia.prime = {
-        offload.enable = true;
+      prime = lib.mkIf cfg.hybrid {
+        offload = {
+          enable = true;
+          enableOffloadCmd = true;
+        };
         intelBusId = cfg.prime.intelBusId;
         nvidiaBusId = cfg.prime.nvidiaBusId;
       };
+    };
 
-      hardware.nvidia.powerManagement.finegrained = true;
-    })
-  ];
+    hardware.graphics.extraPackages = with pkgs; [
+      nvidia-vaapi-driver
+    ];
+  };
 }
