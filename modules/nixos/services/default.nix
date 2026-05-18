@@ -22,6 +22,7 @@ in {
   config = lib.mkIf cfg.enable {
     my.features.system = {
       services = {
+        core.enable = lib.mkDefault true;
         bluetooth.enable = lib.mkDefault true;
         audio.enable = lib.mkDefault true;
         flatpak.enable = lib.mkDefault true;
