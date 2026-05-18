@@ -40,6 +40,7 @@
 
     keyboard = {
       layout = "latam";
+      keyMap = "la-latin1";
       variant = "";
     };
   };
