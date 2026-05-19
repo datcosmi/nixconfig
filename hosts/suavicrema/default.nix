@@ -19,7 +19,7 @@
     };
 
     ssd = true;
-    needSuspend = false;
+    needSuspend = true;
     hasWifi = true;
 
     memory = {
