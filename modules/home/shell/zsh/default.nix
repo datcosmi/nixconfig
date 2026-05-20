@@ -21,10 +21,6 @@ in {
       history.ignoreAllDups = true;
       history.path = "$HOME/.zsh_history";
     };
-
-    my.features.shell.zsh = {
-      oh-my-zsh.enable = lib.mkDefault true;
-    };
   };
 
   imports = [
