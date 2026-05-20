@@ -42,6 +42,7 @@ in {
         niriLockSuspend.enable = lib.mkDefault true;
       };
 
+      terminal.alacritty.enable = lib.mkDefault true;
       shell.bash.enable = lib.mkDefault true;
     };
   };
