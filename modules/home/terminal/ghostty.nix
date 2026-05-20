@@ -15,11 +15,11 @@ in {
       settings = {
         font-family = "JetBrainsMono Nerd Font";
         font-size = 11;
-        background-opacity = 0.73;
+        background-opacity = 0.95;
         gtk-titlebar = false;
         confirm-close-surface = false;
-        window-padding-x = 13;
-        window-padding-y = 13;
+        window-padding-x = 17;
+        window-padding-y = 17;
         mouse-scroll-multiplier = 1.0;
       };
     };
