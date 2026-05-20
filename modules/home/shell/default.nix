@@ -25,7 +25,7 @@ in {
 
   imports = [
     ./starship.nix
-    ./fastfetch
+    ./fastfetch.nix
     ./zsh
     ./bash.nix
     ./bat.nix
