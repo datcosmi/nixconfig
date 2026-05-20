@@ -8,6 +8,7 @@ in {
   imports = [
     ./kitty.nix
     ./ghostty.nix
+    ./alacritty.nix
   ];
 
   options.my.features.terminal.enable = lib.mkEnableOption "Enable all terminal emulators";
@@ -15,5 +16,6 @@ in {
   config = lib.mkIf cfg.enable {
     my.features.terminal.kitty.enable = lib.mkDefault true;
     my.features.terminal.ghostty.enable = lib.mkDefault true;
+    my.features.terminal.alacritty.enable = lib.mkDefault true;
   };
 }
