@@ -13,8 +13,10 @@ in {
     programs.git.enable = true;
     programs.lazygit.enable = true;
 
-    programs.ssh.matchBlocks = lib.mkIf ssh.enable {
+    programs.ssh.settings = lib.mkIf ssh.enable {
       "github.com" = {
+        HostName = "github.com";
+        User = "git";
         addKeysToAgent = "yes";
         identityFile = "~/.ssh/github";
       };
