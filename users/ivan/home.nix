@@ -1,8 +1,8 @@
 {pkgs, ...}: {
   imports = [
     ../../modules/home
+    ./shell
     ./fastfetch
-    ./shell.nix
   ];
 
   home = {
@@ -30,7 +30,10 @@
 
     desktop.apps.enable = true;
     dev.enable = true;
-    shell.enable = true;
+    shell = {
+      enable = true;
+      zsh.oh-my-zsh.enable = true;
+    };
     terminal.kitty.enable = true;
   };
 
