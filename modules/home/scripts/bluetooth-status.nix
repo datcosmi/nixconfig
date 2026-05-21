@@ -1,7 +1,7 @@
 {pkgs, ...}: {
   home.packages = [
     (pkgs.writeShellScriptBin "bluetooth-status" ''
-      powered=$(${pkgs.bluez}/bin/bluetoothctl show | grep "Powered:" | awk '{print $2}')
+      powered=$(echo "show" | ${pkgs.bluez}/bin/bluetoothctl | grep "Powered:" | awk '{print $2}')
       if [[ "$powered" != "yes" ]]; then
         echo '{"text":"󰂲","tooltip":"Bluetooth: Off","class":"off"}'
         exit 0
