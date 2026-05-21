@@ -1,7 +1,7 @@
 {
   disko.devices = {
     disk = {
-      disk = {
+      main = {
         type = "disk";
         device = "/dev/disk/by-id/ata-ADATA_SU630_2L29292GD6RE";
         content = {

@@ -1,7 +1,7 @@
 {
   disko.devices = {
     disk = {
-      ssd = {
+      main = {
         type = "disk";
         device = "/dev/disk/by-id/ata-WDC_WDS100T2B0A-00SM50_1907CB803553";
         content = {
