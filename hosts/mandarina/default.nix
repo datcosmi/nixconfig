@@ -52,8 +52,19 @@
       inputsConfig = builtins.readFile ./niri/inputs.kdl;
     };
 
-    system.login.tuigreet.enable = true;
+    # system.login.tuigreet.enable = true;
+    system.login.sddm = {
+      enable = true;
+      theme.silentSDDM = true;
+    };
   };
+
+  catppuccin.grub = {
+    enable = true;
+    flavor = "mocha";
+  };
+
+  programs.silentSDDM.theme = "catppuccin-mocha";
 
   system.stateVersion = "26.05";
 }
