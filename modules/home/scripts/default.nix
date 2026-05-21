@@ -2,7 +2,7 @@
   imports = [
     ./waybar-media-player.nix
     ./waybar-brightness.nix
-    ./ddc-brightness.nixc
+    ./ddc-brightness.nix
     ./audio-switcher.nix
     #./hypr-dnd-toggle.nix
     ./niri-dnd-toggle.nix

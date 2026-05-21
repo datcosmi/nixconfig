@@ -9,7 +9,7 @@
   ddc = config.my.features.services.ddcBrightness;
 
   ddcBrightnessScript = pkgs.writeShellScriptBin "ddc-brightness" ''
-    STEP=''${2:-${toString cfg.step}}
+    STEP=''${2:-${toString ddc.step}}
 
     mapfile -t MONITORS < <(${pkgs.ddcutil}/bin/ddcutil detect 2>/dev/null \
       | grep -oP 'Display \K[0-9]+')
@@ -57,6 +57,6 @@ in {
   };
 
   config = lib.mkIf cfg.ddc {
-    home.systemPackages = [ddcBrightnessScript];
+    home.packages = [ddcBrightnessScript];
   };
 }
