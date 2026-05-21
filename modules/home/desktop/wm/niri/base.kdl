@@ -730,8 +730,8 @@ binds {
     XF86MonBrightnessDown allow-when-locked=true {
         spawn "brightnessctl" "--class=backlight" "-e4" "-n2" "set" "5%-"
     }
-    Caps_Lock allow-when-locked=true {
-        spawn "sh" "-c" "sleep 0.05 && swayosd-client --caps-lock"
-    }
+ // Caps_Lock allow-when-locked=true {
+    //     spawn "sh" "-c" "sleep 0.05 && swayosd-client --caps-lock"
+    // }
 }
 
