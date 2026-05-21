@@ -696,42 +696,42 @@ binds {
     }
     // Focused window only    // ── Volume (PipeWire / WirePlumber) ───────────────────────────────────────
     XF86AudioRaiseVolume allow-when-locked=true {
-        spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05+ -l 1.0"
+        spawn-sh "swayosd-client --output-volume raise"
     }
     XF86AudioLowerVolume allow-when-locked=true {
-        spawn-sh "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.05-"
+        spawn-sh "swayosd-client --output-volume lower"
     }
     XF86AudioMute allow-when-locked=true {
-        spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+        spawn-sh "swayosd-client --output-volume mute-toggle"
     }
     XF86AudioMicMute allow-when-locked=true {
-        spawn-sh "wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle"
+        spawn-sh "swayosd-client --input-volume mute-toggle"
     }
     // ── Media Keys (playerctl / MPRIS) ────────────────────────────────────────
     XF86AudioPlay allow-when-locked=true {
-        spawn "playerctl" "play-pause"
+        spawn-sh "swayosd-client --playerctl play-pause"
     }
     XF86AudioPause allow-when-locked=true {
-        spawn "playerctl" "play-pause"
+        spawn-sh "swayosd-client --playerctl play-pause"
     }
     XF86AudioStop allow-when-locked=true {
-        spawn "playerctl" "stop"
+        spawn-sh "swayosd-client --playerctl stop"
     }
     XF86AudioPrev allow-when-locked=true {
-        spawn "playerctl" "previous"
+        spawn-sh "swayosd-client --playerctl prev"
     }
     XF86AudioNext allow-when-locked=true {
-        spawn "playerctl" "next"
+        spawn-sh "swayosd-client --playerctl next"
     }
     // ── Brightness ────────────────────────────────────────────
     XF86MonBrightnessUp allow-when-locked=true {
-        spawn "brightnessctl" "--class=backlight" "-e4" "-n2" "set" "5%+"
+        spawn-sh "swayosd-client --brightness raise"
     }
     XF86MonBrightnessDown allow-when-locked=true {
-        spawn "brightnessctl" "--class=backlight" "-e4" "-n2" "set" "5%-"
+        spawn-sh "swayosd-client --brightness raise"
     }
  // Caps_Lock allow-when-locked=true {
-    //     spawn "sh" "-c" "sleep 0.05 && swayosd-client --caps-lock"
+    //     spawn-sh "swayosd-client --caps-lock"
     // }
 }
 
