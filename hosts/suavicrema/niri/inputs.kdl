@@ -7,9 +7,9 @@ input {
         }
         repeat-delay 330
         repeat-rate 50
- // numlock intentionally omitted → disabled on startup
+    // numlock intentionally omitted → disabled on startup
     }
-    }
+    
     mouse {
         accel-speed -0.5
     }
