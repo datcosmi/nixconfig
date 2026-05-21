@@ -728,7 +728,7 @@ binds {
         spawn-sh "swayosd-client --brightness raise"
     }
     XF86MonBrightnessDown allow-when-locked=true {
-        spawn-sh "swayosd-client --brightness raise"
+        spawn-sh "swayosd-client --brightness lower"
     }
  // Caps_Lock allow-when-locked=true {
     //     spawn-sh "swayosd-client --caps-lock"
