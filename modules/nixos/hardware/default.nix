@@ -1,4 +1,8 @@
-{lib, ...}:
+{
+  config,
+  lib,
+  ...
+}:
 with lib; {
   imports = [
     ./ssd.nix
@@ -53,6 +57,12 @@ with lib; {
         type = types.bool;
         default = false;
         description = "Use open-source NVIDIA kernel modules (Turing/RTX 20xx+ only)";
+      };
+
+      nvidiaPackage = mkOption {
+        type = types.nullOr types.package;
+        default = config.boot.kernelPackages.nvidiaPackages.stable;
+        description = "Custom NVIDIA driver package";
       };
     };
 

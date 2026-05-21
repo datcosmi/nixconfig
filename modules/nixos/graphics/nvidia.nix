@@ -15,7 +15,7 @@ in {
       modesetting.enable = true;
       videoAcceleration = true;
       nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      package = cfg.gpu.nvidiaPackage;
 
       powerManagement = lib.mkIf cfg.needSuspend {
         enable = true;
