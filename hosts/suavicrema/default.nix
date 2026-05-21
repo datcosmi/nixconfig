@@ -47,7 +47,11 @@
       inputsConfig = builtins.readFile ./niri/inputs.kdl;
     };
 
-    system.login.tuigreet.enable = true;
+    # system.login.tuigreet.enable = true;
+    system.login.sddm = {
+      enable = true;
+      silent-sddm.enable = true;
+    };
   };
 
   catppuccin.grub = {
