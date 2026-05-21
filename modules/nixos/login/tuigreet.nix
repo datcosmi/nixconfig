@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  inputs,
   ...
 }: let
   # tuigreet = "${pkgs.tuigreet}/bin/tuigreet";
