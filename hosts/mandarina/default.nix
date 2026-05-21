@@ -15,7 +15,7 @@
   my.hardware = {
     gpu = {
       vendor = "nvidia";
-      openDrivers = true;
+      openDrivers = false; # Nvidia MX150 needs the propietary drivers
     };
 
     hybrid = true;
