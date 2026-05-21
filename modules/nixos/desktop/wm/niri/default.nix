@@ -46,6 +46,7 @@ in {
     environment.systemPackages = with pkgs; [
       xwayland-satellite
       alacritty
+      libnotify
     ];
 
     environment.etc."wayland-sessions/niri.desktop".text = ''
