@@ -50,5 +50,10 @@
     system.login.tuigreet.enable = true;
   };
 
+  catppuccin.grub = {
+    enable = true;
+    flavor = "mocha";
+  };
+
   system.stateVersion = "26.05";
 }
