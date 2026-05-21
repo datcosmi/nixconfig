@@ -10,10 +10,10 @@ in {
 
   options.my.features.system.login.sddm.silent-sddm.enable = lib.mkEnableOption "Enable SilentSDDM Theme";
 
-  config = cfg.enable {
+  config = lib.mkIf cfg.enable {
     programs.silentSDDM = {
       enable = true;
-      theme = "sakura";
+      theme = "catppuccin-mocha";
     };
   };
 }
