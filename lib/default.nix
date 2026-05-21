@@ -29,7 +29,7 @@ in rec {
 
           {
             system.activationScripts.createNixUserProfiles = lib.stringAfter ["users"] ''
-              for user in ${lib.concatStringsSep " " userNames}; do
+              for user in ${lib.concatStringsSep " " users}; do
                 home=$(getent passwd $user | cut -d: -f6)
                 mkdir -p /nix/var/nix/profiles/per-user/$user
                 chown $user:users /nix/var/nix/profiles/per-user/$user
