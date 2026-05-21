@@ -154,7 +154,7 @@ in {
       timeouts = [
         {
           timeout = cfg.lockTimeout;
-          command = "${hyprlock} --grace ${toString cfg.gracePeriod}";
+          command = "${hyprlock} --grace ${toString cfg.gracePeriod} &";
         }
 
         {
@@ -170,7 +170,7 @@ in {
       ];
 
       events = {
-        lock = "${hyprlock} --grace ${toString cfg.gracePeriod}";
+        lock = "${hyprlock} --grace ${toString cfg.gracePeriod} &";
         before-sleep = "${hyprlock} --grace ${toString cfg.gracePeriod}";
         after-resume = "${wlopm} --on '*'";
       };
