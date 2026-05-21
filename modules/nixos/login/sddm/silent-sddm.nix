@@ -4,16 +4,15 @@
   inputs,
   ...
 }: let
-  cfg = config.my.features.system.login.sddm.silent-sddm;
+  cfg = config.my.features.system.login.sddm.theme.silentSDDM;
 in {
   imports = [inputs.silentSDDM.nixosModules.default];
 
-  options.my.features.system.login.sddm.silent-sddm.enable = lib.mkEnableOption "Enable SilentSDDM Theme";
+  options.my.features.system.login.sddm.theme.silentSDDM = lib.mkEnableOption "Enable SilentSDDM Theme";
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf cfg {
     programs.silentSDDM = {
       enable = true;
-      theme = "catppuccin-mocha";
     };
   };
 }
