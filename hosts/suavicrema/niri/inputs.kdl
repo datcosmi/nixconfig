@@ -9,11 +9,6 @@ input {
         repeat-rate 50
  // numlock intentionally omitted → disabled on startup
     }
-    touchpad {
-        tap
-        natural-scroll
-        accel-speed -0.5
- // dwt / dwtp / drag-lock available if needed
     }
     mouse {
         accel-speed -0.5
