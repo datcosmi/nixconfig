@@ -19,6 +19,7 @@ in {
 
     security.pam.services = {
       greetd.enableGnomeKeyring = true;
+      sddm.enableGnomeKeyring = true;
       login.enableGnomeKeyring = true;
     };
   };
