@@ -1,5 +1,6 @@
 {
   imports = [
     ./tuigreet.nix
+    ./sddm
   ];
 }
