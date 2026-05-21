@@ -1,9 +1,9 @@
 {
   disko.devices = {
     disk = {
-      sda = {
+      disk = {
         type = "disk";
-        device = "/dev/sda";
+        device = "/dev/disk/by-id/ata-ADATA-SU630_2L29292GD6RE";
         content = {
           type = "gpt";
           partitions = {
