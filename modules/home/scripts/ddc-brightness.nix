@@ -9,19 +9,25 @@
   ddc = config.my.features.services.ddcBrightness;
 
   ddcBrightnessScript = pkgs.writeShellScriptBin "ddc-brightness" ''
+    CACHE_FILE="''${XDG_RUNTIME_DIR:-/tmp}/ddc-buses"
     STEP=''${2:-${toString ddc.step}}
 
-    mapfile -t MONITORS < <(${pkgs.ddcutil}/bin/ddcutil detect 2>/dev/null \
-      | grep -oP 'Display \K[0-9]+')
+    # Populate cache if missing or empty
+    if [[ ! -s "$CACHE_FILE" ]]; then
+      ${pkgs.ddcutil}/bin/ddcutil detect 2>/dev/null \
+        | grep -oP 'I2C bus:\s+/dev/i2c-\K[0-9]+' \
+        > "$CACHE_FILE"
+    fi
 
-    if [[ ''${#MONITORS[@]} -eq 0 ]]; then
+    mapfile -t BUSES < "$CACHE_FILE"
+
+    if [[ ''${#BUSES[@]} -eq 0 ]]; then
       echo "No DDC monitors detected" >&2
       exit 1
     fi
 
-    CURRENT=$(${pkgs.ddcutil}/bin/ddcutil --display "''${MONITORS[0]}" getvcp 10 2>/dev/null \
+    CURRENT=$(${pkgs.ddcutil}/bin/ddcutil --bus "''${BUSES[0]}" getvcp 10 2>/dev/null \
       | grep -oP 'current value =\s*\K[0-9]+')
-
     [[ -z "$CURRENT" ]] && exit 1
 
     if [[ "$1" == "up" ]]; then
@@ -36,8 +42,8 @@
     (( NEW < 0 ))   && NEW=0
     (( NEW > 100 )) && NEW=100
 
-    for DISP in "''${MONITORS[@]}"; do
-      ${pkgs.ddcutil}/bin/ddcutil --display "$DISP" setvcp 10 "$NEW" &
+    for BUS in "''${BUSES[@]}"; do
+      ${pkgs.ddcutil}/bin/ddcutil --bus "$BUS" setvcp 10 "$NEW" &
     done
     wait
 
