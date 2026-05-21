@@ -27,13 +27,18 @@ in {
         ];
 
         extraConfig = ''
+          set -ag terminal-overrides ",xterm-256color:RGB"
+          set-window-option -g mode-keys vi
           bind-key h select-pane -L
           bind-key j select-pane -D
           bind-key k select-pane -U
           bind-key l select-pane -R
-
+          bind-key S-Left swap-window -t -1
+          bind-key S-Right swap-window -t +1
+          bind-key m choose-window -F "#{window_index}: #{window_name}" "join-pane -h -t %%"
+          bind-key M choose-window -F "#{window_index}: #{window_name}" "join-pane -v -t %%"
           set -g status-style bg=default
-          set-option -g status-position top
+          set-option -g status-position bottom
         '';
       };
     })
