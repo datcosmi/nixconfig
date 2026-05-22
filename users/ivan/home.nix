@@ -1,8 +1,6 @@
 {pkgs, ...}: {
   imports = [
-    ../../modules/home
-    ./shell
-    ./fastfetch
+    ./modules
   ];
 
   home = {
