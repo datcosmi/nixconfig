@@ -20,6 +20,7 @@ in {
       jq.enable = lib.mkDefault true;
       fd.enable = lib.mkDefault true;
       zoxide.enable = lib.mkDefault true;
+      tealdeer.enable = lib.mkDefault true;
     };
   };
 
@@ -35,5 +36,6 @@ in {
     ./jq.nix
     ./fd.nix
     ./zoxide.nix
+    ./tealdeer.nix
   ];
 }
