@@ -41,6 +41,8 @@ in
     };
 
     catppuccin = {
+      cache.enable = true;
+
       bat = {
         enable = true;
         flavor = "mocha";

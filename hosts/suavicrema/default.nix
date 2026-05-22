@@ -54,9 +54,12 @@
     };
   };
 
-  catppuccin.grub = {
-    enable = true;
-    flavor = "mocha";
+  catppuccin = {
+    cache.enable = true;
+    grub = {
+      enable = true;
+      flavor = "mocha";
+    };
   };
 
   programs.silentSDDM.theme = "catppuccin-mocha";
