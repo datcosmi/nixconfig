@@ -11,7 +11,7 @@ in {
   config = lib.mkIf cfg.enable {
     programs.discord = {
       enable = true;
-      package = pkgs.discord-canary;
+      # package = pkgs.discord-canary;
     };
   };
 }
