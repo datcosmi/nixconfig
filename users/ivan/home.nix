@@ -27,12 +27,17 @@
       cursor = "bibata-ice";
     };
 
-    desktop.apps.enable = true;
-    dev.enable = true;
+    desktop = {
+      apps.enable = true;
+      userDirectories.enable = true;
+    };
+
     shell = {
       enable = true;
       zsh.oh-my-zsh.enable = true;
     };
+
+    dev.enable = true;
     terminal.kitty.enable = true;
   };
 

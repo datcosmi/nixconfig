@@ -7,5 +7,6 @@
     ./wallpaper
     ./ui
     ./fonts
+    ./user-directories.nix
   ];
 }
