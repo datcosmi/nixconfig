@@ -10,10 +10,12 @@ in {
   config = lib.mkIf cfg.enable {
     my.features.desktop.apps.communication = {
       discord.enable = lib.mkDefault true;
+      vesktop.enable = lib.mkDefault true;
     };
   };
 
   imports = [
     ./discord.nix
+    ./vesktop.nix
   ];
 }
