@@ -2,6 +2,7 @@
   imports = [
     ./apps
     ./wm
+    ./shell
     ./launchers
     ./clipboard
     ./wallpaper
