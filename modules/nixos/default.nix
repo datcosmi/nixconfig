@@ -10,7 +10,7 @@
     ./env
     ./clipboard
     ./login
-    ./gaming.nix
+    ./gaming
     ./display.nix
 
     ./cachix.nix
