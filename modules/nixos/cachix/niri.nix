@@ -5,7 +5,7 @@
 }: let
   cfg = config.my.features.desktop.niri;
 in {
-  config = lib.mkIf.cfg.enable {
+  config = lib.mkIf cfg.enable {
     nix = {
       settings = {
         substituters = [
