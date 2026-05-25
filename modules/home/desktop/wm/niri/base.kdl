@@ -25,7 +25,7 @@ cursor {
 // LAYOUT
 // ─────────────────────────────────────────────────────────────────────────────
 layout {
-    gaps 6
+    gaps 8
     center-focused-column "never"
     always-center-single-column
     preset-column-widths {
@@ -114,13 +114,13 @@ animations {
 // ─────────────────────────────────────────────────────────────────────────────
 // AUTOSTART
 // ─────────────────────────────────────────────────────────────────────────────
-spawn-at-startup "waybar"
+spawn-at-startup "noctalia-shell"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 // Clipboard manager — text and images
 spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
 spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
 // Apps
-spawn-sh-at-startup "protonvpn-app"
+// spawn-sh-at-startup "protonvpn-app --start-minimized"
 spawn-sh-at-startup "steam -silent"
 // Notifications daemon
 spawn-at-startup "swaync"
