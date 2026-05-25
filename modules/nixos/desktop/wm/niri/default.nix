@@ -33,6 +33,8 @@ in {
     my.features.system.services.security.polkitAgent.enable = lib.mkForce true;
     my.features.system.services.security.gnomeKeyring.enable = lib.mkDefault true;
 
+    my.features.desktop.noctalia.enable = lib.mkDefault true;
+
     nixpkgs.overlays = [inputs.niri.overlays.niri];
 
     programs.niri = {
@@ -47,6 +49,8 @@ in {
       xwayland-satellite
       alacritty
       libnotify
+      libappindicator
+      libayatana-appindicator
     ];
 
     environment.etc."wayland-sessions/niri.desktop".text = ''
