@@ -1,26 +1,27 @@
 {
   config,
   lib,
+  pkgs,
   ...
-}: {
-  imports = [
-    ./kernel.nix
-    ./steam.nix
-    ./graphics.nix
-    ./audio.nix
-    ./gametools.nix
-    ./peripherals.nix
-  ];
+}: let
+  cfg = config.my.features.gaming;
+in {
+  options.my.features.gaming.enable = lib.mkEnableOption "Gaming-oriented system configuration";
 
-  options.my.features.gaming = {
-    enable = lib.mkEnableOption "Enable al gaming modules";
-  };
+  config = lib.mkIf cfg.enable {
+    programs.steam = {
+      enable = true;
 
-  config = lib.mkIf config.my.features.gaming.enable {
-    my.features.gaming.steam.enable = lib.mkDefault true;
-    my.features.gaming.graphics.enable = lib.mkDefault true;
-    my.features.gaming.audio.enable = lib.mkDefault true;
-    my.features.gaming.gametools.enable = lib.mkDefault true;
-    my.features.gaming.peripherals.enable = lib.mkDefault true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+
+      gamescopeSession.enable = true;
+
+      protontricks.enable = true;
+
+      extraCompatPackages = with pkgs; [
+        proton-ge-bin
+      ];
+    };
   };
 }

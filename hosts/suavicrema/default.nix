@@ -47,17 +47,9 @@
       inputsConfig = builtins.readFile ./niri/inputs.kdl;
     };
 
-    # system.login.tuigreet.enable = true;
     system.login.sddm = {
       enable = true;
       theme.silentSDDM = true;
-    };
-
-    gaming.graphics.nvidia = {
-      nvapi = true;
-      fsr = true;
-      openGlThreaded = true;
-      powerMizer = "max";
     };
   };
 
