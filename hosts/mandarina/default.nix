@@ -58,6 +58,14 @@
       enable = true;
       theme.silentSDDM = true;
     };
+
+    gaming.graphics.nvidia = {
+      nvapi = false;
+      fsr = true;
+      openGlThreaded = true;
+      powerMizer = "adaptive";
+      deviceFilterName = "MX150";
+    };
   };
 
   catppuccin = {

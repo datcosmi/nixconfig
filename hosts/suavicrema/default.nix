@@ -52,6 +52,13 @@
       enable = true;
       theme.silentSDDM = true;
     };
+
+    gaming.graphics.nvidia = {
+      nvapi = true;
+      fsr = true;
+      openGlThreaded = true;
+      powerMizer = "max";
+    };
   };
 
   catppuccin = {
