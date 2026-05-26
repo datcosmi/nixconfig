@@ -6,9 +6,7 @@
 }: let
   cfg = config.my.features.gaming.steam;
 in {
-  options.my.features.gaming.steam = {
-    enable = lib.mkEnableOption "Steam and Proton";
-  };
+  options.my.features.gaming.steam.enable = lib.mkEnableOption "Steam, Proton and game launchers";
 
   config = lib.mkIf cfg.enable {
     nixpkgs.config.allowUnfreePredicate = pkg:
@@ -22,23 +20,20 @@ in {
 
     programs.steam = {
       enable = true;
-
       remotePlay.openFirewall = true;
       dedicatedServer.openFirewall = true;
-
       gamescopeSession.enable = true;
-
       protontricks.enable = true;
-
-      extraCompatPackages = with pkgs; [
-        proton-ge-bin
-      ];
+      extraCompatPackages = with pkgs; [proton-ge-bin];
     };
 
     environment.systemPackages = with pkgs; [
+      heroic
+      protonup-qt
       protontricks
       winetricks
-      protonup-qt
+      wine64
+      wineWow64Packages.stagingFull
     ];
   };
 }

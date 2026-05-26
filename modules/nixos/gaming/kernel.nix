@@ -1,45 +1,37 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.my.features.gaming.kernel;
 in {
   options.my.features.gaming.kernel = {
-    enable = lib.mkEnableOption "Gaming kernel parameters and sysctl tweaks";
+    enable = lib.mkEnableOption "Gaming kernel tweaks";
 
-    patches = {
-      enable = lib.mkEnableOption "NTSync kernel patch (requires full kernel recompile — slow!)";
+    ntsync = {
+      enable =
+        lib.mkEnableOption "NTSync kernel module for Wine/Proton"
+        // {
+          default = true;
+        };
     };
   };
 
   config = lib.mkIf cfg.enable {
-    # NTSync — only built when explicitly enabled
-    boot.kernelPatches = lib.mkIf cfg.patches.enable [
-      {
-        name = "ntsync-enable";
-        patch = null;
-        structuredExtraConfig = with lib.kernel; {
-          NTSYNC = module;
-        };
-      }
-    ];
+    # Load the module and set udev rule
+    boot.kernelModules = lib.mkIf cfg.ntsync.enable ["ntsync"];
 
-    boot.kernelModules = lib.mkIf cfg.patches.enable ["ntsync"];
-
-    services.udev.extraRules = lib.mkIf cfg.patches.enable ''
-      # NTSync — allow any logged-in user to open the sync device
+    services.udev.extraRules = lib.mkIf cfg.ntsync.enable ''
       KERNEL=="ntsync", TAG+="uaccess"
     '';
 
-    # Kernel parameters
     boot.kernelParams = [
       "transparent_hugepage=madvise"
       "nowatchdog"
       "nmi_watchdog=0"
     ];
 
-    # sysctl tweaks
     boot.kernel.sysctl = {
       "vm.max_map_count" = 2147483642;
       "vm.swappiness" = 10;
