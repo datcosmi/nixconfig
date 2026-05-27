@@ -108,6 +108,7 @@ in {
               {id = "MediaMini";}
               {
                 id = "AudioVisualizer";
+                hideWhenIdle = true;
                 width = 100;
               }
             ];
