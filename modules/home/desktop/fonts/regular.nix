@@ -13,7 +13,9 @@ in {
       noto-fonts
       noto-fonts-cjk-sans
       liberation_ttf
+      dejavu_fonts
       lexend
+      jetbrains-mono
     ];
   };
 }
