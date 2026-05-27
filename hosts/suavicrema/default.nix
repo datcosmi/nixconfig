@@ -16,6 +16,7 @@
     gpu = {
       vendor = "nvidia";
       openDrivers = true;
+      nvidiaGeneration = "turing";
     };
 
     ssd = true;
@@ -51,6 +52,8 @@
       enable = true;
       theme.silentSDDM = true;
     };
+
+    gaming.graphics.forceRADV = false;
   };
 
   catppuccin = {

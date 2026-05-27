@@ -17,6 +17,7 @@
       vendor = "nvidia";
       openDrivers = false; # Nvidia MX150 needs the propietary drivers
       nvidiaPackage = config.boot.kernelPackages.nvidiaPackages.legacy_580;
+      nvidiaGeneration = "pascal";
     };
 
     hybrid = true;
@@ -57,6 +58,8 @@
       enable = true;
       theme.silentSDDM = true;
     };
+
+    gaming.graphics.forceRADV = false;
   };
 
   catppuccin = {
