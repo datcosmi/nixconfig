@@ -259,7 +259,7 @@ binds {
         spawn "kitty" "-e" "tmux"
     }
     Mod+Space hotkey-overlay-title="App Launcher" {
-        spawn "rofi" "-show" "drun"
+        spawn-sh "noctalia-shell ipc call launcher toggle"
     }
     Mod+Ctrl+E hotkey-overlay-title="Emoji Picker" {
         spawn-sh "noctalia-shell ipc call launcher emoji"
@@ -310,10 +310,10 @@ binds {
     }
     // ── System Controls ──────────────────────────────────────────────────────
     Mod+Alt+Equal hotkey-overlay-title="DDC Raise Brightness" {
-        spawn "ddc-brightness" "up"
+        spawn-sh "noctalia-shell ipc call brightness increase"
     }
     Mod+Alt+Minus hotkey-overlay-title="DDC Lower Brightness" {
-        spawn "ddc-brightness" "down"
+        spawn-sh "noctalia-shell ipc call brightness decrease"
     }
     Mod+Shift+N hotkey-overlay-title="Notification Center" {
         spawn "noctalia-shell" "ipc" "call" "notifications" "toggleHistory"
@@ -720,19 +720,19 @@ binds {
     }
     // ── Media Keys (playerctl / MPRIS) ────────────────────────────────────────
     XF86AudioPlay allow-when-locked=true {
-        spawn-sh "swayosd-client --playerctl play-pause"
+        spawn-sh "noctalia-shell ipc call media playPause"
     }
     XF86AudioPause allow-when-locked=true {
-        spawn-sh "swayosd-client --playerctl play-pause"
+        spawn-sh "noctalia-shell ipc call media playPause"
     }
     XF86AudioStop allow-when-locked=true {
-        spawn-sh "swayosd-client --playerctl stop"
+        spawn-sh "noctalia-shell ipc call media stop"
     }
     XF86AudioPrev allow-when-locked=true {
-        spawn-sh "swayosd-client --playerctl prev"
+        spawn-sh "noctalia-shell ipc call media previous"
     }
     XF86AudioNext allow-when-locked=true {
-        spawn-sh "swayosd-client --playerctl next"
+        spawn-sh "noctalia-shell ipc call media next"
     }
     // ── Brightness ────────────────────────────────────────────
     XF86MonBrightnessUp allow-when-locked=true {
