@@ -21,6 +21,68 @@ in {
       enable = true;
 
       settings = {
+        general = {
+          dimmerOpacity = 0.2;
+          showScreenCorners = false;
+          forceBlackScreenCorners = false;
+          scaleRatio = 1;
+          radiusRatio = 1;
+          iRadiusRatio = 1;
+          boxRadiusRatio = 1;
+          screenRadiusRatio = 1;
+          animationSpeed = 1;
+          animationDisabled = false;
+          compactLockScreen = false;
+          lockScreenAnimations = true;
+          lockOnSuspend = true;
+          showSessionButtonsOnLockScreen = true;
+          showHibernateOnLockScreen = false;
+          enableLockScreenMediaControls = false;
+          enableShadows = true;
+          enableBlurBehind = true;
+          shadowDirection = "bottom_right";
+          shadowOffsetX = 2;
+          shadowOffsetY = 3;
+          language = "";
+          allowPanelsOnScreenWithoutBar = true;
+          showChangelogOnStartup = true;
+          telemetryEnabled = false;
+          enableLockScreenCountdown = true;
+          lockScreenCountdownDuration = 10000;
+          autoStartAuth = false;
+          allowPasswordWithFprintd = false;
+          clockStyle = "analog";
+          passwordChars = false;
+          lockScreenMonitors = [];
+          lockScreenBlur = 0.9;
+          lockScreenTint = 0.3;
+          keybinds = {
+            keyUp = [
+              "Up"
+            ];
+            keyDown = [
+              "Down"
+            ];
+            keyLeft = [
+              "Left"
+            ];
+            keyRight = [
+              "Right"
+            ];
+            keyEnter = [
+              "Return"
+              "Enter"
+            ];
+            keyEscape = [
+              "Esc"
+            ];
+            keyRemove = [
+              "Del"
+            ];
+          };
+          reverseScroll = false;
+          smoothScrollEnabled = true;
+        };
         bar = {
           barType = "framed";
           position = "left";
@@ -51,18 +113,21 @@ in {
             ];
 
             center = [
-              {id = "Settings";}
+              {id = "NotificationHistory";}
               {
                 id = "Clock";
                 useCustomFont = true;
                 customFont = "Lexend Exa SemiBold";
                 tooltipFormat = "hh:mm AP dddd, MMM dd yyyy";
               }
-              {id = "NotificationHistory";}
+              {id = "Settings";}
             ];
 
             right = [
-              {id = "Tray";}
+              {
+                id = "Tray";
+                colorizeIcons = false;
+              }
               {id = "KeepAwake";}
               {id = "Volume";}
               {id = "plugin:network-manager-vpn";}
@@ -81,7 +146,13 @@ in {
           lockTimeout = 660;
           suspendTimeout = 1800;
           fadeDuration = 5;
-          # lockCommand = "${pkgs.hyprlock}/bin/hyprlock";
+          screenOffCommand = "";
+          lockCommand = "";
+          suspendCommand = "";
+          resumeScreenOffCommand = "";
+          resumeLockCommand = "";
+          resumeSuspendCommand = "";
+          customCommands = "[]";
         };
 
         ui = {
@@ -100,6 +171,20 @@ in {
           visualizerType = "mirrored";
           spectrumMirrored = true;
           volumeFeedback = false;
+        };
+
+        osd = {
+          enabled = true;
+          location = "bottom";
+          autoHideMs = 2000;
+          overlayLayer = true;
+          backgroundOpacity = 1;
+          enabledTypes = [
+            0
+            1
+            2
+          ];
+          monitors = [];
         };
 
         sessionMenu = {
@@ -145,6 +230,20 @@ in {
           ];
         };
 
+        systemMonitor = {
+          externalMonitor = "resources || missioncenter || jdsystemmonitor || corestats || system-monitoring-center || gnome-system-monitor || plasma-systemmonitor || mate-system-monitor || ukui-system-monitor || deepin-system-monitor || pantheon-system-monitor";
+        };
+
+        location = {
+          weatherEnabled = false;
+          useFahrenheit = false;
+          use12hourFormat = true;
+          showWeekNumberInCalendar = false;
+          showCalendarEvents = true;
+          analogClockInCalendar = true;
+          autoLocate = false;
+        };
+
         appLauncher = {
           enableClipboardHistory = true;
           autoPasteClipboard = false;
@@ -168,29 +267,12 @@ in {
           density = "default";
         };
 
-        # brightness = lib.mkMerge [
-        #   (lib.mkIf display.ddc {
-        #     enable_ddcutil = true;
-        #
-        #     monitor = {
-        #       "DP-1" = {
-        #         backend = "ddcutil";
-        #       };
-        #
-        #       "HDMI-A-1" = {
-        #         backend = "ddcutil";
-        #       };
-        #     };
-        #   })
-        #
-        #   (lib.mkIf display.internalBacklight {
-        #     monitor = {
-        #       "eDP-1" = {
-        #         backend = "backlight";
-        #       };
-        #     };
-        #   })
-        # ];
+        brightness = {
+          brightnessStep = 5;
+          enforceMinimum = true;
+          enableDdcSupport = true;
+          backlightDeviceMappings = [];
+        };
       };
 
       colors = {
