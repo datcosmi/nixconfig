@@ -4,19 +4,19 @@ output "DP-1" {
     position x=1920 y=0
     variable-refresh-rate on-demand=true
     focus-at-startup
-    backdrop-color "#11111b"
-    layout {
-        background-color "#11111b"
-    }
+ // backdrop-color "#11111b"
+    // layout {
+    //     background-color "#11111b"
+    // }
 }
 output "HDMI-A-1" {
     mode "1920x1080@60.000"
     scale 1
     position x=0 y=0
-    backdrop-color "#11111b"
-    layout {
-        background-color "#11111b"
-    }
+ // backdrop-color "#11111b"
+    // layout {
+    //     background-color "#11111b"
+    // }
 }
 workspace "1" {
     open-on-output "DP-1"
@@ -57,7 +57,7 @@ window-rule {
 }
 // ── Discord and Spotify ─────────────────────────────────────────────────────
 window-rule {
-    match app-id="spotify"
+    match app-id="Spotify"
     open-on-workspace "2"
     opacity 0.96
     open-maximized true

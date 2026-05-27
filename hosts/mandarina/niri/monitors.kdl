@@ -3,10 +3,10 @@ output "eDP-1" {
     scale 1.2
     position x=1920 y=0
     focus-at-startup
-    backdrop-color "#11111b"
-    layout {
-        background-color "#11111b"
-    }
+ // backdrop-color "#11111b"
+    // layout {
+    //     background-color "#11111b"
+    // }
 }
 workspace "1" {
     open-on-output "eDP-1"
@@ -47,7 +47,7 @@ window-rule {
 }
 // ── Discord and Spotify ─────────────────────────────────────────────────────
 window-rule {
-    match app-id="spotify"
+    match app-id="Spotify"
     open-on-workspace "2"
     opacity 0.96
     open-maximized true
