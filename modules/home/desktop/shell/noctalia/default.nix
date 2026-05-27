@@ -145,6 +145,29 @@ in {
           ];
         };
 
+        appLauncher = {
+          enableClipboardHistory = true;
+          autoPasteClipboard = false;
+          enableClipPreview = true;
+          clipboardWrapText = true;
+          enableClipboardSmartIcons = true;
+          enableClipboardChips = true;
+          clipboardWatchTextCommand = "wl-paste --type text --watch cliphist store";
+          clipboardWatchImageCommand = "wl-paste --type image --watch cliphist store";
+          position = "center";
+          sortByMostUsed = true;
+          viewMode = "list";
+          showCategories = true;
+          iconMode = "tabler";
+          showIconBackground = false;
+          enableSettingsSearch = true;
+          enableWindowsSearch = true;
+          enableSessionSearch = true;
+          ignoreMouseInput = false;
+          overviewLayer = false;
+          density = "default";
+        };
+
         # brightness = lib.mkMerge [
         #   (lib.mkIf display.ddc {
         #     enable_ddcutil = true;
