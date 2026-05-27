@@ -25,9 +25,10 @@ cursor {
 // LAYOUT
 // ─────────────────────────────────────────────────────────────────────────────
 layout {
-    gaps 8
+    gaps 10
     center-focused-column "never"
     always-center-single-column
+    background-color "transparent"
     preset-column-widths {
         proportion 0.5
         proportion 0.7
@@ -41,7 +42,7 @@ layout {
         proportion 1.0
     }
     default-column-width {
-        proportion 0.7
+        proportion 0.6
     }
     focus-ring {
         off
@@ -71,10 +72,10 @@ layout {
         color "#1a1b2699"
     }
     struts {
-        left 5
-        right 5
-        top 5
-        bottom 5
+        left 3
+        right 3
+        top 3
+        bottom 3
     }
 }
 // ─────────────────────────────────────────────────────────────────────────────
@@ -111,6 +112,15 @@ animations {
         spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
     }
 }
+layer-rule {
+    match namespace="^noctalia-wallpaper*"
+    place-within-backdrop true
+}
+overview {
+    workspace-shadow {
+        off
+    }
+}
 // ─────────────────────────────────────────────────────────────────────────────
 // AUTOSTART
 // ─────────────────────────────────────────────────────────────────────────────
@@ -120,13 +130,13 @@ spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
 spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
 // Apps
-// spawn-sh-at-startup "protonvpn-app --start-minimized"
+spawn-sh-at-startup "sleep 0.7 && protonvpn-app"
 spawn-sh-at-startup "steam -silent"
 // Notifications daemon
-spawn-at-startup "swaync"
+// spawn-at-startup "swaync"
 // Wallpaper daemon + wallpaper
-spawn-at-startup "awww-daemon"
-spawn-sh-at-startup "awww-wallpaper"
+// spawn-at-startup "awww-daemon"
+// spawn-sh-at-startup "awww-wallpaper"
 // ─────────────────────────────────────────────────────────────────────────────
 // HOTKEY OVERLAY
 // ─────────────────────────────────────────────────────────────────────────────
@@ -305,8 +315,8 @@ binds {
     Mod+Alt+Minus hotkey-overlay-title="DDC Lower Brightness" {
         spawn "ddc-brightness" "down"
     }
-    Mod+Shift+N hotkey-overlay-title="Notification Center: swaync" {
-        spawn "swaync-client" "-t" "-sw"
+    Mod+Shift+N hotkey-overlay-title="Notification Center" {
+        spawn "noctalia-shell" "ipc" "call" "notifications" "toggleHistory"
     }
     Mod+Shift+Space hotkey-overlay-title="Restart Waybar" {
         spawn-sh "pkill waybar || waybar"
@@ -327,12 +337,12 @@ binds {
     }
     // ── Session / Lock / Power ────────────────────────────────────────────────
     // Lock screen (allow-when-locked so it still works if screen is partially locked)
-    Super+Alt+L allow-when-locked=true hotkey-overlay-title="Lock Screen: hyprlock" {
+    Super+Alt+L allow-when-locked=true hotkey-overlay-title="Lock Screen" {
         spawn "hyprlock"
     }
     // Logout menu
-    Mod+Escape allow-inhibiting=false hotkey-overlay-title="Logout Menu: wleave" {
-        spawn "wleave"
+    Mod+Escape allow-inhibiting=false hotkey-overlay-title="Logout Menu" {
+        spawn-sh "noctalia-shell ipc call sessionMenu toggle"
     }
     // Emergency keyboard inhibitor toggle (e.g. for remote desktop KVM)
     Mod+Shift+Escape allow-inhibiting=false hotkey-overlay-title="Toggle Keyboard Inhibitor" {
@@ -697,16 +707,16 @@ binds {
     }
     // Focused window only    // ── Volume (PipeWire / WirePlumber) ───────────────────────────────────────
     XF86AudioRaiseVolume allow-when-locked=true {
-        spawn-sh "swayosd-client --output-volume raise"
+        spawn-sh "noctalia-shell ipc call volume increase"
     }
     XF86AudioLowerVolume allow-when-locked=true {
-        spawn-sh "swayosd-client --output-volume lower"
+        spawn-sh "noctalia-shell ipc call volume decrease"
     }
     XF86AudioMute allow-when-locked=true {
-        spawn-sh "swayosd-client --output-volume mute-toggle"
+        spawn-sh "noctalia-shell ipc call volume muteOutput"
     }
     XF86AudioMicMute allow-when-locked=true {
-        spawn-sh "swayosd-client --input-volume mute-toggle"
+        spawn-sh "noctalia-shell ipc call volume muteInput"
     }
     // ── Media Keys (playerctl / MPRIS) ────────────────────────────────────────
     XF86AudioPlay allow-when-locked=true {
@@ -726,10 +736,10 @@ binds {
     }
     // ── Brightness ────────────────────────────────────────────
     XF86MonBrightnessUp allow-when-locked=true {
-        spawn-sh "swayosd-client --brightness raise"
+        spawn-sh "noctalia-shell ipc call brightness increase"
     }
     XF86MonBrightnessDown allow-when-locked=true {
-        spawn-sh "swayosd-client --brightness lower"
+        spawn-sh "noctalia-shell ipc call brightness decrease"
     }
  // Caps_Lock allow-when-locked=true {
     //     spawn-sh "swayosd-client --caps-lock"
