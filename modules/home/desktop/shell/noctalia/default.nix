@@ -108,7 +108,7 @@ in {
               {id = "MediaMini";}
               {
                 id = "AudioVisualizer";
-                hideWhenIdle = true;
+                hideWhenIdle = false;
                 width = 100;
               }
             ];
@@ -142,18 +142,11 @@ in {
         };
 
         idle = {
-          enabled = false;
+          enabled = true;
           screenOffTimeout = 600;
           lockTimeout = 660;
           suspendTimeout = 1800;
           fadeDuration = 5;
-          screenOffCommand = "";
-          lockCommand = "";
-          suspendCommand = "";
-          resumeScreenOffCommand = "";
-          resumeLockCommand = "";
-          resumeSuspendCommand = "";
-          customCommands = "[]";
         };
 
         ui = {
@@ -169,7 +162,7 @@ in {
           volumeStep = 5;
           volumeOverdrive = false;
           spectrumFrameRate = 30;
-          visualizerType = "mirrored";
+          visualizerType = "linear";
           spectrumMirrored = true;
           volumeFeedback = false;
         };
@@ -184,6 +177,7 @@ in {
             0
             1
             2
+            3
           ];
           monitors = [];
         };
