@@ -252,32 +252,32 @@ binds {
         show-hotkey-overlay
     }
     // ── Terminal & Launchers ─────────────────────────────────────────────────
-    Mod+Return hotkey-overlay-title="Open Terminal: kitty" {
+    Mod+Return hotkey-overlay-title="Open Terminal" {
         spawn "kitty"
     }
     Mod+Shift+Return hotkey-overlay-title="Open Terminal with tmux" {
         spawn "kitty" "-e" "tmux"
     }
-    Mod+Space hotkey-overlay-title="App Launcher: rofi" {
+    Mod+Space hotkey-overlay-title="App Launcher" {
         spawn "rofi" "-show" "drun"
     }
-    Mod+Ctrl+E hotkey-overlay-title="Emoji Picker: rofimoji" {
-        spawn "rofimoji"
+    Mod+Ctrl+E hotkey-overlay-title="Emoji Picker" {
+        spawn-sh "noctalia-shell ipc call launcher emoji"
     }
     Mod+Alt+C hotkey-overlay-title="Calculator: rofi-calc" {
         spawn-sh "rofi -show calc -modi calc -no-show-match -no-sort"
     }
-    Mod+V hotkey-overlay-title="Clipboard History: cliphist" {
-        spawn-sh "cliphist list | rofi -dmenu | cliphist decode | wl-copy"
+    Mod+V hotkey-overlay-title="Clipboard History" {
+        spawn-sh "noctalia-shell ipc call launcher clipboard"
     }
     // ── Applications ───────────────────────────
-    Mod+Shift+B hotkey-overlay-title="Open Browser: Zen" {
+    Mod+Shift+B hotkey-overlay-title="Open Browser" {
         spawn-sh "zen"
     }
-    Mod+Shift+X hotkey-overlay-title="File Manager: Nautilus" {
+    Mod+Shift+X hotkey-overlay-title="File Manager" {
         spawn-sh "nautilus"
     }
-    Mod+Shift+Y hotkey-overlay-title="File Manager: Yazi" {
+    Mod+Shift+Y hotkey-overlay-title="File Manager" {
         spawn "kitty" "--class" "yazi" "-e" "yazi"
     }
     Mod+Shift+D hotkey-overlay-title="Open Discord" {
@@ -289,23 +289,23 @@ binds {
     Mod+Shift+M hotkey-overlay-title="Open Spotify" {
         spawn-sh "spotify"
     }
-    Mod+Shift+A hotkey-overlay-title="Authenticator: Ente Auth" {
+    Mod+Shift+A hotkey-overlay-title="Authenticator" {
         spawn-sh "enteauth"
     }
-    Mod+Shift+P hotkey-overlay-title="Password Manager: Proton Pass" {
+    Mod+Shift+P hotkey-overlay-title="Password Manager" {
         spawn-sh "proton-pass"
     }
     // ── TUI Utilities in Kitty ───────────────────────────────────────────────
-    Mod+Shift+T hotkey-overlay-title="System Monitor: btop" {
+    Mod+Shift+T hotkey-overlay-title="System Monitor" {
         spawn "kitty" "--class" "btop" "-e" "btop"
     }
-    Mod+Shift+S hotkey-overlay-title="Audio Mixer: wiremix" {
+    Mod+Shift+S hotkey-overlay-title="Audio Mixer" {
         spawn "kitty" "--class" "wiremix" "-e" "wiremix"
     }
-    Mod+Shift+E hotkey-overlay-title="Bluetooth TUI: bluetui" {
+    Mod+Shift+E hotkey-overlay-title="Bluetooth TUI" {
         spawn "kitty" "--class" "bluetui" "-e" "bluetui"
     }
-    Mod+Shift+W hotkey-overlay-title="Wifi TUI: impala" {
+    Mod+Shift+W hotkey-overlay-title="Wifi TUI" {
         spawn "kitty" "--class" "impala" "-e" "impala"
     }
     // ── System Controls ──────────────────────────────────────────────────────
