@@ -11,6 +11,8 @@ in {
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
       noto-fonts
+      noto-fonts-cjk-sans
+      liberation_ttf
       lexend
     ];
   };
