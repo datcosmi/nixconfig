@@ -31,9 +31,9 @@ in {
 
         ui = {
           waybar.enable = lib.mkDefault true;
-          # swaync.enable = lib.mkDefault true;
+          swaync.enable = lib.mkDefault true;
           swayosd.enable = lib.mkDefault true;
-          # wleave.enable = lib.mkDefault true;
+          wleave.enable = lib.mkDefault true;
         };
 
         apps = {
@@ -43,10 +43,10 @@ in {
 
           tui.enable = lib.mkDefault true;
         };
-      };
 
-      custom = {
-        niriLockSuspend.enable = lib.mkDefault false;
+        custom = {
+          niriLockSuspend.enable = lib.mkDefault true;
+        };
       };
 
       terminal.alacritty.enable = lib.mkDefault true;

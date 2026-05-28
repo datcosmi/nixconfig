@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  cfg = config.my.features.custom.niriLockSuspend;
+  cfg = config.my.features.desktop.custom.niriLockSuspend;
 
   hyprlock = "${pkgs.hyprlock}/bin/hyprlock";
   wlopm = "${pkgs.wlopm}/bin/wlopm";
@@ -13,7 +13,7 @@
 in {
   # Options
 
-  options.my.features.custom.niriLockSuspend = {
+  options.my.features.desktop.custom.niriLockSuspend = {
     enable = lib.mkEnableOption "screen lock and suspend (hyprlock + swayidle)";
 
     lockTimeout = lib.mkOption {
