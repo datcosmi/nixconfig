@@ -30,6 +30,8 @@
     desktop = {
       apps.enable = true;
       userDirectories.enable = true;
+
+      niri.baseConfig = builtins.readFile ./modules/niri/config.kdl;
     };
 
     shell = {

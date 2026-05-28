@@ -4,15 +4,22 @@
   osConfig,
   ...
 }: let
-  cfg = osConfig.my.features.desktop.niri;
+  host = osConfig.my.features.desktop.niri;
+  user = config.my.features.desktop.niri;
 in {
   imports = [./lock.nix];
 
-  config = lib.mkIf cfg.enable {
+  options.my.features.desktop.niri.baseConfig = lib.mkOption {
+    type = lib.types.lines;
+    default = "";
+    description = "User-specific KDL niri configuration";
+  };
+
+  config = lib.mkIf host.enable {
     xdg.configFile."niri/config.kdl".text = lib.concatStringsSep "\n" [
-      (builtins.readFile ./base.kdl)
-      cfg.monitorsConfig
-      cfg.inputsConfig
+      user.baseConfig
+      host.monitorsConfig
+      host.inputsConfig
     ];
 
     my.features = {
