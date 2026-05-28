@@ -6,6 +6,7 @@
   ...
 }: let
   cfg = config.my.features.desktop.shell.noctalia;
+  c = config.my.features.theme.colors;
 in {
   config = lib.mkIf cfg.enable {
     programs.noctalia-shell = {
@@ -256,6 +257,25 @@ in {
           enableDdcSupport = true;
           backlightDeviceMappings = [];
         };
+      };
+
+      colors = {
+        mPrimary = c.pink;
+        mOnPrimary = c.base;
+        mSecondary = c.lavender;
+        mOnSecondary = c.base;
+        mTertiary = c.mauve;
+        mOnTertiary = c.base;
+        mError = c.red;
+        mOnError = c.base;
+        mSurface = c.base;
+        mOnSurface = c.text;
+        mSurfaceVariant = c.surface0;
+        mOnSurfaceVariant = c.subtext0;
+        mOutline = c.surface2;
+        mHover = c.surface1;
+        mOnHover = c.text;
+        mShadow = c.crust;
       };
 
       plugins = {
