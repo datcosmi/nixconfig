@@ -69,6 +69,8 @@
     };
   };
 
+  home.file.".face".source = ./avatar.png;
+
   home.packages = with pkgs; [
     stow
     exfatprogs
