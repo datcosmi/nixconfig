@@ -1,18 +1,18 @@
 {
   config,
   lib,
-  osConfig,
   pkgs,
   inputs,
   ...
 }: let
-  cfg = osConfig.my.features.desktop.noctalia;
+  cfg = config.my.features.desktop.shell.noctalia;
   wallpaper = config.my.features.theme.wallpaper;
-  display = osConfig.my.hardware.display;
 in {
   imports = [
     inputs.noctalia.homeModules.default
   ];
+
+  options.my.features.desktop.shell.noctalia.enable = lib.mkEnableOption "Enable Noctalia Shell";
 
   config = lib.mkIf cfg.enable {
     home.file.".face".source = ../../../../../users/ivan/avatar.png;
