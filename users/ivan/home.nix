@@ -30,7 +30,15 @@
     desktop = {
       apps.enable = true;
       userDirectories.enable = true;
-
+      wallpaper.awww.enable = false;
+      ui = {
+        waybar.enable = false;
+        swaync.enable = false;
+        swayosd.enable = false;
+        wleave.enable = false;
+      };
+      custom.niriLockSuspend.enable = false;
+      shell.noctalia.enable = true;
       niri.baseConfig = builtins.readFile ./modules/niri/config.kdl;
     };
 
