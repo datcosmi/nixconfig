@@ -79,7 +79,7 @@ in {
           density = "comfortable";
           fontScale = 1;
           frameThickness = 4;
-          frameRaius = 13;
+          frameRadius = 13;
           showCapsule = false;
 
           widgets = {
