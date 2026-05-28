@@ -25,7 +25,7 @@ cursor {
 // LAYOUT
 // ─────────────────────────────────────────────────────────────────────────────
 layout {
-    gaps 10
+    gaps 11
     center-focused-column "never"
     always-center-single-column
     background-color "transparent"
