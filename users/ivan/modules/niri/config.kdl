@@ -25,7 +25,7 @@ cursor {
 // LAYOUT
 // ─────────────────────────────────────────────────────────────────────────────
 layout {
-    gaps 11
+    gaps 6
     center-focused-column "never"
     always-center-single-column
     background-color "transparent"
@@ -72,10 +72,10 @@ layout {
         color "#1a1b2699"
     }
     struts {
-        left 3
-        right 3
-        top 3
-        bottom 3
+        left 7
+        right 7
+        top 7
+        bottom 7
     }
 }
 // ─────────────────────────────────────────────────────────────────────────────
