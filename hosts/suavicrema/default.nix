@@ -53,11 +53,13 @@
       theme.silentSDDM = true;
     };
 
+    boot.plymouth.enable = true;
     gaming.graphics.forceRADV = false;
   };
 
   catppuccin = {
     cache.enable = true;
+
     grub = {
       enable = true;
       flavor = "mocha";
