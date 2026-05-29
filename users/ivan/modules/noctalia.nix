@@ -11,15 +11,16 @@ in {
   config = lib.mkIf cfg.enable {
     programs.noctalia-shell = {
       settings = {
+        settingsVersion = 59;
         general = {
           dimmerOpacity = 0.2;
-          showScreenCorners = false;
-          forceBlackScreenCorners = false;
+          showScreenCorners = true;
+          forceBlackScreenCorners = true;
           scaleRatio = 1;
           radiusRatio = 1;
           iRadiusRatio = 1;
           boxRadiusRatio = 1;
-          screenRadiusRatio = 1;
+          screenRadiusRatio = 0.60;
           animationSpeed = 1;
           animationDisabled = false;
           compactLockScreen = false;
@@ -76,11 +77,14 @@ in {
         bar = {
           barType = "framed";
           position = "left";
-          density = "comfortable";
+          density = "spacious";
           fontScale = 1;
           frameThickness = 4;
           frameRadius = 13;
           showCapsule = false;
+          widgetSpacing = 3;
+          contentPadding = 0;
+          enableExclusionZoneInset = false;
 
           widgets = {
             left = [
