@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./nvidia.nix
+    ./plymouth.nix
   ];
 
   boot = {
