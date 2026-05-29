@@ -3,8 +3,8 @@ output "eDP-1" {
     scale 1.2
     position x=1920 y=0
     focus-at-startup
- // backdrop-color "#11111b"
-    // layout {
+    backdrop-color "#11111b"
+ // layout {
     //     background-color "#11111b"
     // }
 }
