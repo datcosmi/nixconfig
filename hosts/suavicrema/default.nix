@@ -6,6 +6,8 @@
     ../../modules/nixos
     ../../profiles/desktop.nix
     ../../profiles/gaming.nix
+
+    ./edid
   ];
 
   networking.hostName = "suavicrema";
