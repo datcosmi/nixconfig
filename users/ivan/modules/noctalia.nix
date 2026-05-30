@@ -20,7 +20,7 @@ in {
           radiusRatio = 1;
           iRadiusRatio = 1;
           boxRadiusRatio = 1;
-          screenRadiusRatio = 0.60;
+          screenRadiusRatio = 0.73;
           animationSpeed = 1;
           animationDisabled = false;
           compactLockScreen = false;
