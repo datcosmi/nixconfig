@@ -29,7 +29,6 @@
       enable = true;
       totalRamGb = 16;
       zram.enable = true;
-      swap.device = "/swapfile";
     };
 
     display = {

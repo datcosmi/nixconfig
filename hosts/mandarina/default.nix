@@ -29,7 +29,6 @@
       enable = true;
       totalRamGb = 16;
       zram.enable = true;
-      swap.device = "/swapfile";
     };
 
     prime.intelBusId = "PCI:0:2:0";
