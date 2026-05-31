@@ -107,7 +107,7 @@ in {
         device = cfg.swap.device;
         priority = cfg.swap.priority;
         ${
-          if cfg.swap.size != null || cfg.totalRamGb != null
+          if cfg.swap.size != null && cfg.totalRamGb != null
           then "size"
           else null
         } =
