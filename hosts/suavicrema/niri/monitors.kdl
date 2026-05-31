@@ -5,18 +5,18 @@ output "DP-1" {
     variable-refresh-rate on-demand=true
     focus-at-startup
     backdrop-color "#11111b"
- // layout {
-    //     background-color "#11111b"
-    // }
 }
 output "HDMI-A-1" {
     mode "1920x1080@60.000"
     scale 1
     position x=0 y=0
     backdrop-color "#11111b"
- // layout {
-    //     background-color "#11111b"
-    // }
+}
+output "Nvidia 0x0000 Unknown" {
+    mode "1920x1080@165.000"
+    scale 1
+    position x=1920 y=0
+    backdrop-color "#11111b"
 }
 workspace "1" {
     open-on-output "DP-1"
