@@ -3,10 +3,15 @@
   lib,
   pkgs,
   inputs,
+  hostname,
   ...
 }: let
   cfg = config.my.features.desktop.shell.noctalia;
   c = config.my.features.theme.colors;
+
+  isLaptop = hostname == "mandarina";
+
+  showModule = !isLaptop;
 in {
   config = lib.mkIf cfg.enable {
     programs.noctalia-shell = {
@@ -87,25 +92,30 @@ in {
           enableExclusionZoneInset = false;
 
           widgets = {
-            left = [
-              {id = "SystemMonitor";}
-              {
-                id = "ActiveWindow";
-                colorizeIcons = true;
-              }
-              {
-                id = "Workspace";
-                hideUnoccupied = false;
-                pillSize = 0.53;
-                labelMode = "none";
-              }
-              {id = "MediaMini";}
-              {
-                id = "AudioVisualizer";
-                hideWhenIdle = false;
-                width = 100;
-              }
-            ];
+            left =
+              [
+                {id = "SystemMonitor";}
+              ]
+              ++ lib.optionals showModule [
+                {
+                  id = "ActiveWindow";
+                  colorizeIcons = true;
+                }
+              ]
+              ++ [
+                {
+                  id = "Workspace";
+                  hideUnoccupied = false;
+                  pillSize = 0.53;
+                  labelMode = "none";
+                }
+                {id = "MediaMini";}
+                {
+                  id = "AudioVisualizer";
+                  hideWhenIdle = false;
+                  width = 100;
+                }
+              ];
 
             center = [
               {id = "NotificationHistory";}
@@ -118,20 +128,25 @@ in {
               {id = "Settings";}
             ];
 
-            right = [
-              {
-                id = "Tray";
-                colorizeIcons = false;
-              }
-              {id = "KeepAwake";}
-              {id = "Volume";}
-              {id = "plugin:network-manager-vpn";}
-              {id = "Network";}
-              {id = "Bluetooth";}
-              {id = "Battery";}
-              {id = "Brightness";}
-              {id = "SessionMenu";}
-            ];
+            right =
+              [
+                {
+                  id = "Tray";
+                  colorizeIcons = false;
+                }
+              ]
+              ++ lib.optionals showModule [
+                {id = "KeepAwake";}
+              ]
+              ++ [
+                {id = "Volume";}
+                {id = "plugin:network-manager-vpn";}
+                {id = "Network";}
+                {id = "Bluetooth";}
+                {id = "Battery";}
+                {id = "Brightness";}
+                {id = "SessionMenu";}
+              ];
           };
         };
 
