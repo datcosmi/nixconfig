@@ -47,7 +47,7 @@ in rec {
               useGlobalPkgs = true;
               useUserPackages = true;
               backupFileExtension = "backup";
-              extraSpecialArgs = {inherit inputs;};
+              extraSpecialArgs = {inherit inputs hostname;};
               sharedModules = [
                 inputs.catppuccin.homeModules.catppuccin
               ];
