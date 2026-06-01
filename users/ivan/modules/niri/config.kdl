@@ -130,7 +130,7 @@ spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 spawn-sh-at-startup "wl-paste --type text --watch cliphist store"
 spawn-sh-at-startup "wl-paste --type image --watch cliphist store"
 // Apps
-spawn-sh-at-startup "sleep 0.7 && protonvpn-app"
+// spawn-sh-at-startup "sleep 0.7 && protonvpn-app"
 spawn-sh-at-startup "steam -silent"
 // Notifications daemon
 // spawn-at-startup "swaync"
@@ -256,7 +256,7 @@ binds {
         spawn "kitty"
     }
     Mod+Shift+Return hotkey-overlay-title="Open Terminal with tmux" {
-        spawn "kitty" "-e" "tmux"
+        spawn-sh "kitty -e tmux"
     }
     Mod+Space hotkey-overlay-title="App Launcher" {
         spawn-sh "noctalia-shell ipc call launcher toggle"
@@ -272,41 +272,44 @@ binds {
     }
     // ── Applications ───────────────────────────
     Mod+Shift+B hotkey-overlay-title="Open Browser" {
-        spawn-sh "zen"
+        spawn "zen"
     }
     Mod+Shift+X hotkey-overlay-title="File Manager" {
-        spawn-sh "nautilus"
+        spawn "nautilus"
     }
     Mod+Shift+Y hotkey-overlay-title="File Manager" {
-        spawn "kitty" "--class" "yazi" "-e" "yazi"
+        spawn-sh "kitty --class yazi -e yazi"
     }
     Mod+Shift+D hotkey-overlay-title="Open Discord" {
-        spawn-sh "discord"
+        spawn "discord"
     }
     Mod+Shift+G hotkey-overlay-title="Open Steam" {
-        spawn-sh "steam"
+        spawn "steam"
     }
     Mod+Shift+M hotkey-overlay-title="Open Spotify" {
-        spawn-sh "spotify"
+        spawn "spotify"
     }
     Mod+Shift+A hotkey-overlay-title="Authenticator" {
-        spawn-sh "enteauth"
+        spawn "enteauth"
     }
     Mod+Shift+P hotkey-overlay-title="Password Manager" {
-        spawn-sh "proton-pass"
+        spawn "proton-pass"
+    }
+    Mod+Ctrl+V hotkey-overlay-title="ProtonVPN Rofi Tool" {
+        spawn-sh "protonvpn-rofi"
     }
     // ── TUI Utilities in Kitty ───────────────────────────────────────────────
     Mod+Shift+T hotkey-overlay-title="System Monitor" {
-        spawn "kitty" "--class" "btop" "-e" "btop"
+        spawn-sh "kitty --class btop -e btop"
     }
     Mod+Shift+S hotkey-overlay-title="Audio Mixer" {
-        spawn "kitty" "--class" "wiremix" "-e" "wiremix"
+        spawn-sh "kitty --class wiremix -e wiremix"
     }
     Mod+Shift+E hotkey-overlay-title="Bluetooth TUI" {
-        spawn "kitty" "--class" "bluetui" "-e" "bluetui"
+        spawn-sh "kitty --class bluetui -e bluetui"
     }
     Mod+Shift+W hotkey-overlay-title="Wifi TUI" {
-        spawn "kitty" "--class" "impala" "-e" "impala"
+        spawn-sh "kitty --class impala -e impala"
     }
     // ── System Controls ──────────────────────────────────────────────────────
     Mod+Alt+Equal hotkey-overlay-title="DDC Raise Brightness" {
@@ -316,16 +319,16 @@ binds {
         spawn-sh "noctalia-shell ipc call brightness decrease"
     }
     Mod+Shift+N hotkey-overlay-title="Notification Center" {
-        spawn "noctalia-shell" "ipc" "call" "notifications" "toggleHistory"
+        spawn-sh "noctalia-shell ipc call notifications toggleHistory"
     }
     Mod+Shift+Space hotkey-overlay-title="Restart Waybar" {
         spawn-sh "pkill waybar || waybar"
     }
     Mod+Q hotkey-overlay-title="Toggle Audio Output (Sinks)" {
-        spawn "toggle-audio-output" "Sinks"
+        spawn-sh "toggle-audio-output Sinks"
     }
     Mod+Shift+Q hotkey-overlay-title="Toggle Audio Input (Sources)" {
-        spawn "toggle-audio-output" "Sources"
+        spawn-sh "toggle-audio-output Sources"
     }
     // VPN toggle
     Mod+Ctrl+Space hotkey-overlay-title="Toggle ProtonVPN" {
@@ -337,9 +340,9 @@ binds {
     }
     // ── Session / Lock / Power ────────────────────────────────────────────────
     // Lock screen (allow-when-locked so it still works if screen is partially locked)
-    Super+Alt+L allow-when-locked=true hotkey-overlay-title="Lock Screen" {
-        spawn "hyprlock"
-    }
+    // Super+Alt+L allow-when-locked=true hotkey-overlay-title="Lock Screen" {
+    //     spawn "hyprlock"
+    // }
     // Logout menu
     Mod+Escape allow-inhibiting=false hotkey-overlay-title="Logout Menu" {
         spawn-sh "noctalia-shell ipc call sessionMenu toggle"
