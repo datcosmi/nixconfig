@@ -21,8 +21,15 @@ in {
     (lib.mkIf cfg.enable {
       xdg.portal = {
         enable = true;
-        extraPortals = [pkgs.xdg-desktop-portal-gtk];
-        config.common.default = "gtk";
+        extraPortals = [
+          pkgs.xdg-desktop-portal-hyprland
+          pkgs.xdg-desktop-portal-gtk
+        ];
+        config.common = {
+          default = "gtk";
+          "org.freedesktop.impl.portal.ScreenCast" = "hyprland";
+          "org.freedesktop.impl.portal.RemoteDesktop" = "hyprland";
+        };
       };
     })
   ];
