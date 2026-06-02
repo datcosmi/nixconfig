@@ -41,6 +41,8 @@ in
     };
 
     catppuccin = {
+      enable = true;
+      autoEnable = false;
       cache.enable = true;
 
       bat = {

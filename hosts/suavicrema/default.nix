@@ -59,6 +59,8 @@
   };
 
   catppuccin = {
+    enable = true;
+    autoEnable = false;
     cache.enable = true;
 
     grub = {
@@ -69,5 +71,5 @@
 
   programs.silentSDDM.theme = "catppuccin-mocha";
 
-  system.stateVersion = "26.05";
+  system.stateVersion = "26.11";
 }
