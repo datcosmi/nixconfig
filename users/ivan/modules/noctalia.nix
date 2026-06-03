@@ -272,7 +272,7 @@ in {
 
         brightness = {
           brightnessStep = 5;
-          enforceMinimum = true;
+          enforceMinimum = false;
           enableDdcSupport = true;
           backlightDeviceMappings = [];
         };
