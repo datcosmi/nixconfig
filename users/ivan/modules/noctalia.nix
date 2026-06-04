@@ -36,7 +36,7 @@ in {
           enableLockScreenMediaControls = false;
           enableShadows = true;
           enableBlurBehind = true;
-          shadowDirection = "bottom_right";
+          shadowDirection = "center";
           shadowOffsetX = 2;
           shadowOffsetY = 3;
           language = "";
@@ -84,7 +84,7 @@ in {
           position = "left";
           density = "spacious";
           fontScale = 1;
-          frameThickness = 4;
+          frameThickness = 5;
           frameRadius = 13;
           showCapsule = false;
           widgetSpacing = 3;
