@@ -13,6 +13,7 @@ in {
       fastfetch.enable = lib.mkDefault true;
       bash.enable = lib.mkDefault true;
       zsh.enable = lib.mkDefault true;
+      fish.enable = lib.mkDefault true;
       bat.enable = lib.mkDefault true;
       eza.enable = lib.mkDefault true;
       fzf.enable = lib.mkDefault true;
@@ -28,6 +29,7 @@ in {
     ./starship.nix
     ./fastfetch.nix
     ./zsh
+    ./fish.nix
     ./bash.nix
     ./bat.nix
     ./eza.nix
