@@ -5,5 +5,7 @@
     ./starship.nix
     ./noctalia.nix
     ./protonvpn-rofi.nix
+    ./kitty.nix
+    ./rofi.nix
   ];
 }
