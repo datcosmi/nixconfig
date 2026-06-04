@@ -116,10 +116,24 @@ layer-rule {
     match namespace="^noctalia-wallpaper*"
     place-within-backdrop true
 }
+layer-rule {
+    match namespace="^rofi*"
+    geometry-corner-radius 24
+    background-effect {
+        blur true
+        xray false
+    }
+}
 overview {
     workspace-shadow {
         off
     }
+}
+blur {
+    passes 4
+    offset 6
+    noise 0.02
+    saturation 1.5
 }
 // ─────────────────────────────────────────────────────────────────────────────
 // AUTOSTART
@@ -152,8 +166,8 @@ window-rule {
     background-effect {
         blur true
         xray false
-        // saturation 2
-        noise 0.05
+ // saturation 2
+        // noise 0.05
     }
 }
 window-rule {
@@ -403,7 +417,7 @@ binds {
         toggle-overview
     }
     // Tabbed display
-    Mod+G repeat=false hotkey-overlay-title="Toggle Tabbed Column (was: Group)" {
+    Mod+G repeat=false hotkey-overlay-title="Toggle Tabbed Column" {
         toggle-column-tabbed-display
     }
     // ── Column Widths & Window Heights ───────────────────────────────────────
