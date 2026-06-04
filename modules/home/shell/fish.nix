@@ -13,7 +13,7 @@ in {
       enable = true;
 
       shellInit = ''
-        fish_vi_key_bindings
+        set -g fish_greeting
       '';
     };
   };
