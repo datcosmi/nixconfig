@@ -272,7 +272,7 @@ in {
 
         brightness = {
           brightnessStep = 5;
-          enforceMinimum = false;
+          enforceMinimum = isLaptop;
           enableDdcSupport = true;
           backlightDeviceMappings = [];
         };
