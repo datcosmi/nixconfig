@@ -25,7 +25,7 @@ in {
       wantedBy = ["sleep.target"];
       serviceConfig = {
         Type = "oneshot";
-        ExecStart = "${pkgs.systemd}/bin/loginctl lock-sessions";
+        ExecStart = "${pkgs.systemd}/bin/loginctl lock-session";
       };
     };
   };

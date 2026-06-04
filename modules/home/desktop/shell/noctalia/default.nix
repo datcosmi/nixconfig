@@ -8,7 +8,7 @@
   cfg = config.my.features.desktop.shell.noctalia;
   wallpaper = config.my.features.theme.wallpaper;
   noctaliaShell = config.programs.noctalia-shell.package;
-  lockCmd = "${noctaliaShell}/bin/noctalia-shell ipc call lockScreen lock";
+  lockCmd = "${noctaliaShell}/bin/noctalia-shell ipc call lockScreen lock &";
 in {
   imports = [
     inputs.noctalia.homeModules.default
