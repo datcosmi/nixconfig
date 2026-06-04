@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   imports = [
     ./nvidia.nix
     ./plymouth.nix
@@ -19,7 +23,7 @@
         configurationLimit = 6;
       };
 
-      timeout = 3;
+      timeout = lib.mkDefault 3;
     };
 
     kernelPackages = pkgs.linuxPackages_latest;
