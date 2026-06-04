@@ -44,7 +44,7 @@
 
     shell = {
       enable = true;
-      zsh.oh-my-zsh.enable = true;
+      # zsh.oh-my-zsh.enable = true;
     };
 
     dev.enable = true;
