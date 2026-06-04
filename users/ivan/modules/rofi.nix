@@ -42,7 +42,7 @@ in {
         };
 
         inputbar = {
-          background-color = mkLiteral "@bg1";
+          background-color = mkLiteral "@bg2";
           border-color = mkLiteral "@bg3";
           border = mkLiteral "2px";
           border-radius = mkLiteral "16px";
