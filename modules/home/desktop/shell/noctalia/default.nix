@@ -21,11 +21,11 @@ in {
       enable = true;
     };
 
-    home.file.".cache/noctalia/wallpapers.json" = {
-      text = builtins.toJSON {
-        defaultWallpaper = "${wallpaper}";
-      };
-    };
+    # home.file.".cache/noctalia/wallpapers.json" = {
+    #   text = builtins.toJSON {
+    #     defaultWallpaper = "${wallpaper}";
+    #   };
+    # };
 
     services.swayidle = {
       enable = true;
