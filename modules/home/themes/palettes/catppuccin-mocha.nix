@@ -45,7 +45,15 @@ in
       autoEnable = false;
       cache.enable = true;
 
+      accent = "pink";
+      flavor = "mocha";
+
       bat = {
+        enable = true;
+        flavor = "mocha";
+      };
+
+      fish = {
         enable = true;
         flavor = "mocha";
       };
