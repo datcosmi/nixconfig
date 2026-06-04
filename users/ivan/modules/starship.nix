@@ -9,6 +9,7 @@ in {
   config = lib.mkIf cfg.enable {
     programs.starship = {
       enableZshIntegration = true;
+      enableFishIntegration = true;
 
       settings = {
         "$schema" = "https://starship.rs/config-schema.json";

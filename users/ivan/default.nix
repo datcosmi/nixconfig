@@ -6,7 +6,7 @@
   users.users.ivan = {
     isNormalUser = true;
     description = "Ivan";
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
 
     home = "/home/ivan";
     createHome = true;
@@ -23,6 +23,7 @@
   };
 
   programs.zsh.enable = true;
+  programs.fish.enable = true;
 
   programs.neovim = {
     enable = true;
