@@ -18,6 +18,8 @@ in {
 
         lsblk-model = "lsblk -o NAME,SIZE,TYPE,MOUNTPOINTS,MODEL | bat -l conf -p";
 
+        cd = "z";
+
         nix-rebuild = "sudo nixos-rebuild switch --flake ~/nixconfig";
 
         flake-check = "nix flake check ~/nixconfig";
@@ -42,6 +44,7 @@ in {
         fc = "nix flake check ~/nixconfig";
         fu = "cd ~/nixconfig && nix flake update";
         un = "cd ~/nixconfig && nix flake update && sudo nixos-rebuild switch --flake ~/nixconfig";
+        cf = "clear && fastfetch";
       };
 
       functions = {
@@ -57,7 +60,6 @@ in {
       interactiveShellInit = ''
         fish_vi_key_bindings
 
-        clear
         fastfetch
       '';
     };
