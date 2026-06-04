@@ -28,7 +28,21 @@
     memory = {
       enable = true;
       totalRamGb = 16;
-      zram.enable = true;
+      zram.enable = false;
+
+      zswap = {
+        enable = true;
+        compressor = "zstd";
+        zpool = "zsmalloc";
+        maxPoolPercent = 25;
+        shrinker = true;
+      };
+
+      swap = {
+        device = "/var/lib/swapfile";
+        size = 8 * 1024;
+        priority = 10;
+      };
     };
 
     display = {
