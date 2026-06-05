@@ -72,7 +72,7 @@ in
       eza = {
         enable = true;
         flavor = "mocha";
-        accent = "mauve";
+        accent = "pink";
       };
 
       wleave = {
