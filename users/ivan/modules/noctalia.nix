@@ -314,6 +314,14 @@ in {
             enabled = true;
             sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
           };
+          mirror-mirror = {
+            enabled = true;
+            sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+          };
+          # nvibrant = {
+          #   enabled = true;
+          #   sourceUrl = "https://github.com/noctalia-dev/noctalia-plugins";
+          # };
         };
 
         version = 2;
