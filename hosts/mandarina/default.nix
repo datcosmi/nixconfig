@@ -1,4 +1,8 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ./disko.nix
@@ -88,6 +92,12 @@
   };
 
   programs.silentSDDM.theme = "catppuccin-mocha";
+
+  hardware.graphics = {
+    extraPackages = with pkgs; [
+      intel-media-driver
+    ];
+  };
 
   system.stateVersion = "26.11";
 }
