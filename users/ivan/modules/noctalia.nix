@@ -10,6 +10,15 @@
   c = config.my.features.theme.colors;
 
   isLaptop = hostname == "mandarina";
+
+  widgetSpacing =
+    if isLaptop
+    then 0
+    else 3;
+  brightnessStep =
+    if isLaptop
+    then 5
+    else 10;
 in {
   config = lib.mkIf cfg.enable {
     programs.noctalia-shell = {
@@ -85,7 +94,7 @@ in {
           frameThickness = 5;
           frameRadius = 13;
           showCapsule = false;
-          widgetSpacing = 3;
+          widgetSpacing = widgetSpacing;
           contentPadding = 0;
           enableExclusionZoneInset = false;
 
@@ -274,7 +283,7 @@ in {
         };
 
         brightness = {
-          brightnessStep = 5;
+          brightnessStep = brightnessStep;
           enforceMinimum = isLaptop;
           enableDdcSupport = true;
           backlightDeviceMappings = [];
