@@ -10,8 +10,6 @@
   c = config.my.features.theme.colors;
 
   isLaptop = hostname == "mandarina";
-
-  showModule = !isLaptop;
 in {
   config = lib.mkIf cfg.enable {
     programs.noctalia-shell = {
@@ -96,7 +94,7 @@ in {
               [
                 {id = "SystemMonitor";}
               ]
-              ++ lib.optionals showModule [
+              ++ lib.optionals (!isLaptop) [
                 {
                   id = "ActiveWindow";
                   colorizeIcons = true;
@@ -125,7 +123,7 @@ in {
                 customFont = "Lexend Exa SemiBold";
                 tooltipFormat = "hh:mm AP dddd, MMM dd yyyy";
               }
-              {id = "Settings";}
+              {id = "KeyboardLayout";}
             ];
 
             right =
@@ -134,8 +132,9 @@ in {
                   id = "Tray";
                   colorizeIcons = false;
                 }
+                {id = "Settings";}
               ]
-              ++ lib.optionals showModule [
+              ++ lib.optionals (!isLaptop) [
                 {id = "KeepAwake";}
               ]
               ++ [
@@ -143,7 +142,11 @@ in {
                 {id = "plugin:network-manager-vpn";}
                 {id = "Network";}
                 {id = "Bluetooth";}
+              ]
+              ++ lib.optionals isLaptop [
                 {id = "Battery";}
+              ]
+              ++ [
                 {id = "Brightness";}
                 {id = "SessionMenu";}
               ];
