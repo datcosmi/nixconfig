@@ -2,8 +2,9 @@
 input {
     keyboard {
         xkb {
-            layout "latam"
-            options "caps:capslock"
+            layout "latam,us"
+            variant ",altgr-intl"
+            options "caps:capslock,caps:capslock"
         }
         repeat-delay 330
         repeat-rate 50

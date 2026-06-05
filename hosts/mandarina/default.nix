@@ -54,9 +54,9 @@
     };
 
     keyboard = {
-      layout = "latam";
+      layout = "latam,us";
       keyMap = "la-latin1";
-      variant = "";
+      variant = ",altgr-intl";
     };
   };
 

@@ -51,8 +51,8 @@
     };
 
     keyboard = {
-      layout = "us";
-      variant = "altgr-intl";
+      layout = "us,latam";
+      variant = "altgr-intl,";
     };
   };
 

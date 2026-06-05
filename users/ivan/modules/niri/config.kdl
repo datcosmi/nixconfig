@@ -332,6 +332,9 @@ binds {
     Mod+Alt+Minus hotkey-overlay-title="DDC Lower Brightness" {
         spawn-sh "noctalia-shell ipc call brightness decrease"
     }
+    Mod+Alt+L {
+        switch-layout "next"
+    }
     Mod+Shift+N hotkey-overlay-title="Notification Center" {
         spawn-sh "noctalia-shell ipc call notifications toggleHistory"
     }
