@@ -21,6 +21,8 @@ in {
       history.ignoreAllDups = true;
       history.path = "$HOME/.zsh_history";
     };
+
+    programs.dircolors.enableZshIntegration = true;
   };
 
   imports = [

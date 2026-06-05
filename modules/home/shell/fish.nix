@@ -16,5 +16,7 @@ in {
         set -g fish_greeting
       '';
     };
+
+    programs.dircolors.enableFishIntegration = true;
   };
 }

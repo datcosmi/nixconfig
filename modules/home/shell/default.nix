@@ -22,6 +22,7 @@ in {
       fd.enable = lib.mkDefault true;
       zoxide.enable = lib.mkDefault true;
       tealdeer.enable = lib.mkDefault true;
+      dircolors.enable = lib.mkDefault true;
     };
   };
 
@@ -39,5 +40,6 @@ in {
     ./fd.nix
     ./zoxide.nix
     ./tealdeer.nix
+    ./dircolors.nix
   ];
 }
