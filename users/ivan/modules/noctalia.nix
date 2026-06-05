@@ -123,7 +123,7 @@ in {
                 customFont = "Lexend Exa SemiBold";
                 tooltipFormat = "hh:mm AP dddd, MMM dd yyyy";
               }
-              {id = "KeyboardLayout";}
+              {id = "Settings";}
             ];
 
             right =
@@ -132,22 +132,22 @@ in {
                   id = "Tray";
                   colorizeIcons = false;
                 }
-                {id = "Settings";}
               ]
               ++ lib.optionals (!isLaptop) [
                 {id = "KeepAwake";}
               ]
               ++ [
+                {id = "plugin:mirror-mirror";}
                 {id = "Volume";}
                 {id = "plugin:network-manager-vpn";}
-                {id = "Network";}
                 {id = "Bluetooth";}
+                {id = "Network";}
               ]
               ++ lib.optionals isLaptop [
                 {id = "Battery";}
               ]
               ++ [
-                {id = "Brightness";}
+                {id = "KeyboardLayout";}
                 {id = "SessionMenu";}
               ];
           };
