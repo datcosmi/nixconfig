@@ -135,12 +135,14 @@
           ${favouriteCaseArms}
 
           *"Pick a country"*)
-            COUNTRY=$($VPN countries 2>/dev/null \
-              | tail -n +3 | awk '{print $1}' \
+            SELECTION=$($VPN countries list 2>/dev/null \
+              | tail -n +3 \
               | rofi -dmenu -p "Select country" -i)
-            [ -z "$COUNTRY" ] && exit 0
-            $VPN connect --country "$COUNTRY"
-            notify-send -i network-vpn "ProtonVPN" "Connected → $COUNTRY"
+            [ -z "$SELECTION" ] && exit 0
+            COUNTRY=$(echo "$SELECTION" | awk '{print $NF}')
+            $VPN connect --country "$COUNTRY" \
+            && notify-send -i network-vpn "ProtonVPN" "Connected → $COUNTRY" \
+            || notify-send -i dialog-error "ProtonVPN" "Failed to connect to $COUNTRY"
             ;;
 
           *"Pick a server"*)
