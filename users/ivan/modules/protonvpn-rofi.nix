@@ -100,7 +100,7 @@
     VPN="${vpnBin}"
 
     is_connected() {
-      $VPN status 2>/dev/null | grep -qi "status.*connected"
+      $VPN status 2>/dev/null | grep -qi "^status:[[:space:]]*connected$"
     }
 
     build_main_menu() {
