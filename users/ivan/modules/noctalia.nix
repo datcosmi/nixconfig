@@ -176,7 +176,7 @@ in {
 
         dock = {
           enabled = true;
-          position = "right";
+          position = "bottom";
         };
 
         audio = {
