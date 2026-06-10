@@ -27,6 +27,7 @@
     hybrid = true;
     ssd = true;
     needSuspend = true;
+    hasBattery = true;
     hasWifi = true;
 
     memory = {
@@ -38,7 +39,7 @@
         enable = true;
         compressor = "zstd";
         zpool = "zsmalloc";
-        maxPoolPercent = 25;
+        maxPoolPercent = 30;
         shrinker = true;
       };
 
