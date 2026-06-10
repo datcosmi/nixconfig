@@ -34,14 +34,14 @@
         enable = true;
         compressor = "zstd";
         zpool = "zsmalloc";
-        maxPoolPercent = 25;
+        maxPoolPercent = 30;
         shrinker = true;
       };
 
       swap = {
         device = "/var/lib/swapfile";
         size = 16 * 1024;
-        priority = 10;
+        priority = 100;
       };
     };
 
