@@ -184,9 +184,9 @@ in {
 
     # Memory pressure management
     systemd.oomd.enable = true;
-    systemd.user.extraConfig = ''
-      DefaultMemoryHigh=${effectiveMemoryHigh}
-    '';
+    systemd.user.settings.Manager = {
+      DefaultMemoryHigh = effectiveMemoryHigh;
+    };
 
     # Kernel memory tuning
     boot.kernel.sysctl = {
