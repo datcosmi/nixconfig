@@ -180,6 +180,11 @@ in {
           overviewTint = 0.6;
         };
 
+        plugins = {
+          autoUpdate = false;
+          notifyUpdates = false;
+        };
+
         dock = {
           enabled = true;
           position = "bottom";
