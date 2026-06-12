@@ -28,7 +28,7 @@ layout {
     gaps 6
     center-focused-column "never"
     always-center-single-column
-    background-color "transparent"
+    // background-color "transparent"
     preset-column-widths {
         proportion 0.5
         proportion 0.7
@@ -112,8 +112,12 @@ animations {
         spring damping-ratio=1.0 stiffness=800 epsilon=0.0001
     }
 }
+// layer-rule {
+//     match namespace="^noctalia-wallpaper*"
+//     place-within-backdrop true
+// }
 layer-rule {
-    match namespace="^noctalia-wallpaper*"
+    match namespace="^noctalia-overview*"
     place-within-backdrop true
 }
 layer-rule {
@@ -124,11 +128,11 @@ layer-rule {
         xray false
     }
 }
-overview {
-    workspace-shadow {
-        off
-    }
-}
+// overview {
+//     workspace-shadow {
+//         off
+//     }
+// }
 blur {
     passes 4
     offset 6

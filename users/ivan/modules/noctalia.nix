@@ -174,6 +174,12 @@ in {
           fontDefault = "Lexend";
         };
 
+        wallpaper = {
+          overviewEnabled = true;
+          overviewBlur = 0.4;
+          overviewTint = 0.6;
+        };
+
         dock = {
           enabled = true;
           position = "bottom";
