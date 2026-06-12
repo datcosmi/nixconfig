@@ -13,7 +13,8 @@ input {
     touchpad {
         tap
         natural-scroll
-        accel-speed 0.3
+        scroll-factor 0.5
+        accel-speed 0.1
  // dwt / dwtp / drag-lock available if needed
     }
     mouse {
