@@ -123,7 +123,7 @@ in {
                 {id = "MediaMini";}
                 {
                   id = "AudioVisualizer";
-                  hideWhenIdle = false;
+                  hideWhenIdle = isLaptop;
                   width = visualizerWidth;
                 }
               ];
