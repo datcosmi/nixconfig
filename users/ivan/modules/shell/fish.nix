@@ -18,7 +18,7 @@ in {
 
         lsblk-model = "lsblk -o NAME,SIZE,TYPE,MOUNTPOINTS,MODEL | bat -l conf -p";
 
-        cd = "z";
+        # cd = "z";
 
         nix-rebuild = "sudo nixos-rebuild switch --flake ~/nixconfig";
 
@@ -62,14 +62,6 @@ in {
 
         fastfetch
       '';
-    };
-
-    programs.fzf = {
-      enableFishIntegration = true;
-    };
-
-    programs.zoxide = {
-      enableFishIntegration = true;
     };
   };
 }
