@@ -13,7 +13,7 @@
 
   widgetSpacing =
     if isLaptop
-    then 0
+    then 1
     else 3;
   brightnessStep =
     if isLaptop
@@ -89,7 +89,7 @@ in {
         bar = {
           barType = "framed";
           position = "left";
-          density = "spacious";
+          density = "comfortable";
           fontScale = 1;
           frameThickness = 5;
           frameRadius = 13;
@@ -120,7 +120,7 @@ in {
                 {
                   id = "AudioVisualizer";
                   hideWhenIdle = false;
-                  width = 100;
+                  width = 130;
                 }
               ];
 
