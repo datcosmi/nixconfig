@@ -19,6 +19,7 @@ in {
     my.features.system.networking = {
       dns.enable = lib.mkDefault true;
       firewall.enable = lib.mkDefault true;
+      avahi.enable = lib.mkDefault true;
       ipv6.enable = lib.mkDefault true;
       networkManager.enable = lib.mkDefault true;
     };
