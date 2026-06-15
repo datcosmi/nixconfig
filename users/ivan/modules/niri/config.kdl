@@ -188,7 +188,7 @@ window-rule {
 }
 // ── Floating utility windows (btop, wiremix, bluetui) ──────────────────────
 window-rule {
-    match app-id="^(btop|wiremix|bluetui|impala)$"
+    match app-id="^(btop|nvtop|wiremix|bluetui|impala)$"
     open-floating true
     draw-border-with-background false
     default-column-width {
@@ -321,6 +321,9 @@ binds {
     Mod+Shift+T hotkey-overlay-title="System Monitor" {
         spawn-sh "kitty --class btop -e btop"
     }
+    Mod+Shift+N hotkey-overlay-title="Nvidia GPU Monitor" {
+        spawn-sh "kitty --class nvtop -e nvtop"
+    }
     Mod+Shift+S hotkey-overlay-title="Audio Mixer" {
         spawn-sh "kitty --class wiremix -e wiremix"
     }
@@ -340,7 +343,7 @@ binds {
     Mod+Alt+L {
         switch-layout "next"
     }
-    Mod+Shift+N hotkey-overlay-title="Notification Center" {
+    Mod+Ctrl+N hotkey-overlay-title="Notification Center" {
         spawn-sh "noctalia-shell ipc call notifications toggleHistory"
     }
     Mod+Shift+Space hotkey-overlay-title="Restart Waybar" {
