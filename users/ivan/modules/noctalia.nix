@@ -19,6 +19,10 @@
     if isLaptop
     then 5
     else 10;
+  visualizerWidth =
+    if isLaptop
+    then 100
+    else 130;
 in {
   config = lib.mkIf cfg.enable {
     programs.noctalia-shell = {
@@ -120,7 +124,7 @@ in {
                 {
                   id = "AudioVisualizer";
                   hideWhenIdle = false;
-                  width = 130;
+                  width = visualizerWidth;
                 }
               ];
 
