@@ -166,7 +166,7 @@ in {
           enabled = true;
           screenOffTimeout = 600;
           lockTimeout = 660;
-          suspendTimeout = 1800;
+          suspendTimeout = 1200;
           fadeDuration = 5;
         };
 
