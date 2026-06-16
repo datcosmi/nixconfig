@@ -1,6 +1,7 @@
 {
   pkgs,
   lib,
+  hostname,
   ...
 }: {
   options.my.users = lib.mkOption {
@@ -10,7 +11,7 @@
   };
 
   config = {
-    # nix.registry.nixpkgs.flake = import <nixpkgs> {};
+    networking.hostName = hostname;
 
     nix.settings = {
       experimental-features = ["nix-command" "flakes"];
