@@ -39,6 +39,8 @@ in {
         set -g status-style bg=default
         set-option -g status-position bottom
         set -g @resurrect-capture-pane-contents 'on'
+        set -g @resurrect-processes 'nvim lazygit'
+        set -g @resurrect-strategy-nvim 'session'
       '';
     };
 
