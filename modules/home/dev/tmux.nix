@@ -38,6 +38,7 @@ in {
         bind-key M choose-window -F "#{window_index}: #{window_name}" "join-pane -v -t %%"
         set -g status-style bg=default
         set-option -g status-position bottom
+        set -g @resurrect-capture-pane-contents 'on'
       '';
     };
 
