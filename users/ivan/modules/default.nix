@@ -7,5 +7,6 @@
     ./protonvpn-rofi.nix
     ./kitty.nix
     ./rofi.nix
+    ./ssh.nix
   ];
 }
