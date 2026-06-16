@@ -12,6 +12,8 @@
 
   config = {
     networking.hostName = hostname;
+    time.timeZone = lib.mkDefault "America/Mexico_City";
+    i18n.defaultLocale = lib.mkDefault "en_US.UTF-8";
 
     nix.settings = {
       experimental-features = ["nix-command" "flakes"];
