@@ -95,7 +95,7 @@ in {
           position = "left";
           density = "comfortable";
           fontScale = 1;
-          frameThickness = 5;
+          frameThickness = 6;
           frameRadius = 13;
           showCapsule = false;
           widgetSpacing = widgetSpacing;
@@ -117,7 +117,7 @@ in {
                 {
                   id = "Workspace";
                   hideUnoccupied = false;
-                  pillSize = 0.53;
+                  pillSize = 0.55;
                   labelMode = "none";
                 }
                 {id = "MediaMini";}
