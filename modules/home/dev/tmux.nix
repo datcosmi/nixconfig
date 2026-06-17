@@ -39,7 +39,10 @@ in {
         set -g status-style bg=default
         set-option -g status-position bottom
         set -g @resurrect-capture-pane-contents 'on'
-        set -g @resurrect-processes '~nvim->nvim lazygit'
+        set -g @resurrect-processes '"~nvim->nvim" lazygit'
+        resurrect_dir="$HOME/.tmux/resurrect"
+        set -g @resurrect-dir $resurrect_dir
+        set -g @resurrect-hook-post-save-all 'target=$(readlink -f $resurrect_dir/last); sed "s| --cmd .*-vim-pack-dir||g; s|/etc/profiles/per-user/$USER/bin/||g; s|/home/$USER/.nix-profile/bin/||g" $target | sponge $target'
       '';
     };
 
