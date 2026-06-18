@@ -16,6 +16,12 @@ in {
 
     (lib.mkIf cfg.hasBattery {
       services.power-profiles-daemon.enable = true;
+
+      services.logind.settings.Login = {
+        HandleLidSwitch = "suspend";
+        HandleLidSwitchExternalPower = "ignore";
+        HandleLidSwitchDocked = "ignore";
+      };
     })
   ];
 }
