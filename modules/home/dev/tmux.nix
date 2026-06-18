@@ -6,6 +6,7 @@
 }: let
   cfg = config.my.features.dev.tmux;
   theme = config.my.features.theme;
+  c = config.my.features.theme.colors;
 in {
   options.my.features.dev.tmux.enable = lib.mkEnableOption "Enable tmux";
 
@@ -59,8 +60,8 @@ in {
         set -g @catppuccin_window_default_text " #W"
         set -g @catppuccin_window_current_text " #W"
         set -g @catppuccin_window_text " #W"
-        set -g pane-border-style "fg=#313244"
-        set -g pane-active-border-style "fg=#cba6f7"
+        set -g pane-border-style "fg=${c.surface0}"
+        set -g pane-active-border-style "fg=${c.pink}"
       '';
     };
   };
