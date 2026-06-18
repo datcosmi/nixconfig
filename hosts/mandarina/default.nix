@@ -12,6 +12,8 @@
     ../../profiles/gaming.nix
   ];
 
+  networking.hostName = "mandarina";
+
   my.hardware = {
     gpu = {
       vendor = "nvidia";

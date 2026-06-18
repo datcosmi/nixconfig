@@ -10,6 +10,8 @@
     ./edid
   ];
 
+  networking.hostName = "suavicrema";
+
   my.hardware = {
     gpu = {
       vendor = "nvidia";

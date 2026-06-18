@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  hostname,
   ...
 }: {
   options.my.users = lib.mkOption {
@@ -11,7 +10,6 @@
   };
 
   config = {
-    networking.hostName = hostname;
     time.timeZone = lib.mkDefault "America/Mexico_City";
     i18n.defaultLocale = lib.mkDefault "en_US.UTF-8";
 
