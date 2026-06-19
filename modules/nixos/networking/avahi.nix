@@ -16,7 +16,6 @@ in {
       nssmdns4 = true;
       nssmdns6 = true;
       openFirewall = true;
-
       publish = {
         enable = true;
         domain = true;
@@ -24,5 +23,27 @@ in {
         userServices = true;
       };
     };
+
+    systemd.services.avahi-daemon = {
+      partOf = lib.mkForce [];
+    };
+
+    systemd.services.avahi-daemon-resume = {
+      description = "Restart Avahi mDNS/DNS-SD after system resume";
+      wantedBy = ["post-resume.target"];
+      after = [
+        "post-resume.target"
+        "network-online.target"
+      ];
+      wants = ["network-online.target"];
+      serviceConfig = {
+        Type = "oneshot";
+        ExecStartPre = "${pkgs.coreutils}/bin/sleep 3";
+        ExecStart = "${pkgs.systemd}/bin/systemctl restart avahi-daemon.service";
+        RemainAfterExit = false;
+      };
+    };
+
+    services.avahi.allowInterfaces = ["enp5s0" "wlan0"];
   };
 }
