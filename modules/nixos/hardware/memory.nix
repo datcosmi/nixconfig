@@ -26,6 +26,26 @@
   swapDeviceUnit =
     lib.optionalString (cfg.swap.device != null)
     "${utils.escapeSystemdPath cfg.swap.device}.swap";
+
+  # Pass-through attrset for the native boot.zswap.* module
+  # Keys are omitted when our own
+  # option is left at its default (null), so the upstream module's own
+  # default applies instead of us silently hardcoding one — this matters
+  # most for zpool, where upstream auto-picks zsmalloc vs zbud based on
+  # the actually configured kernel version (>= 6.3).
+  zswapPassthru =
+    {
+      enable = true;
+      compressor = cfg.zswap.compressor;
+      shrinkerEnabled = cfg.zswap.shrinker;
+    }
+    // lib.optionalAttrs (cfg.zswap.zpool != null) {zpool = cfg.zswap.zpool;}
+    // lib.optionalAttrs (cfg.zswap.maxPoolPercent != null) {
+      maxPoolPercent = cfg.zswap.maxPoolPercent;
+    }
+    // lib.optionalAttrs (cfg.zswap.acceptThresholdPercent != null) {
+      acceptThresholdPercent = cfg.zswap.acceptThresholdPercent;
+    };
 in {
   options.my.hardware.memory = {
     enable = lib.mkEnableOption "Memory tuning and swap";
@@ -78,29 +98,47 @@ in {
         '';
       };
       compressor = lib.mkOption {
-        type = lib.types.enum ["zstd" "lz4" "lzo" "lzo-rle" "deflate" "842"];
+        type = lib.types.enum ["zstd" "lz4" "lzo" "lz4hc" "deflate" "842"];
         default = "zstd";
         description = ''
           Compression algorithm. zstd is built into the kernel and
-          recommended. lz4 requires boot.initrd.systemd.enable = true
-          (this module sets it automatically when lz4 is chosen).
+          recommended. lz4/lz4hc require boot.initrd.systemd.enable = true
+          for the compressor module to load early enough in the boot
+          process (this module sets it automatically when lz4 or lz4hc
+          is chosen)
         '';
       };
       maxPoolPercent = lib.mkOption {
-        type = lib.types.int;
-        default = 20;
+        type = lib.types.nullOr (lib.types.ints.between 1 100);
+        default = null;
         description = ''
           Maximum percentage of RAM the zswap pool may occupy before it
-          starts evicting pages to the backing swap device.
+          starts evicting pages to the backing swap device. When null,
+          defers to the upstream boot.zswap.maxPoolPercent default (25%).
+
+          Recommended ranges: desktop 15-25%, low-memory 30-50%,
+          server 10-20%.
+        '';
+      };
+      acceptThresholdPercent = lib.mkOption {
+        type = lib.types.nullOr (lib.types.ints.between 1 100);
+        default = null;
+        description = ''
+          Pool-usage percentage at which zswap resumes accepting pages
+          after hitting maxPoolPercent — hysteresis to prevent pool
+          oscillation. When null, defers to the upstream
+          boot.zswap.acceptThresholdPercent default (90%).
         '';
       };
       zpool = lib.mkOption {
-        type = lib.types.enum ["zsmalloc" "z3fold" "zbud"];
-        default = "zsmalloc";
+        type = lib.types.nullOr (lib.types.enum ["zsmalloc" "zbud"]);
+        default = null;
         description = ''
-          Memory allocator backend for the zswap pool.
-          zsmalloc is the modern default (best memory efficiency).
-          z3fold and zbud are older alternatives.
+          Memory allocator backend for the zswap pool. When null, the
+          upstream module auto-selects zsmalloc on kernel >= 6.3 and
+          zbud otherwise, based on the actual configured kernel package.
+          zsmalloc offers the best density. z3fold was removed from the
+          kernel in 6.8+ and is not a valid choice here.
         '';
       };
       shrinker = lib.mkOption {
@@ -164,6 +202,10 @@ in {
           They serve overlapping roles; pick one. Use zswap when you
           have a real swap device and want graceful disk spillover; use
           zram when you want a pure in-RAM compressed swap pool.
+
+          (The native boot.zswap module also enforces this directly
+          against zramSwap.enable, so you'd hit it there too — this
+          assertion just gives a clearer message in our own namespace.)
         '';
       }
       {
@@ -196,34 +238,26 @@ in {
       "vm.dirty_ratio" = lib.mkDefault 10;
     };
 
-    boot.kernelParams = lib.mkAfter (
-      # Multi-gen LRU — pairs well with both zram and zswap
-      ["lru_gen=1"]
-      ++ lib.optionals cfg.zswap.enable [
-        "zswap.enabled=1"
-        "zswap.compressor=${cfg.zswap.compressor}"
-        "zswap.max_pool_percent=${toString cfg.zswap.maxPoolPercent}"
-        "zswap.zpool=${cfg.zswap.zpool}"
-        "zswap.shrinker_enabled=${
-          if cfg.zswap.shrinker
-          then "1"
-          else "0"
-        }"
-      ]
-    );
+    # Multi-gen LRU — pairs well with both zram and zswap.
+    # zswap's own kernel params and initrd modules are now supplied by
+    # the native boot.zswap module below, not here.
+    boot.kernelParams = lib.mkAfter ["lru_gen=1"];
 
-    # Load the zpool allocator module in the initrd so zswap can use it
-    # immediately at boot. For lz4 we also need the compressor module;
-    # zstd is built in and doesn't need this treatment.
-    boot.initrd.kernelModules = lib.optionals cfg.zswap.enable (
-      [cfg.zswap.zpool]
-      ++ lib.optional (cfg.zswap.compressor == "lz4") "lz4"
-    );
-
-    # lz4 requires systemd-based initrd to load its module in time.
+    # lz4/lz4hc need a systemd-based initrd so the compressor module
+    # loads early enough (the native boot.zswap module adds it to
+    # boot.initrd.kernelModules, but doesn't fix load-ordering itself
     boot.initrd.systemd.enable =
-      lib.mkIf (cfg.zswap.enable && cfg.zswap.compressor == "lz4")
+      lib.mkIf (
+        cfg.zswap.enable
+        && (cfg.zswap.compressor == "lz4" || cfg.zswap.compressor == "lz4hc")
+      )
       (lib.mkDefault true);
+
+    # Zswap — native module. Handles kernelParams, initrd.kernelModules,
+    # the runtime boot.kernel.sysfs values, and its own assertions
+    # (zram conflict, swapDevices non-empty, zsmalloc kernel-version
+    # gating) internally.
+    boot.zswap = lib.mkIf cfg.zswap.enable zswapPassthru;
 
     # Zram
     zramSwap = lib.mkIf cfg.zram.enable {
