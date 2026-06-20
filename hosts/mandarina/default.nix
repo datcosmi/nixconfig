@@ -37,7 +37,7 @@
         enable = true;
         compressor = "zstd";
         zpool = "zsmalloc";
-        maxPoolPercent = 30;
+        maxPoolPercent = 25;
         shrinker = true;
       };
 
