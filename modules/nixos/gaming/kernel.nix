@@ -55,7 +55,7 @@ in {
       "vm.max_map_count" = 2147483642;
 
       # Reduce swappiness so game data stays in RAM;
-      # "vm.swappiness" = 10;
+      "vm.swappiness" = 60;
 
       # Allow dirty pages to accumulate slightly longer before writeback.
       # Reduces I/O jitter during asset streaming.

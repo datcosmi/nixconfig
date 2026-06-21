@@ -39,7 +39,7 @@
       swap = {
         device = "/var/lib/swapfile";
         size = 16 * 1024;
-        priority = 100;
+        priority = 10;
       };
     };
 
