@@ -34,4 +34,13 @@
       "elevator=mq-deadline"
     ];
   };
+
+  # Automatically copy GRUB entries into BIOS fallback EFI path each rebuild (in case a BIOS flash removes them from NVRAM)
+  system.activationScripts.syncFallbackEfi = {
+    text = ''
+      mkdir -p /boot/EFI/BOOT
+      cp /boot/EFI/NixOS-boot/grubx64.efi /boot/EFI/BOOT/BOOTX64.EFI
+    '';
+    deps = [];
+  };
 }
