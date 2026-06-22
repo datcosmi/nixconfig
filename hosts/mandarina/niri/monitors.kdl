@@ -12,17 +12,17 @@ workspace "1" {
     open-on-output "eDP-1"
 }
 workspace "2" {
-    // Discord, Spotify — eDP-1 (workspace 2 in Hyprland)
+    // Discord, Spotify
     open-on-output "eDP-1"
 }
 workspace "3" {
-    // Browsers — eDP-1 (workspace 3 in Hyprland)
+    // Browsers
     open-on-output "eDP-1"
 }
-workspace "4" {
-    // Zathura, Stremio — eDP-1 (workspace 4 in Hyprland)
-    open-on-output "eDP-1"
-}
+// workspace "4" {
+//     // Zathura, Stremio
+//     open-on-output "eDP-1"
+// }
 window-rule {
     match app-id="(firefox|zen|librewolf)$"
     opacity 1.0
@@ -62,10 +62,11 @@ window-rule {
     draw-border-with-background false
  // open-on-workspace "ユ"
 }
-// ── Zathura and Stremio ─────────────────────────────────────────────────────
+// ── Stremio and Obsidian ─────────────────────────────────────────────────────
 window-rule {
-    match app-id="^(org\\.pwmt\\.zathura|com\\.stremio\\.stremio|obsidian)$"
-    open-on-workspace "4"
+    match app-id="^(com\\.stremio\\.stremio|obsidian)$"
+    // match app-id="^(org\\.pwmt\\.zathura|com\\.stremio\\.stremio|obsidian)$"
+    // open-on-workspace "4"
     open-maximized true
  // open-on-workspace "ウ"
 }
