@@ -20,6 +20,7 @@ in {
       vpn.enable = lib.mkDefault true;
       tui.enable = lib.mkDefault true;
       remote.enable = lib.mkDefault true;
+      system.enable = lib.mkDefault true;
     };
   };
 
@@ -35,5 +36,6 @@ in {
     ./vpn
     ./tui
     ./remote
+    ./system
   ];
 }
