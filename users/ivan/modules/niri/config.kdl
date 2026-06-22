@@ -222,7 +222,7 @@ window-rule {
 }
 // ── GNOME apps, virt-manager ────────────────────────────────────────────────
 window-rule {
-    match app-id="^(org\\.gnome\\.Loupe|org\\.gnome\\.NautilusPreviewer|org\\.gnome\\.Nautilus|virt-manager)$"
+    match app-id="^(org\\.gnome\\.Loupe|org\\.gnome\\.NautilusPreviewer|org\\.gnome\\.Nautilus|virt-manager|gnome-disks)$"
     open-floating true
     default-column-width {
         fixed 1280
