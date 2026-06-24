@@ -23,6 +23,10 @@
     if isLaptop
     then 100
     else 130;
+  barDensity =
+    if isLaptop
+    then "comfortable"
+    else "default";
 in {
   config = lib.mkIf cfg.enable {
     programs.noctalia-shell = {
@@ -93,7 +97,7 @@ in {
         bar = {
           barType = "framed";
           position = "left";
-          density = "comfortable";
+          density = barDensity;
           fontScale = 1;
           frameThickness = 6;
           frameRadius = 13;
