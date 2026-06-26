@@ -5,6 +5,7 @@
   hmModule = inputs.home-manager.nixosModules.home-manager;
   diskoModule = inputs.disko.nixosModules.disko;
   catpModule = inputs.catppuccin.nixosModules.catppuccin;
+  stableOverlay = import ../overlays {inherit inputs;};
 in rec {
   mkHost = {
     hostname,
@@ -26,6 +27,7 @@ in rec {
           catpModule
 
           {my.users = users;}
+          {nixpkgs.overlays = [stableOverlay];}
 
           {
             system.activationScripts.createNixUserProfiles = lib.stringAfter ["users"] ''

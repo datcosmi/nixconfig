@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "nixpkgs/nixos-26.05";
 
     niri = {
       url = "github:sodiboo/niri-flake";
