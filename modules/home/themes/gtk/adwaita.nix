@@ -85,7 +85,7 @@ in
       home.sessionVariables.GTK_THEME = gtkTheme;
 
       home.packages = with pkgs; [
-        cantarell-fonts
+        stable.cantarell-fonts
         source-code-pro
       ];
     };

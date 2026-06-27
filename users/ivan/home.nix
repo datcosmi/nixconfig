@@ -31,6 +31,7 @@
       apps = {
         enable = true;
         browsers.librewolf.enable = false;
+        remote.anydesk.enable = false;
       };
 
       ui = {
