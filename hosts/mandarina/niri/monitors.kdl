@@ -47,7 +47,7 @@ window-rule {
 }
 // ── Discord and Spotify ─────────────────────────────────────────────────────
 window-rule {
-    match app-id="Spotify"
+    match app-id="(?i)spotify"
     open-on-workspace "2"
     opacity 0.96
     open-maximized true
