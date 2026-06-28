@@ -13,7 +13,7 @@
   programs.git = {
     settings = {
       user = {
-        email = "garcia.cli@pm.me";
+        email = "cli.garcia@pm.me";
         name = "Iván García";
       };
     };
