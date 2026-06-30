@@ -41,10 +41,13 @@ in {
 
       shellAbbrs = {
         nr = "sudo nixos-rebuild switch --flake ~/nixconfig";
+        nrt = "sudo nixos-rebuild test --flake ~/nixconfig";
+        nrb = "sudo nixos-rebuild boot --flake ~/nixconfig";
         fc = "nix flake check ~/nixconfig";
         fu = "cd ~/nixconfig && nix flake update";
         un = "cd ~/nixconfig && nix flake update && sudo nixos-rebuild switch --flake ~/nixconfig";
         cf = "clear && fastfetch";
+        nd = "nix develop";
       };
 
       functions = {

@@ -67,7 +67,7 @@ in {
             rose_blush = "#ffb3c7";
             mint_glow = "#b8ffd6";
             golden_haze = "#ffe59e";
-            cyber_blue = "#8be9fd";
+            cyber_blue = "#72AEF2";
             sapphire_tint = "#6EB2FF";
           };
         };
