@@ -67,7 +67,11 @@
         theme.silentSDDM = true;
       };
 
-      services.docker.enable = true;
+      services = {
+        docker.enable = true;
+        hamachi.enable = true;
+        sunshine.enable = true;
+      };
     };
 
     boot.plymouth.enable = true;

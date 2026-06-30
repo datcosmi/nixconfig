@@ -16,6 +16,8 @@ in {
     ./polkit-agent.nix
     ./desktop.nix
     ./docker.nix
+    ./hamachi.nix
+    ./sunshine.nix
   ];
 
   options.my.features.system.services.enable = lib.mkEnableOption "System services";
