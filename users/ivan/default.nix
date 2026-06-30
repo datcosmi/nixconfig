@@ -19,6 +19,7 @@
       "networkmanager"
       "bluetooth"
       "i2c"
+      "docker"
     ];
   };
 

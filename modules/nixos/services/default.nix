@@ -15,6 +15,7 @@ in {
     ./keyring.nix
     ./polkit-agent.nix
     ./desktop.nix
+    ./docker.nix
   ];
 
   options.my.features.system.services.enable = lib.mkEnableOption "System services";

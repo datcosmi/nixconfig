@@ -61,9 +61,13 @@
       inputsConfig = builtins.readFile ./niri/inputs.kdl;
     };
 
-    system.login.sddm = {
-      enable = true;
-      theme.silentSDDM = true;
+    system = {
+      login.sddm = {
+        enable = true;
+        theme.silentSDDM = true;
+      };
+
+      services.docker.enable = true;
     };
 
     boot.plymouth.enable = true;
