@@ -11,6 +11,7 @@ in {
     ./lsp.nix
     ./treesitter.nix
     ./git.nix
+    ./devenv.nix
   ];
 
   options.my.features.dev.enable = lib.mkEnableOption "Developer tools";
@@ -24,6 +25,7 @@ in {
         lsp.enable = lib.mkDefault true;
         treesitter.enable = lib.mkDefault true;
         git.enable = lib.mkDefault true;
+        devenv.enable = lib.mkDefault true;
       };
     };
   };
