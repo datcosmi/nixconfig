@@ -10,6 +10,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     home.packages = with pkgs; [
+      corefonts
       noto-fonts
       noto-fonts-cjk-sans
       liberation_ttf
