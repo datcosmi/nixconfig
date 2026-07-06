@@ -15,7 +15,7 @@ in {
       checkReversePath = "loose";
 
       trustedInterfaces = [
-        "enp5s0"
+        "enp5s0" "wlan0"
       ];
     };
   };
