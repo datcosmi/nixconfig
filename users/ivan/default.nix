@@ -20,6 +20,7 @@
       "bluetooth"
       "i2c"
       "docker"
+      "uinput"
     ];
   };
 
