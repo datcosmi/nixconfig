@@ -11,10 +11,12 @@ in {
   config = lib.mkIf cfg.enable {
     my.features.desktop.apps.remote = {
       anydesk.enable = lib.mkDefault true;
+      moonlight.enable = lib.mkDefault true;
     };
   };
 
   imports = [
     ./anydesk.nix
+    ./moonlight.nix
   ];
 }
