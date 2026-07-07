@@ -8,18 +8,18 @@ in
   with lib; {
     options.my.features.theme = {
       palette = mkOption {
-        type = types.enum ["catppuccin-mocha"];
-        default = "catppuccin-mocha";
+        type = types.nullOr (types.enum ["catppuccin-mocha"]);
+        default = null;
       };
 
       gtk = mkOption {
-        type = types.enum ["adwaita"];
-        default = "adwaita";
+        type = types.nullOr (types.enum ["adwaita"]);
+        default = null;
       };
 
       cursor = mkOption {
-        type = types.enum ["bibata-classic" "bibata-ice" "nordzy"];
-        default = "bibata-ice";
+        type = types.nullOr (types.enum ["bibata-classic" "bibata-ice" "nordzy"]);
+        default = null;
       };
 
       wallpaper = mkOption {
