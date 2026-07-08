@@ -1,28 +1,27 @@
 {
   pkgs,
   lib,
+  helpers,
   ...
 }: {
-  users.users.ivan = {
-    isNormalUser = true;
-    description = "Ivan";
-    shell = pkgs.fish;
-
-    home = "/home/ivan";
-    createHome = true;
-
-    extraGroups = [
-      "wheel"
-      "video"
-      "audio"
-      "input"
-      "networkmanager"
-      "bluetooth"
-      "i2c"
-      "docker"
-      "uinput"
-    ];
-  };
+  imports = [
+    (helpers.mkUser {
+      username = "ivan";
+      description = "Ivan";
+      shell = pkgs.fish;
+      extraGroups = [
+        "wheel"
+        "video"
+        "audio"
+        "input"
+        "networkmanager"
+        "bluetooth"
+        "i2c"
+        "docker"
+        "uinput"
+      ];
+    })
+  ];
 
   programs.zsh.enable = true;
   programs.fish.enable = true;

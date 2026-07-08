@@ -15,7 +15,7 @@ in rec {
     lib.nixosSystem {
       inherit system;
 
-      specialArgs = {inherit inputs;};
+      specialArgs = {inherit inputs;} // {helpers = {inherit mkUser;};};
 
       modules =
         [
@@ -68,12 +68,17 @@ in rec {
 
   mkUser = {
     username,
-    groups ? [],
+    description ? username,
+    home ? "/home/${username}",
+    extraGroups ? [],
     shell ? null,
-  }:
-    {
-      isNormalUser = true;
-      inherit groups;
-    }
-    // lib.optionalAttrs (shell != null) {inherit shell;};
+  }: {
+    users.users.${username} =
+      {
+        isNormalUser = true;
+        inherit description home extraGroups;
+        createHome = true;
+      }
+      // lib.optionalAttrs (shell != null) {inherit shell;};
+  };
 }
