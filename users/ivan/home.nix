@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    ../../modules/home
     ./modules
   ];
 

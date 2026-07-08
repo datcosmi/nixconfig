@@ -22,6 +22,7 @@ in rec {
           ../hosts/${hostname}
           ../modules/nixos/common.nix
           ../modules/options
+          ../modules/nixos
 
           hmModule
           diskoModule
@@ -53,6 +54,7 @@ in rec {
               extraSpecialArgs = {inherit inputs hostname;};
               sharedModules = [
                 ../modules/options
+                ../modules/home
                 inputs.catppuccin.homeModules.catppuccin
               ];
               users =
