@@ -75,21 +75,9 @@
     };
 
     boot.plymouth.enable = true;
-    gaming.graphics.forceRADV = false;
+
+    theme.palette = "catppuccin-mocha";
   };
-
-  catppuccin = {
-    enable = true;
-    autoEnable = false;
-    cache.enable = true;
-
-    grub = {
-      enable = true;
-      flavor = "mocha";
-    };
-  };
-
-  programs.silentSDDM.theme = "catppuccin-mocha";
 
   system.stateVersion = "26.11";
 }

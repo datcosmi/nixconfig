@@ -5,15 +5,20 @@
   ...
 }: let
   cfg = config.my.features.system.login.sddm.theme.silentSDDM;
+  theme = config.my.features.theme;
 in {
   imports = [inputs.silentSDDM.nixosModules.default];
 
   options.my.features.system.login.sddm.theme.silentSDDM = lib.mkEnableOption "Enable SilentSDDM Theme";
 
   config = lib.mkIf cfg {
-    programs.silentSDDM = {
-      enable = true;
-    };
+    programs.silentSDDM =
+      {
+        enable = true;
+      }
+      // lib.optionalAttrs (theme.palette == "catppuccin-mocha") {
+        theme = lib.mkDefault "catppuccin-mocha";
+      };
 
     systemd.tmpfiles.rules =
       lib.concatMap (

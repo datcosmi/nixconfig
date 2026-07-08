@@ -9,6 +9,7 @@ in {
   imports = [
     ./apps
     ./wm
+    ./themes
   ];
 
   options.my.features.desktop.enable = lib.mkEnableOption "Desktop stack";
