@@ -78,7 +78,7 @@
 
   home.packages = with pkgs; [
     stow
-    exfatprogs
     unzip
+    qpwgraph
   ];
 }
