@@ -10,6 +10,7 @@ in {
   config = lib.mkIf cfg.enable {
     services.sunshine = {
       enable = true;
+      autoStart = false;
       capSysAdmin = true;
       openFirewall = true;
     };
