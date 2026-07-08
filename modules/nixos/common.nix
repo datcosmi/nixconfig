@@ -19,11 +19,6 @@
       trusted-users = ["root" "@wheel"];
     };
 
-    # system.autoUpgrade = {
-    #   enable = true;
-    #   dates = "weekly";
-    # };
-
     nix.gc = {
       automatic = true;
       dates = "daily";
