@@ -21,6 +21,7 @@ in rec {
         [
           ../hosts/${hostname}
           ../modules/nixos/common.nix
+          ../modules/options
 
           hmModule
           diskoModule
@@ -51,6 +52,7 @@ in rec {
               backupFileExtension = "backup";
               extraSpecialArgs = {inherit inputs hostname;};
               sharedModules = [
+                ../modules/options
                 inputs.catppuccin.homeModules.catppuccin
               ];
               users =
