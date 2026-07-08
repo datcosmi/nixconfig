@@ -18,6 +18,7 @@ in {
     ./docker.nix
     ./hamachi.nix
     ./sunshine.nix
+    ./appimage.nix
   ];
 
   options.my.features.system.services.enable = lib.mkEnableOption "System services";
@@ -29,6 +30,7 @@ in {
         bluetooth.enable = lib.mkDefault true;
         audio.enable = lib.mkDefault true;
         flatpak.enable = lib.mkDefault true;
+        appimage.enable = lib.mkDefault true;
         printing.enable = lib.mkDefault true;
 
         security = {
