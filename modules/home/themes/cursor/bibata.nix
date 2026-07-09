@@ -9,6 +9,7 @@ in {
   config = lib.mkMerge [
     (lib.mkIf (cfg.cursor == "bibata-classic") {
       home.pointerCursor = {
+        enable = true;
         gtk.enable = true;
         name = "Bibata-Modern-Classic";
         package = pkgs.bibata-cursors;
@@ -18,6 +19,7 @@ in {
 
     (lib.mkIf (cfg.cursor == "bibata-ice") {
       home.pointerCursor = {
+        enable = true;
         gtk.enable = true;
         name = "Bibata-Modern-Ice";
         package = pkgs.bibata-cursors;
