@@ -6,6 +6,7 @@
   ...
 }: let
   cfg = config.my.features.desktop.apps.zen-browser;
+  system = pkgs.stdenv.hostPlatform.system;
 
   extension = shortId: guid: {
     name = guid;
@@ -96,7 +97,7 @@ in {
     environment.systemPackages = [
       (
         pkgs.wrapFirefox
-        inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.zen-browser-unwrapped
+        inputs.zen-browser.packages.${system}.zen-browser-unwrapped
         {
           extraPrefs = lib.concatLines (
             lib.mapAttrsToList (

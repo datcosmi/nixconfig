@@ -1,4 +1,10 @@
-{pkgs, ...}: {
+{
+  inputs,
+  pkgs,
+  ...
+}: let
+  system = pkgs.stdenv.hostPlatform.system;
+in {
   imports = [
     ./modules
   ];
@@ -79,5 +85,7 @@
     stow
     unzip
     qpwgraph
+
+    inputs.sidra.packages.${system}.default
   ];
 }

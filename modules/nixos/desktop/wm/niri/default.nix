@@ -5,7 +5,6 @@
   pkgs,
   ...
 }: let
-  system = pkgs.stdenv.hostPlatform.system;
   cfg = config.my.features.desktop.niri;
 in {
   imports = [
@@ -38,7 +37,6 @@ in {
     programs.niri = {
       enable = true;
       package = pkgs.niri-unstable;
-      # package = inputs.niri.packages.${system}.niri;
     };
 
     services.displayManager.sessionPackages = [pkgs.niri-unstable];
