@@ -733,6 +733,15 @@ binds {
     Alt+Print {
         screenshot-window
     }
+    Mod+Alt+B {
+        spawn-sh "playerctl --player=ShairportSync,spotify,mpv,%any play-pause"
+    }
+    Mod+Alt+N {
+        spawn-sh "playerctl --player=ShairportSync,spotify,mpv,%any previous"
+    }
+    Mod+Alt+M {
+        spawn-sh "playerctl --player=ShairportSync,spotify,mpv,%any next"
+    }
     // Focused window only    // ── Volume (PipeWire / WirePlumber) ───────────────────────────────────────
     XF86AudioRaiseVolume allow-when-locked=true {
         spawn-sh "noctalia-shell ipc call volume increase"
@@ -748,19 +757,19 @@ binds {
     }
     // ── Media Keys (playerctl / MPRIS) ────────────────────────────────────────
     XF86AudioPlay allow-when-locked=true {
-        spawn-sh "noctalia-shell ipc call media playPause"
+        spawn-sh "playerctl --player=ShairportSync,spotify,mpv,%any play-pause"
     }
     XF86AudioPause allow-when-locked=true {
-        spawn-sh "noctalia-shell ipc call media playPause"
+        spawn-sh "playerctl --player=ShairportSync,spotify,mpv,%any play-pause"
     }
     XF86AudioStop allow-when-locked=true {
-        spawn-sh "noctalia-shell ipc call media stop"
+        spawn-sh "playerctl --player=ShairportSync,spotify,mpv,%any stop"
     }
     XF86AudioPrev allow-when-locked=true {
-        spawn-sh "noctalia-shell ipc call media previous"
+        spawn-sh "playerctl --player=ShairportSync,spotify,mpv,%any previous"
     }
     XF86AudioNext allow-when-locked=true {
-        spawn-sh "noctalia-shell ipc call media next"
+        spawn-sh "playerctl --player=ShairportSync,spotify,mpv,%any next"
     }
     // ── Brightness ────────────────────────────────────────────
     XF86MonBrightnessUp allow-when-locked=true {
