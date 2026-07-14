@@ -124,7 +124,10 @@ in {
                   pillSize = 0.55;
                   labelMode = "none";
                 }
-                {id = "MediaMini";}
+                {
+                  id = "MediaMini";
+                  showArtistFirst = false;
+                }
                 {
                   id = "AudioVisualizer";
                   hideWhenIdle = isLaptop;
