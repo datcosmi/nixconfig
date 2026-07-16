@@ -85,6 +85,7 @@ in {
   home.packages = with pkgs; [
     stow
     unzip
+    zip
     qpwgraph
 
     inputs.sidra.packages.${system}.default
