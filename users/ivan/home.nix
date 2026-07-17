@@ -2,9 +2,7 @@
   inputs,
   pkgs,
   ...
-}: let
-  system = pkgs.stdenv.hostPlatform.system;
-in {
+}: {
   imports = [
     ./modules
   ];
@@ -36,6 +34,7 @@ in {
       apps = {
         enable = true;
         browsers.librewolf.enable = false;
+        music.tidal.enable = false;
       };
 
       ui = {
@@ -85,7 +84,5 @@ in {
     stow
     unzip
     zip
-
-    inputs.sidra.packages.${system}.default
   ];
 }
