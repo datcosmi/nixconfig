@@ -16,25 +16,11 @@ in {
         "99-gaming-defaults" = {
           "context.properties" = {
             "default.clock.rate" = cfg.sampleRate;
-            "default.clock.allowed-rates" = [cfg.sampleRate];
+            "default.clock.allowed-rates" = [cfg.allowedSampleRates];
             "default.clock.quantum" = cfg.quantum;
             "default.clock.min-quantum" = 64; # allow apps to go lower
             "default.clock.max-quantum" = 8192; # safety ceiling
           };
-
-          # Raise PipeWire's own priority inside the RT group.
-          "context.modules" = [
-            {
-              name = "libpipewire-module-rt";
-              args = {
-                "nice.level" = -11;
-                "rt.prio" = 88;
-                "rt.time.soft" = 200000; # µs
-                "rt.time.hard" = 400000;
-              };
-              flags = ["ifexists" "nofail"];
-            }
-          ];
         };
       };
 
@@ -48,7 +34,6 @@ in {
               actions = {
                 update-props = {
                   "audio.format" = "S32LE";
-                  "audio.rate" = cfg.sampleRate;
                   "api.alsa.period-size" = cfg.quantum;
                   # Double-buffering: 2 × quantum = total buffer latency.
                   "api.alsa.headroom" = 0;
@@ -59,41 +44,5 @@ in {
         };
       };
     };
-
-    security.rtkit.enable = true;
-
-    # Give audio/gaming users access to rtkit.
-    security.pam.loginLimits = [
-      {
-        domain = "@audio";
-        type = "soft";
-        item = "rtprio";
-        value = "88";
-      }
-      {
-        domain = "@audio";
-        type = "hard";
-        item = "rtprio";
-        value = "99";
-      }
-      {
-        domain = "@audio";
-        type = "soft";
-        item = "memlock";
-        value = "unlimited";
-      }
-      {
-        domain = "@audio";
-        type = "hard";
-        item = "memlock";
-        value = "unlimited";
-      }
-    ];
-
-    environment.systemPackages = with pkgs; [
-      pwvucontrol
-      crosspipe
-      easyeffects
-    ];
   };
 }

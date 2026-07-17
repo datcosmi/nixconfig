@@ -86,7 +86,6 @@ in {
     stow
     unzip
     zip
-    qpwgraph
 
     inputs.sidra.packages.${system}.default
   ];

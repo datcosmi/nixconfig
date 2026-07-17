@@ -239,6 +239,11 @@ in {
           default = 48000;
           description = "PipeWire default sample rate (Hz).  48000 matches most game/HDMI output.";
         };
+        allowedSampleRates = lib.mkOption {
+          type = lib.types.listOf lib.types.int;
+          default = [44100 48000];
+          description = "Sample rates PipeWire may switch between.";
+        };
       };
 
       # Wine / non-Steam launchers sub-module options

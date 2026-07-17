@@ -5,6 +5,7 @@
   ...
 }: let
   cfg = config.my.features.system.services.audio;
+  desktop = config.my.features.desktop;
 in {
   options.my.features.system.services.audio = {
     enable = lib.mkEnableOption "Audio service";
@@ -43,7 +44,6 @@ in {
                 actions = {
                   update-props = {
                     "node.volume" = cfg.defaultVolume;
-                    "api.alsa.soft-mixer" = true;
                   };
                 };
               }
@@ -68,6 +68,14 @@ in {
           ExecStart = "${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ 0";
         };
       };
+    })
+
+    (lib.mkIf desktop.enable {
+      environment.systemPackages = with pkgs; [
+        pwvucontrol
+        qpwgraph
+        easyeffects
+      ];
     })
   ]);
 }
