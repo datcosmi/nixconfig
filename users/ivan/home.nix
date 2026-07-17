@@ -7,7 +7,6 @@
 in {
   imports = [
     ./modules
-    ./shairport-sync.nix
   ];
 
   home = {

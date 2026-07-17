@@ -8,5 +8,6 @@
     ./kitty.nix
     ./rofi.nix
     ./ssh.nix
+    ./shairport-sync.nix
   ];
 }
