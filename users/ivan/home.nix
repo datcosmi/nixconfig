@@ -1,5 +1,6 @@
 {
   inputs,
+  config,
   pkgs,
   ...
 }: {
@@ -85,4 +86,11 @@
     unzip
     zip
   ];
+
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 10d --keep 6";
+    flake = "${config.home.homeDirectory}/nixconfig";
+  };
 }
