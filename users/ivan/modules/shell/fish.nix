@@ -37,6 +37,8 @@ in {
         desk-names-global = "ls /run/current-system/sw/share/applications";
 
         desk-names-user = "ls /etc/profiles/per-user/(id -un)/share/applications";
+
+        pn = "pnpm";
       };
 
       shellAbbrs = {
