@@ -56,8 +56,8 @@
   my.features = {
     desktop.niri = {
       enable = true;
-      monitorsConfig = builtins.readFile ./niri/monitors.kdl;
-      inputsConfig = builtins.readFile ./niri/inputs.kdl;
+      monitorsConfig = import ./niri/monitors.nix;
+      inputsConfig = import ./niri/inputs.nix;
     };
 
     system = {

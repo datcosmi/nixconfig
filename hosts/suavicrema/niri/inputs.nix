@@ -1,0 +1,18 @@
+{
+  input = {
+    keyboard = {
+      xkb = {
+        layout = "us,latam";
+        variant = "altgr-intl,";
+        options = "caps:capslock,caps:capslock";
+      };
+      repeat-delay = 330;
+      repeat-rate = 50;
+      # numlock intentionally omitted → disabled on startup
+    };
+    mouse.accel-speed = -0.5;
+    # Focus window/output when cursor moves into it.
+    # max-scroll-amount="0%" means only windows already fully visible get focus.
+    focus-follows-mouse._props.max-scroll-amount = "0%";
+  };
+}
