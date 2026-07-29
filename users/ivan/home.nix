@@ -85,6 +85,8 @@
     stow
     unzip
     zip
+    yt-dlp
+    celluloid
   ];
 
   programs.nh = {
