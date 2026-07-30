@@ -6,6 +6,7 @@
   diskoModule = inputs.disko.nixosModules.disko;
   catpModule = inputs.catppuccin.nixosModules.catppuccin;
   stableOverlay = import ../overlays/nixpkgs-stable.nix {inherit inputs;};
+  shairport-mpris = import ../overlays/shairport-sync-mpris.nix;
 in rec {
   mkHost = {
     hostname,
@@ -29,7 +30,7 @@ in rec {
           catpModule
 
           {my.users = users;}
-          {nixpkgs.overlays = [stableOverlay (import ../overlays/shairport-sync-mpris.nix)];}
+          {nixpkgs.overlays = [stableOverlay shairport-mpris];}
 
           {
             system.activationScripts.createNixUserProfiles = lib.stringAfter ["users"] ''
