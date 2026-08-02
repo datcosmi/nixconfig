@@ -99,7 +99,7 @@ in {
           position = "left";
           density = barDensity;
           fontScale = 1;
-          frameThickness = 6;
+          frameThickness = 4;
           frameRadius = 13;
           showCapsule = false;
           widgetSpacing = widgetSpacing;
