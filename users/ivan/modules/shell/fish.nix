@@ -60,6 +60,10 @@ in {
             nvim $files
           end
         '';
+
+        nfu = ''
+          nix-flake-update-commit $argv
+        '';
       };
 
       interactiveShellInit = ''
