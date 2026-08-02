@@ -50,6 +50,9 @@ in {
         un = "cd ~/nixconfig && nix flake update && sudo nixos-rebuild switch --flake ~/nixconfig";
         cf = "clear && fastfetch";
         nd = "nix develop";
+
+        ns = "nh os switch";
+        nt = "nh os test";
       };
 
       functions = {
