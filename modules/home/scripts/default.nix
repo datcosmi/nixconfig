@@ -8,5 +8,6 @@
     ./niri-dnd-toggle.nix
     ./awww-wallpaper.nix
     ./bluetooth-status.nix
+    ./nix-flake-update-commit.nix
   ];
 }
