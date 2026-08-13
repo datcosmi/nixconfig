@@ -16,7 +16,6 @@ in {
       liberation_ttf
       dejavu_fonts
       lexend
-      jetbrains-mono
     ];
   };
 }
