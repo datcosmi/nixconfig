@@ -49,7 +49,7 @@
     };
     border = {
       on = {};
-      width = 2;
+      width = 1;
       active-gradient._props = {
         from = "#f5c2e7CC";
         to = "#b4befeCC";
@@ -68,10 +68,10 @@
       color = "#1a1b2699";
     };
     struts = {
-      left = 7;
-      right = 7;
-      top = 7;
-      bottom = 7;
+      left = 5;
+      right = 5;
+      top = 5;
+      bottom = 5;
     };
   };
 
@@ -162,7 +162,7 @@
     # Global: rounded corners + blur on everything
     {
       window-rule = {
-        geometry-corner-radius = 11;
+        geometry-corner-radius = 8;
         clip-to-geometry = true;
         background-effect = {
           blur = true;
