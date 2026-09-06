@@ -40,7 +40,7 @@ in {
           radiusRatio = 1;
           iRadiusRatio = 1;
           boxRadiusRatio = 1;
-          screenRadiusRatio = 0.73;
+          screenRadiusRatio = 0.40;
           animationSpeed = 1;
           animationDisabled = false;
           compactLockScreen = false;
@@ -100,7 +100,7 @@ in {
           density = barDensity;
           fontScale = 1;
           frameThickness = 4;
-          frameRadius = 13;
+          frameRadius = 10;
           showCapsule = false;
           widgetSpacing = widgetSpacing;
           contentPadding = 0;
