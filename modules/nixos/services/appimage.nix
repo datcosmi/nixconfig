@@ -16,7 +16,7 @@ in {
 
     environment.systemPackages = with pkgs; [
       appimage-run
-      stable.gearlever
+      gearlever
     ];
   };
 }
