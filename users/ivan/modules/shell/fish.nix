@@ -53,6 +53,7 @@ in {
 
         ns = "nh os switch";
         nt = "nh os test";
+        nb = "nh os boot";
       };
 
       functions = {
