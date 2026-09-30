@@ -1,3 +1,18 @@
+let
+  # Mod+Alt+1..9 -> 10..90%, Mod+Alt+0 -> 100%
+  brightnessBinds = builtins.listToAttrs (builtins.genList (i:
+    let
+      n = i + 1;
+      key = if n == 10 then "0" else toString n;
+      pct = toString (n * 10);
+    in {
+      name = "Mod+Alt+${key}";
+      value = {
+        _props.hotkey-overlay-title = "Set Brightness to ${pct}%";
+        spawn-sh = "noctalia-shell ipc call brightness set ${pct}";
+      };
+    }) 10);
+in
 {
   # ── Environment ────────────────────────────────────────────────────────
   environment = {
@@ -352,14 +367,6 @@
     };
 
     # ── System Controls ──────────────────────────────────────────────────
-    "Mod+Alt+Equal" = {
-      _props.hotkey-overlay-title = "DDC Raise Brightness";
-      spawn-sh = "noctalia-shell ipc call brightness increase";
-    };
-    "Mod+Alt+Minus" = {
-      _props.hotkey-overlay-title = "DDC Lower Brightness";
-      spawn-sh = "noctalia-shell ipc call brightness decrease";
-    };
     "Mod+Alt+L".switch-layout = "next";
     "Mod+Ctrl+N" = {
       _props.hotkey-overlay-title = "Notification Center";
@@ -676,5 +683,13 @@
       _props.allow-when-locked = true;
       spawn-sh = "noctalia-shell ipc call brightness decrease";
     };
-  };
+    "Mod+Alt+Equal" = {
+      _props.hotkey-overlay-title = "DDC Raise Brightness";
+      spawn-sh = "noctalia-shell ipc call brightness increase";
+    };
+    "Mod+Alt+Minus" = {
+      _props.hotkey-overlay-title = "DDC Lower Brightness";
+      spawn-sh = "noctalia-shell ipc call brightness decrease";
+    };
+  } // brightnessBinds;
 }
