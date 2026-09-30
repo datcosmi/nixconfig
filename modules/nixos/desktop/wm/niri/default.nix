@@ -42,6 +42,7 @@ in {
       libnotify
       libappindicator
       libayatana-appindicator
+      kdlfmt
     ];
 
     environment.etc."wayland-sessions/niri.desktop".text = ''

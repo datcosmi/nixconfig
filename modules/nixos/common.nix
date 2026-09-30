@@ -39,6 +39,7 @@
       curl
       wget
       cachix
+      alejandra
     ];
 
     security.sudo.wheelNeedsPassword = true;

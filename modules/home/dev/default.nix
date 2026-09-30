@@ -22,7 +22,6 @@ in {
 
       dev = {
         tmux.enable = lib.mkDefault true;
-        lsp.enable = lib.mkDefault true;
         treesitter.enable = lib.mkDefault true;
         git.enable = lib.mkDefault true;
         devenv.enable = lib.mkDefault true;
