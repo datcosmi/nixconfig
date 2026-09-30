@@ -11,14 +11,7 @@
       shell = pkgs.fish;
       extraGroups = [
         "wheel"
-        "video"
-        "audio"
-        "input"
         "networkmanager"
-        "bluetooth"
-        "i2c"
-        "docker"
-        "uinput"
       ];
     })
   ];
@@ -30,6 +23,4 @@
     enable = true;
     defaultEditor = true;
   };
-
-  nix.settings.trusted-users = lib.mkAfter ["ivan"];
 }
