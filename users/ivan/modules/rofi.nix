@@ -8,7 +8,7 @@
 in {
   config = lib.mkIf cfg.enable {
     programs.rofi = {
-      font = "JetBrains Mono Nerd Font 12";
+      settings.font = "JetBrains Mono Nerd Font 12";
 
       theme = let
         inherit (config.lib.formats.rasi) mkLiteral;

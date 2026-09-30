@@ -20,7 +20,7 @@ in {
         pkgs.rofi-calc
       ];
 
-      extraConfig = {
+      settings = {
         modi = "drun,run,filebrowser,window";
         show-icons = true;
         display-drun = "APPS";
