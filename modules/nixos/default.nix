@@ -13,6 +13,6 @@
     ./gaming
     ./display.nix
 
-    ./cachix.nix
+    ./cache.nix
   ];
 }
