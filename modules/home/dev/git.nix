@@ -11,7 +11,10 @@ in {
 
   config = lib.mkIf cfg.enable {
     programs.git.enable = true;
-    programs.lazygit.enable = true;
+    programs.lazygit = {
+      enable = true;
+      package = pkgs.stable.lazygit;
+    };
 
     programs.ssh.settings = lib.mkIf ssh.enable {
       "github.com" = {
