@@ -23,10 +23,12 @@ in {
 
     my.features.dev.git = {
       lazygit.enable = lib.mkDefault true;
+      gh.enable = lib.mkDefault true;
     };
   };
 
   imports = [
     ./lazygit.nix
+    ./gh.nix
   ];
 }
