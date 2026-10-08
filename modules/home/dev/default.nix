@@ -6,11 +6,11 @@
   cfg = config.my.features.dev;
 in {
   imports = [
+    ./git
     ./ssh.nix
     ./tmux.nix
     ./lsp.nix
     ./treesitter.nix
-    ./git.nix
     ./devenv.nix
   ];
 
