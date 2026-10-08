@@ -86,6 +86,7 @@
     zip
     yt-dlp
     celluloid
+    stylua
   ];
 
   programs.nh = {
