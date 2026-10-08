@@ -21,21 +21,14 @@ in {
         # cd = "z";
 
         nix-rebuild = "sudo nixos-rebuild switch --flake ~/nixconfig";
-
         flake-check = "nix flake check ~/nixconfig";
-
         flake-update = "cd ~/nixconfig && nix flake update";
-
         update-nix = "cd ~/nixconfig && nix flake update && sudo nixos-rebuild switch --flake ~/nixconfig";
-
         list-gen = "nix profile history --profile /nix/var/nix/profiles/system";
-
         del-gen = "sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations";
-
         gc = "sudo nix-collect-garbage";
 
         desk-names-global = "ls /run/current-system/sw/share/applications";
-
         desk-names-user = "ls /etc/profiles/per-user/(id -un)/share/applications";
 
         pn = "pnpm";
@@ -44,16 +37,15 @@ in {
       shellAbbrs = {
         nr = "sudo nixos-rebuild switch --flake ~/nixconfig";
         nrt = "sudo nixos-rebuild test --flake ~/nixconfig";
-        nrb = "sudo nixos-rebuild boot --flake ~/nixconfig";
         fc = "nix flake check ~/nixconfig";
-        fu = "cd ~/nixconfig && nix flake update";
-        un = "cd ~/nixconfig && nix flake update && sudo nixos-rebuild switch --flake ~/nixconfig";
         cf = "clear && fastfetch";
         nd = "nix develop";
 
         ns = "nh os switch";
         nt = "nh os test";
         nb = "nh os boot";
+        ni = "nh os info | bat -l conf -p";
+        nrb = "nh os rollback";
       };
 
       functions = {
