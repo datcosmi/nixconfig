@@ -9,5 +9,6 @@
     ./rofi.nix
     ./ssh.nix
     ./shairport-sync.nix
+    ./gh.nix
   ];
 }
