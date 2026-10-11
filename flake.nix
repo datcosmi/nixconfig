@@ -1,5 +1,5 @@
 {
-  description = "My Nix Flake";
+  description = "Fully declarative system config & dotfiles across 2 personal hosts - NixOS & Home-Manager modules";
 
   inputs = {
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.zst";
