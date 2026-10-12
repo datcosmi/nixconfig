@@ -29,6 +29,16 @@ in {
 
       # Let Steam use the system MangoHud so hud config is centralised.
       extraPackages = with pkgs; [mangohud];
+
+      package = pkgs.steam.override {
+        extraEnv = {
+          MANGOHUD = "1";
+        };
+      };
+    };
+
+    environment.sessionVariables = {
+      STEAM_EXTRA_COMPAT_TOOLS_PATHS = "$HOME/.steam/root/compatibilitytools.d";
     };
 
     # Gamescope
@@ -82,30 +92,6 @@ in {
       mangohud
       # GUI for managing GE-Proton versions installed outside of the Nix store.
       protonup-qt
-    ];
-
-    # Environment variables
-
-    environment.sessionVariables = mkMerge [
-      {
-        # Tell Steam (and Proton) where to look for extra compatibility tools
-        # installed imperatively by the user (e.g. via protonup-qt).
-        STEAM_EXTRA_COMPAT_TOOLS_PATHS = "$HOME/.steam/root/compatibilitytools.d";
-
-        # Enable MangoHud for all Vulkan games by default.
-        # Per-game overrides can be done via launch options: MANGOHUD=0 %command%
-        MANGOHUD = "1";
-      }
-      # On a PRIME hybrid system give users a shortcut: run any command on the
-      # discrete GPU via `prime-run <cmd>`.  Steam per-game launch option:
-      #   prime-run %command%
-      (mkIf (isNv && isHybrid) {
-        # Already set by the nvidia module; reinforce here for clarity.
-        __NV_PRIME_RENDER_OFFLOAD = "1";
-        __NV_PRIME_RENDER_OFFLOAD_PROVIDER = "NVIDIA-G0";
-        __GLX_VENDOR_LIBRARY_NAME = "nvidia";
-        __VK_LAYER_NV_optimus = "NVIDIA_only";
-      })
     ];
 
     # Security / capabilities
