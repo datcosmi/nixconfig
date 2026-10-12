@@ -21,6 +21,7 @@ in {
       tui.enable = lib.mkDefault true;
       remote.enable = lib.mkDefault true;
       system.enable = lib.mkDefault true;
+      recording.enable = lib.mkDefault true;
     };
   };
 
@@ -37,5 +38,6 @@ in {
     ./tui
     ./remote
     ./system
+    ./recurding
   ];
 }
