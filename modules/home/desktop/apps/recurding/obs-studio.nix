@@ -6,6 +6,7 @@
   ...
 }: let
   cfg = config.my.features.desktop.apps.recording.obs-studio;
+  theme = config.my.features.theme;
 in {
   options.my.features.desktop.apps.recording.obs-studio.enable = lib.mkEnableOption "Enable obs-studio";
 
@@ -21,6 +22,11 @@ in {
             --prefix LD_LIBRARY_PATH : /run/opengl-driver/lib
         '';
       };
+    };
+
+    catppuccin.obs = lib.mkIf (theme.palette == "catppuccin-mocha") {
+      enable = true;
+      flavor = "mocha";
     };
   };
 }
