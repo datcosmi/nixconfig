@@ -11,7 +11,6 @@ in {
   config = lib.mkIf cfg.enable {
     programs.lazygit = {
       enable = true;
-      package = pkgs.stable.lazygit;
     };
   };
 }
