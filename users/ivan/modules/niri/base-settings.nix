@@ -1,9 +1,11 @@
 let
   # Mod+Alt+1..9 -> 10..90%, Mod+Alt+0 -> 100%
-  brightnessBinds = builtins.listToAttrs (builtins.genList (i:
-    let
+  brightnessBinds = builtins.listToAttrs (builtins.genList (i: let
       n = i + 1;
-      key = if n == 10 then "0" else toString n;
+      key =
+        if n == 10
+        then "0"
+        else toString n;
       pct = toString (n * 10);
     in {
       name = "Mod+Alt+${key}";
@@ -11,9 +13,9 @@ let
         _props.hotkey-overlay-title = "Set Brightness to ${pct}%";
         spawn-sh = "noctalia-shell ipc call brightness set ${pct}";
       };
-    }) 10);
-in
-{
+    })
+    10);
+in {
   # ── Environment ────────────────────────────────────────────────────────
   environment = {
     QT_QPA_PLATFORM = "wayland";
@@ -277,419 +279,421 @@ in
   ];
 
   # ── Keybindings ──────────────────────────────────────────────────────────
-  binds = {
-    "Mod+Shift+Slash".show-hotkey-overlay = {};
+  binds =
+    {
+      "Mod+Shift+Slash".show-hotkey-overlay = {};
 
-    # ── Terminal & Launchers ────────────────────────────────────────────
-    "Mod+Return" = {
-      _props.hotkey-overlay-title = "Open Terminal";
-      spawn = "kitty";
-    };
-    "Mod+Shift+Return" = {
-      _props.hotkey-overlay-title = "Open Terminal with tmux";
-      spawn-sh = "kitty -e tmux";
-    };
-    "Mod+Space" = {
-      _props.hotkey-overlay-title = "App Launcher";
-      spawn-sh = "noctalia-shell ipc call launcher toggle";
-    };
-    "Mod+Ctrl+E" = {
-      _props.hotkey-overlay-title = "Emoji Picker";
-      spawn-sh = "noctalia-shell ipc call launcher emoji";
-    };
-    "Mod+Alt+C" = {
-      _props.hotkey-overlay-title = "Calculator: rofi-calc";
-      spawn-sh = "rofi -show calc -modi calc -no-show-match -no-sort";
-    };
-    "Mod+V" = {
-      _props.hotkey-overlay-title = "Clipboard History";
-      spawn-sh = "noctalia-shell ipc call launcher clipboard";
-    };
-
-    # ── Applications ──────────────────────────────────────────────────────
-    "Mod+Shift+B" = {
-      _props.hotkey-overlay-title = "Open Browser";
-      spawn = "zen";
-    };
-    "Mod+Shift+X" = {
-      _props.hotkey-overlay-title = "File Manager";
-      spawn = "nautilus";
-    };
-    "Mod+Shift+Y" = {
-      _props.hotkey-overlay-title = "File Manager";
-      spawn-sh = "kitty --class yazi -e yazi";
-    };
-    "Mod+Shift+D" = {
-      _props.hotkey-overlay-title = "Open Discord";
-      spawn = "discord";
-    };
-    "Mod+Shift+G" = {
-      _props.hotkey-overlay-title = "Open Steam";
-      spawn = "steam";
-    };
-    "Mod+Shift+M" = {
-      _props.hotkey-overlay-title = "Open Spotify";
-      spawn = "spotify";
-    };
-    "Mod+Shift+A" = {
-      _props.hotkey-overlay-title = "Authenticator";
-      spawn = "enteauth";
-    };
-    "Mod+Shift+P" = {
-      _props.hotkey-overlay-title = "Password Manager";
-      spawn = "proton-pass";
-    };
-    "Mod+Ctrl+V" = {
-      _props.hotkey-overlay-title = "ProtonVPN Rofi Tool";
-      spawn-sh = "protonvpn-rofi";
-    };
-
-    # ── TUI Utilities in Kitty ────────────────────────────────────────────
-    "Mod+Shift+T" = {
-      _props.hotkey-overlay-title = "System Monitor";
-      spawn-sh = "kitty --class btop -e btop";
-    };
-    "Mod+Shift+N" = {
-      _props.hotkey-overlay-title = "Nvidia GPU Monitor";
-      spawn-sh = "kitty --class nvtop -e nvtop";
-    };
-    "Mod+Shift+S" = {
-      _props.hotkey-overlay-title = "Audio Mixer";
-      spawn-sh = "kitty --class wiremix -e wiremix";
-    };
-    "Mod+Shift+E" = {
-      _props.hotkey-overlay-title = "Bluetooth TUI";
-      spawn-sh = "kitty --class bluetui -e bluetui";
-    };
-    "Mod+Shift+W" = {
-      _props.hotkey-overlay-title = "Wifi TUI";
-      spawn-sh = "kitty --class impala -e impala";
-    };
-
-    # ── System Controls ──────────────────────────────────────────────────
-    "Mod+Alt+L".switch-layout = "next";
-    "Mod+Ctrl+N" = {
-      _props.hotkey-overlay-title = "Notification Center";
-      spawn-sh = "noctalia-shell ipc call notifications toggleHistory";
-    };
-    "Mod+Shift+Space" = {
-      _props.hotkey-overlay-title = "Restart Waybar";
-      spawn-sh = "pkill waybar || waybar";
-    };
-    "Mod+Q" = {
-      _props.hotkey-overlay-title = "Toggle Audio Output (Sinks)";
-      spawn-sh = "toggle-audio-output Sinks";
-    };
-    "Mod+Shift+Q" = {
-      _props.hotkey-overlay-title = "Toggle Audio Input (Sources)";
-      spawn-sh = "toggle-audio-output Sources";
-    };
-    "Mod+Ctrl+Space" = {
-      _props.hotkey-overlay-title = "Toggle ProtonVPN";
-      spawn-sh = "pkill -USR1 protonvpn || protonvpn-app";
-    };
-    # Screen reader (orca) — works on lock screen
-    "Super+Alt+S" = {
-      _props = {
-        allow-when-locked = true;
-        hotkey-overlay-title = null;
+      # ── Terminal & Launchers ────────────────────────────────────────────
+      "Mod+Return" = {
+        _props.hotkey-overlay-title = "Open Terminal";
+        spawn = "kitty";
       };
-      spawn-sh = "pkill orca || exec orca";
-    };
-
-    # ── Session / Lock / Power ────────────────────────────────────────────
-    "Mod+Escape" = {
-      _props = {
-        allow-inhibiting = false;
-        hotkey-overlay-title = "Logout Menu";
+      "Mod+Shift+Return" = {
+        _props.hotkey-overlay-title = "Open Terminal with tmux";
+        spawn-sh = "kitty -e tmux";
       };
-      spawn-sh = "noctalia-shell ipc call sessionMenu toggle";
-    };
-    "Mod+Shift+Escape" = {
-      _props = {
-        allow-inhibiting = false;
-        hotkey-overlay-title = "Toggle Keyboard Inhibitor";
+      "Mod+Space" = {
+        _props.hotkey-overlay-title = "App Launcher";
+        spawn-sh = "noctalia-shell ipc call launcher toggle";
       };
-      toggle-keyboard-shortcuts-inhibit = {};
-    };
-    "Mod+Shift+Ctrl+E".quit = {};
-    "Ctrl+Alt+Delete".quit = {};
-    "Mod+Ctrl+P" = {
-      _props.hotkey-overlay-title = "Power Off Monitors";
-      power-off-monitors = {};
-    };
-
-    # ── Window Management ─────────────────────────────────────────────────
-    "Mod+W" = {
-      _props = {
-        repeat = false;
-        hotkey-overlay-title = "Close Window";
+      "Mod+Ctrl+E" = {
+        _props.hotkey-overlay-title = "Emoji Picker";
+        spawn-sh = "noctalia-shell ipc call launcher emoji";
       };
-      close-window = {};
-    };
-    "Mod+F" = {
-      _props.hotkey-overlay-title = "Maximize Column";
-      maximize-column = {};
-    };
-    "Mod+Shift+F" = {
-      _props.hotkey-overlay-title = "Fullscreen Window";
-      fullscreen-window = {};
-    };
-    "Mod+Ctrl+F" = {
-      _props.hotkey-overlay-title = "Expand Column to Available Width";
-      expand-column-to-available-width = {};
-    };
-    "Mod+M" = {
-      _props.hotkey-overlay-title = "Maximize Window to Edges";
-      maximize-window-to-edges = {};
-    };
-    "Mod+T" = {
-      _props = {
-        repeat = false;
-        hotkey-overlay-title = "Toggle Floating";
+      "Mod+Alt+C" = {
+        _props.hotkey-overlay-title = "Calculator: rofi-calc";
+        spawn-sh = "rofi -show calc -modi calc -no-show-match -no-sort";
       };
-      toggle-window-floating = {};
-    };
-    "Mod+Shift+V" = {
-      _props = {
-        repeat = false;
-        hotkey-overlay-title = "Switch Floating↔Tiling Focus";
+      "Mod+V" = {
+        _props.hotkey-overlay-title = "Clipboard History";
+        spawn-sh = "noctalia-shell ipc call launcher clipboard";
       };
-      switch-focus-between-floating-and-tiling = {};
-    };
-    "Mod+C" = {
-      _props.hotkey-overlay-title = "Center Column";
-      center-column = {};
-    };
-    "Mod+Ctrl+C" = {
-      _props.hotkey-overlay-title = "Center All Visible Columns";
-      center-visible-columns = {};
-    };
-    "Mod+O" = {
-      _props = {
-        repeat = false;
-        hotkey-overlay-title = "Toggle Overview";
+
+      # ── Applications ──────────────────────────────────────────────────────
+      "Mod+Shift+B" = {
+        _props.hotkey-overlay-title = "Open Browser";
+        spawn = "zen";
       };
-      toggle-overview = {};
-    };
-    "Mod+G" = {
-      _props = {
-        repeat = false;
-        hotkey-overlay-title = "Toggle Tabbed Column";
+      "Mod+Shift+X" = {
+        _props.hotkey-overlay-title = "File Manager";
+        spawn = "nautilus";
       };
-      toggle-column-tabbed-display = {};
-    };
+      "Mod+Shift+Y" = {
+        _props.hotkey-overlay-title = "File Manager";
+        spawn-sh = "kitty --class yazi -e yazi";
+      };
+      "Mod+Shift+D" = {
+        _props.hotkey-overlay-title = "Open Discord";
+        spawn = "discord";
+      };
+      "Mod+Shift+G" = {
+        _props.hotkey-overlay-title = "Open Steam";
+        spawn = "steam";
+      };
+      "Mod+Shift+M" = {
+        _props.hotkey-overlay-title = "Open Spotify";
+        spawn = "spotify";
+      };
+      "Mod+Shift+A" = {
+        _props.hotkey-overlay-title = "Authenticator";
+        spawn = "enteauth";
+      };
+      "Mod+Shift+P" = {
+        _props.hotkey-overlay-title = "Password Manager";
+        spawn = "proton-pass";
+      };
+      "Mod+Ctrl+V" = {
+        _props.hotkey-overlay-title = "ProtonVPN Rofi Tool";
+        spawn-sh = "protonvpn-rofi";
+      };
 
-    # ── Column Widths & Window Heights ───────────────────────────────────
-    "Mod+R" = {
-      _props.hotkey-overlay-title = "Cycle Column Width Preset";
-      switch-preset-column-width = {};
-    };
-    "Mod+Shift+R" = {
-      _props.hotkey-overlay-title = "Cycle Window Height Preset";
-      switch-preset-window-height = {};
-    };
-    "Mod+Ctrl+R" = {
-      _props.hotkey-overlay-title = "Reset Window Height";
-      reset-window-height = {};
-    };
-    "Mod+Minus".set-column-width = "-10%";
-    "Mod+Equal".set-column-width = "+10%";
-    "Mod+Shift+Minus".set-window-height = "-10%";
-    "Mod+Shift+Equal".set-window-height = "+10%";
+      # ── TUI Utilities in Kitty ────────────────────────────────────────────
+      "Mod+Shift+T" = {
+        _props.hotkey-overlay-title = "System Monitor";
+        spawn-sh = "kitty --class btop -e btop";
+      };
+      "Mod+Shift+N" = {
+        _props.hotkey-overlay-title = "Nvidia GPU Monitor";
+        spawn-sh = "kitty --class nvtop -e nvtop";
+      };
+      "Mod+Shift+S" = {
+        _props.hotkey-overlay-title = "Audio Mixer";
+        spawn-sh = "kitty --class wiremix -e wiremix";
+      };
+      "Mod+Shift+E" = {
+        _props.hotkey-overlay-title = "Bluetooth TUI";
+        spawn-sh = "kitty --class bluetui -e bluetui";
+      };
+      "Mod+Shift+W" = {
+        _props.hotkey-overlay-title = "Wifi TUI";
+        spawn-sh = "kitty --class impala -e impala";
+      };
 
-    # ── Column Stacking ───────────────────────────────────────────────────
-    "Mod+Comma" = {
-      _props.hotkey-overlay-title = "Pull Window into Column";
-      consume-window-into-column = {};
-    };
-    "Mod+Period" = {
-      _props.hotkey-overlay-title = "Expel Window from Column";
-      expel-window-from-column = {};
-    };
-    "Mod+BracketLeft".consume-or-expel-window-left = {};
-    "Mod+BracketRight".consume-or-expel-window-right = {};
+      # ── System Controls ──────────────────────────────────────────────────
+      "Mod+Alt+L".switch-layout = "next";
+      "Mod+Ctrl+N" = {
+        _props.hotkey-overlay-title = "Notification Center";
+        spawn-sh = "noctalia-shell ipc call notifications toggleHistory";
+      };
+      "Mod+Shift+Space" = {
+        _props.hotkey-overlay-title = "Restart Waybar";
+        spawn-sh = "pkill waybar || waybar";
+      };
+      "Mod+Q" = {
+        _props.hotkey-overlay-title = "Toggle Audio Output (Sinks)";
+        spawn-sh = "toggle-audio-output Sinks";
+      };
+      "Mod+Shift+Q" = {
+        _props.hotkey-overlay-title = "Toggle Audio Input (Sources)";
+        spawn-sh = "toggle-audio-output Sources";
+      };
+      "Mod+Ctrl+Space" = {
+        _props.hotkey-overlay-title = "Toggle ProtonVPN";
+        spawn-sh = "pkill -USR1 protonvpn || protonvpn-app";
+      };
+      # Screen reader (orca) — works on lock screen
+      "Super+Alt+S" = {
+        _props = {
+          allow-when-locked = true;
+          hotkey-overlay-title = null;
+        };
+        spawn-sh = "pkill orca || exec orca";
+      };
 
-    # ── Focus Navigation ──────────────────────────────────────────────────
-    "Mod+H".focus-column-left = {};
-    "Mod+L".focus-column-right = {};
-    "Mod+J".focus-window-down = {};
-    "Mod+K".focus-window-up = {};
-    "Mod+Left".focus-column-left = {};
-    "Mod+Right".focus-column-right = {};
-    "Mod+Down".focus-window-down = {};
-    "Mod+Up".focus-window-up = {};
-    "Mod+Home".focus-column-first = {};
-    "Mod+End".focus-column-last = {};
+      # ── Session / Lock / Power ────────────────────────────────────────────
+      "Mod+Escape" = {
+        _props = {
+          allow-inhibiting = false;
+          hotkey-overlay-title = "Logout Menu";
+        };
+        spawn-sh = "noctalia-shell ipc call sessionMenu toggle";
+      };
+      "Mod+Shift+Escape" = {
+        _props = {
+          allow-inhibiting = false;
+          hotkey-overlay-title = "Toggle Keyboard Inhibitor";
+        };
+        toggle-keyboard-shortcuts-inhibit = {};
+      };
+      "Mod+Shift+Ctrl+E".quit = {};
+      "Ctrl+Alt+Delete".quit = {};
+      "Mod+Ctrl+P" = {
+        _props.hotkey-overlay-title = "Power Off Monitors";
+        power-off-monitors = {};
+      };
 
-    # ── Move Windows & Columns ────────────────────────────────────────────
-    "Mod+Ctrl+H".move-column-left = {};
-    "Mod+Ctrl+L".move-column-right = {};
-    "Mod+Ctrl+J".move-window-down = {};
-    "Mod+Ctrl+K".move-window-up = {};
-    "Mod+Ctrl+Left".move-column-left = {};
-    "Mod+Ctrl+Right".move-column-right = {};
-    "Mod+Ctrl+Down".move-window-down = {};
-    "Mod+Ctrl+Up".move-window-up = {};
-    "Mod+Ctrl+Home".move-column-to-first = {};
-    "Mod+Ctrl+End".move-column-to-last = {};
+      # ── Window Management ─────────────────────────────────────────────────
+      "Mod+W" = {
+        _props = {
+          repeat = false;
+          hotkey-overlay-title = "Close Window";
+        };
+        close-window = {};
+      };
+      "Mod+F" = {
+        _props.hotkey-overlay-title = "Maximize Column";
+        maximize-column = {};
+      };
+      "Mod+Shift+F" = {
+        _props.hotkey-overlay-title = "Fullscreen Window";
+        fullscreen-window = {};
+      };
+      "Mod+Ctrl+F" = {
+        _props.hotkey-overlay-title = "Expand Column to Available Width";
+        expand-column-to-available-width = {};
+      };
+      "Mod+M" = {
+        _props.hotkey-overlay-title = "Maximize Window to Edges";
+        maximize-window-to-edges = {};
+      };
+      "Mod+T" = {
+        _props = {
+          repeat = false;
+          hotkey-overlay-title = "Toggle Floating";
+        };
+        toggle-window-floating = {};
+      };
+      "Mod+Shift+V" = {
+        _props = {
+          repeat = false;
+          hotkey-overlay-title = "Switch Floating↔Tiling Focus";
+        };
+        switch-focus-between-floating-and-tiling = {};
+      };
+      "Mod+C" = {
+        _props.hotkey-overlay-title = "Center Column";
+        center-column = {};
+      };
+      "Mod+Ctrl+C" = {
+        _props.hotkey-overlay-title = "Center All Visible Columns";
+        center-visible-columns = {};
+      };
+      "Mod+O" = {
+        _props = {
+          repeat = false;
+          hotkey-overlay-title = "Toggle Overview";
+        };
+        toggle-overview = {};
+      };
+      "Mod+G" = {
+        _props = {
+          repeat = false;
+          hotkey-overlay-title = "Toggle Tabbed Column";
+        };
+        toggle-column-tabbed-display = {};
+      };
 
-    # ── Monitor Focus & Move ──────────────────────────────────────────────
-    "Mod+Shift+H".focus-monitor-left = {};
-    "Mod+Shift+L".focus-monitor-right = {};
-    "Mod+Shift+J".focus-monitor-down = {};
-    "Mod+Shift+K".focus-monitor-up = {};
-    "Mod+Shift+Left".focus-monitor-left = {};
-    "Mod+Shift+Right".focus-monitor-right = {};
-    "Mod+Shift+Down".focus-monitor-down = {};
-    "Mod+Shift+Up".focus-monitor-up = {};
+      # ── Column Widths & Window Heights ───────────────────────────────────
+      "Mod+R" = {
+        _props.hotkey-overlay-title = "Cycle Column Width Preset";
+        switch-preset-column-width = {};
+      };
+      "Mod+Shift+R" = {
+        _props.hotkey-overlay-title = "Cycle Window Height Preset";
+        switch-preset-window-height = {};
+      };
+      "Mod+Ctrl+R" = {
+        _props.hotkey-overlay-title = "Reset Window Height";
+        reset-window-height = {};
+      };
+      "Mod+Minus".set-column-width = "-10%";
+      "Mod+Equal".set-column-width = "+10%";
+      "Mod+Shift+Minus".set-window-height = "-10%";
+      "Mod+Shift+Equal".set-window-height = "+10%";
 
-    "Mod+Ctrl+Shift+H".move-column-to-monitor-left = {};
-    "Mod+Ctrl+Shift+L".move-column-to-monitor-right = {};
-    "Mod+Ctrl+Shift+J".move-column-to-monitor-down = {};
-    "Mod+Ctrl+Shift+K".move-column-to-monitor-up = {};
-    "Mod+Ctrl+Shift+Left".move-column-to-monitor-left = {};
-    "Mod+Ctrl+Shift+Right".move-column-to-monitor-right = {};
-    "Mod+Ctrl+Shift+Down".move-column-to-monitor-down = {};
-    "Mod+Ctrl+Shift+Up".move-column-to-monitor-up = {};
+      # ── Column Stacking ───────────────────────────────────────────────────
+      "Mod+Comma" = {
+        _props.hotkey-overlay-title = "Pull Window into Column";
+        consume-window-into-column = {};
+      };
+      "Mod+Period" = {
+        _props.hotkey-overlay-title = "Expel Window from Column";
+        expel-window-from-column = {};
+      };
+      "Mod+BracketLeft".consume-or-expel-window-left = {};
+      "Mod+BracketRight".consume-or-expel-window-right = {};
 
-    # ── Workspace Navigation ──────────────────────────────────────────────
-    "Mod+Tab" = {
-      _props.cooldown-ms = 100;
-      focus-workspace-down = {};
-    };
-    "Mod+Shift+Tab" = {
-      _props.cooldown-ms = 100;
-      focus-workspace-up = {};
-    };
-    "Mod+U".focus-workspace-down = {};
-    "Mod+I".focus-workspace-up = {};
-    "Mod+Page_Down".focus-workspace-down = {};
-    "Mod+Page_Up".focus-workspace-up = {};
+      # ── Focus Navigation ──────────────────────────────────────────────────
+      "Mod+H".focus-column-left = {};
+      "Mod+L".focus-column-right = {};
+      "Mod+J".focus-window-down = {};
+      "Mod+K".focus-window-up = {};
+      "Mod+Left".focus-column-left = {};
+      "Mod+Right".focus-column-right = {};
+      "Mod+Down".focus-window-down = {};
+      "Mod+Up".focus-window-up = {};
+      "Mod+Home".focus-column-first = {};
+      "Mod+End".focus-column-last = {};
 
-    "Mod+Ctrl+U".move-column-to-workspace-down = {};
-    "Mod+Ctrl+I".move-column-to-workspace-up = {};
-    "Mod+Ctrl+Page_Down".move-column-to-workspace-down = {};
-    "Mod+Ctrl+Page_Up".move-column-to-workspace-up = {};
+      # ── Move Windows & Columns ────────────────────────────────────────────
+      "Mod+Ctrl+H".move-column-left = {};
+      "Mod+Ctrl+L".move-column-right = {};
+      "Mod+Ctrl+J".move-window-down = {};
+      "Mod+Ctrl+K".move-window-up = {};
+      "Mod+Ctrl+Left".move-column-left = {};
+      "Mod+Ctrl+Right".move-column-right = {};
+      "Mod+Ctrl+Down".move-window-down = {};
+      "Mod+Ctrl+Up".move-window-up = {};
+      "Mod+Ctrl+Home".move-column-to-first = {};
+      "Mod+Ctrl+End".move-column-to-last = {};
 
-    "Mod+Shift+U".move-workspace-down = {};
-    "Mod+Shift+I".move-workspace-up = {};
+      # ── Monitor Focus & Move ──────────────────────────────────────────────
+      "Mod+Shift+H".focus-monitor-left = {};
+      "Mod+Shift+L".focus-monitor-right = {};
+      "Mod+Shift+J".focus-monitor-down = {};
+      "Mod+Shift+K".focus-monitor-up = {};
+      "Mod+Shift+Left".focus-monitor-left = {};
+      "Mod+Shift+Right".focus-monitor-right = {};
+      "Mod+Shift+Down".focus-monitor-down = {};
+      "Mod+Shift+Up".focus-monitor-up = {};
 
-    # Numbered workspace access
-    "Mod+1".focus-workspace = 1;
-    "Mod+2".focus-workspace = 2;
-    "Mod+3".focus-workspace = 3;
-    "Mod+4".focus-workspace = 4;
-    "Mod+5".focus-workspace = 5;
-    "Mod+6".focus-workspace = 6;
-    "Mod+7".focus-workspace = 7;
-    "Mod+8".focus-workspace = 8;
-    "Mod+9".focus-workspace = 9;
+      "Mod+Ctrl+Shift+H".move-column-to-monitor-left = {};
+      "Mod+Ctrl+Shift+L".move-column-to-monitor-right = {};
+      "Mod+Ctrl+Shift+J".move-column-to-monitor-down = {};
+      "Mod+Ctrl+Shift+K".move-column-to-monitor-up = {};
+      "Mod+Ctrl+Shift+Left".move-column-to-monitor-left = {};
+      "Mod+Ctrl+Shift+Right".move-column-to-monitor-right = {};
+      "Mod+Ctrl+Shift+Down".move-column-to-monitor-down = {};
+      "Mod+Ctrl+Shift+Up".move-column-to-monitor-up = {};
 
-    # Move column to numbered workspace
-    "Mod+Shift+1".move-column-to-workspace = 1;
-    "Mod+Shift+2".move-column-to-workspace = 2;
-    "Mod+Shift+3".move-column-to-workspace = 3;
-    "Mod+Shift+4".move-column-to-workspace = 4;
-    "Mod+Shift+5".move-column-to-workspace = 5;
-    "Mod+Shift+6".move-column-to-workspace = 6;
-    "Mod+Shift+7".move-column-to-workspace = 7;
-    "Mod+Shift+8".move-column-to-workspace = 8;
-    "Mod+Shift+9".move-column-to-workspace = 9;
+      # ── Workspace Navigation ──────────────────────────────────────────────
+      "Mod+Tab" = {
+        _props.cooldown-ms = 100;
+        focus-workspace-down = {};
+      };
+      "Mod+Shift+Tab" = {
+        _props.cooldown-ms = 100;
+        focus-workspace-up = {};
+      };
+      "Mod+U".focus-workspace-down = {};
+      "Mod+I".focus-workspace-up = {};
+      "Mod+Page_Down".focus-workspace-down = {};
+      "Mod+Page_Up".focus-workspace-up = {};
 
-    # ── Mouse Scroll Workspace Navigation ─────────────────────────────────
-    "Mod+WheelScrollDown" = {
-      _props.cooldown-ms = 150;
-      focus-workspace-down = {};
-    };
-    "Mod+WheelScrollUp" = {
-      _props.cooldown-ms = 150;
-      focus-workspace-up = {};
-    };
-    "Mod+Ctrl+WheelScrollDown" = {
-      _props.cooldown-ms = 150;
-      move-column-to-workspace-down = {};
-    };
-    "Mod+Ctrl+WheelScrollUp" = {
-      _props.cooldown-ms = 150;
-      move-column-to-workspace-up = {};
-    };
+      "Mod+Ctrl+U".move-column-to-workspace-down = {};
+      "Mod+Ctrl+I".move-column-to-workspace-up = {};
+      "Mod+Ctrl+Page_Down".move-column-to-workspace-down = {};
+      "Mod+Ctrl+Page_Up".move-column-to-workspace-up = {};
 
-    "Mod+WheelScrollRight".focus-column-right = {};
-    "Mod+WheelScrollLeft".focus-column-left = {};
-    "Mod+Ctrl+WheelScrollRight".move-column-right = {};
-    "Mod+Ctrl+WheelScrollLeft".move-column-left = {};
+      "Mod+Shift+U".move-workspace-down = {};
+      "Mod+Shift+I".move-workspace-up = {};
 
-    "Mod+Shift+WheelScrollDown".focus-column-right = {};
-    "Mod+Shift+WheelScrollUp".focus-column-left = {};
-    "Mod+Ctrl+Shift+WheelScrollDown".move-column-right = {};
-    "Mod+Ctrl+Shift+WheelScrollUp".move-column-left = {};
+      # Numbered workspace access
+      "Mod+1".focus-workspace = 1;
+      "Mod+2".focus-workspace = 2;
+      "Mod+3".focus-workspace = 3;
+      "Mod+4".focus-workspace = 4;
+      "Mod+5".focus-workspace = 5;
+      "Mod+6".focus-workspace = 6;
+      "Mod+7".focus-workspace = 7;
+      "Mod+8".focus-workspace = 8;
+      "Mod+9".focus-workspace = 9;
 
-    # ── Screenshots ────────────────────────────────────────────────────────
-    "Print".screenshot = {};
-    "Ctrl+Print".screenshot-screen = {};
-    "Alt+Print".screenshot-window = {};
+      # Move column to numbered workspace
+      "Mod+Shift+1".move-column-to-workspace = 1;
+      "Mod+Shift+2".move-column-to-workspace = 2;
+      "Mod+Shift+3".move-column-to-workspace = 3;
+      "Mod+Shift+4".move-column-to-workspace = 4;
+      "Mod+Shift+5".move-column-to-workspace = 5;
+      "Mod+Shift+6".move-column-to-workspace = 6;
+      "Mod+Shift+7".move-column-to-workspace = 7;
+      "Mod+Shift+8".move-column-to-workspace = 8;
+      "Mod+Shift+9".move-column-to-workspace = 9;
 
-    "Mod+Alt+B".spawn-sh = "playerctl --player=ShairportSync,spotify,mpv,%any play-pause";
-    "Mod+Alt+N".spawn-sh = "playerctl --player=ShairportSync,spotify,mpv,%any previous";
-    "Mod+Alt+M".spawn-sh = "playerctl --player=ShairportSync,spotify,mpv,%any next";
+      # ── Mouse Scroll Workspace Navigation ─────────────────────────────────
+      "Mod+WheelScrollDown" = {
+        _props.cooldown-ms = 150;
+        focus-workspace-down = {};
+      };
+      "Mod+WheelScrollUp" = {
+        _props.cooldown-ms = 150;
+        focus-workspace-up = {};
+      };
+      "Mod+Ctrl+WheelScrollDown" = {
+        _props.cooldown-ms = 150;
+        move-column-to-workspace-down = {};
+      };
+      "Mod+Ctrl+WheelScrollUp" = {
+        _props.cooldown-ms = 150;
+        move-column-to-workspace-up = {};
+      };
 
-    # ── Volume (PipeWire / WirePlumber) ───────────────────────────────────
-    "XF86AudioRaiseVolume" = {
-      _props.allow-when-locked = true;
-      spawn-sh = "noctalia-shell ipc call volume increase";
-    };
-    "XF86AudioLowerVolume" = {
-      _props.allow-when-locked = true;
-      spawn-sh = "noctalia-shell ipc call volume decrease";
-    };
-    "XF86AudioMute" = {
-      _props.allow-when-locked = true;
-      spawn-sh = "noctalia-shell ipc call volume muteOutput";
-    };
-    "XF86AudioMicMute" = {
-      _props.allow-when-locked = true;
-      spawn-sh = "noctalia-shell ipc call volume muteInput";
-    };
+      "Mod+WheelScrollRight".focus-column-right = {};
+      "Mod+WheelScrollLeft".focus-column-left = {};
+      "Mod+Ctrl+WheelScrollRight".move-column-right = {};
+      "Mod+Ctrl+WheelScrollLeft".move-column-left = {};
 
-    # ── Media Keys (playerctl / MPRIS) ────────────────────────────────────
-    "XF86AudioPlay" = {
-      _props.allow-when-locked = true;
-      spawn-sh = "playerctl --player=ShairportSync,spotify,mpv,%any play-pause";
-    };
-    "XF86AudioPause" = {
-      _props.allow-when-locked = true;
-      spawn-sh = "playerctl --player=ShairportSync,spotify,mpv,%any play-pause";
-    };
-    "XF86AudioStop" = {
-      _props.allow-when-locked = true;
-      spawn-sh = "playerctl --player=ShairportSync,spotify,mpv,%any stop";
-    };
-    "XF86AudioPrev" = {
-      _props.allow-when-locked = true;
-      spawn-sh = "playerctl --player=ShairportSync,spotify,mpv,%any previous";
-    };
-    "XF86AudioNext" = {
-      _props.allow-when-locked = true;
-      spawn-sh = "playerctl --player=ShairportSync,spotify,mpv,%any next";
-    };
+      "Mod+Shift+WheelScrollDown".focus-column-right = {};
+      "Mod+Shift+WheelScrollUp".focus-column-left = {};
+      "Mod+Ctrl+Shift+WheelScrollDown".move-column-right = {};
+      "Mod+Ctrl+Shift+WheelScrollUp".move-column-left = {};
 
-    # ── Brightness ─────────────────────────────────────────────────────────
-    "XF86MonBrightnessUp" = {
-      _props.allow-when-locked = true;
-      spawn-sh = "noctalia-shell ipc call brightness increase";
-    };
-    "XF86MonBrightnessDown" = {
-      _props.allow-when-locked = true;
-      spawn-sh = "noctalia-shell ipc call brightness decrease";
-    };
-    "Mod+Alt+Equal" = {
-      _props.hotkey-overlay-title = "DDC Raise Brightness";
-      spawn-sh = "noctalia-shell ipc call brightness increase";
-    };
-    "Mod+Alt+Minus" = {
-      _props.hotkey-overlay-title = "DDC Lower Brightness";
-      spawn-sh = "noctalia-shell ipc call brightness decrease";
-    };
-  } // brightnessBinds;
+      # ── Screenshots ────────────────────────────────────────────────────────
+      "Print".screenshot = {};
+      "Ctrl+Print".screenshot-screen = {};
+      "Alt+Print".screenshot-window = {};
+
+      "Mod+Alt+B".spawn-sh = "playerctl --player=ShairportSync,spotify,mpv,%any play-pause";
+      "Mod+Alt+N".spawn-sh = "playerctl --player=ShairportSync,spotify,mpv,%any previous";
+      "Mod+Alt+M".spawn-sh = "playerctl --player=ShairportSync,spotify,mpv,%any next";
+
+      # ── Volume (PipeWire / WirePlumber) ───────────────────────────────────
+      "XF86AudioRaiseVolume" = {
+        _props.allow-when-locked = true;
+        spawn-sh = "noctalia-shell ipc call volume increase";
+      };
+      "XF86AudioLowerVolume" = {
+        _props.allow-when-locked = true;
+        spawn-sh = "noctalia-shell ipc call volume decrease";
+      };
+      "XF86AudioMute" = {
+        _props.allow-when-locked = true;
+        spawn-sh = "noctalia-shell ipc call volume muteOutput";
+      };
+      "XF86AudioMicMute" = {
+        _props.allow-when-locked = true;
+        spawn-sh = "noctalia-shell ipc call volume muteInput";
+      };
+
+      # ── Media Keys (playerctl / MPRIS) ────────────────────────────────────
+      "XF86AudioPlay" = {
+        _props.allow-when-locked = true;
+        spawn-sh = "playerctl --player=ShairportSync,spotify,mpv,%any play-pause";
+      };
+      "XF86AudioPause" = {
+        _props.allow-when-locked = true;
+        spawn-sh = "playerctl --player=ShairportSync,spotify,mpv,%any play-pause";
+      };
+      "XF86AudioStop" = {
+        _props.allow-when-locked = true;
+        spawn-sh = "playerctl --player=ShairportSync,spotify,mpv,%any stop";
+      };
+      "XF86AudioPrev" = {
+        _props.allow-when-locked = true;
+        spawn-sh = "playerctl --player=ShairportSync,spotify,mpv,%any previous";
+      };
+      "XF86AudioNext" = {
+        _props.allow-when-locked = true;
+        spawn-sh = "playerctl --player=ShairportSync,spotify,mpv,%any next";
+      };
+
+      # ── Brightness ─────────────────────────────────────────────────────────
+      "XF86MonBrightnessUp" = {
+        _props.allow-when-locked = true;
+        spawn-sh = "noctalia-shell ipc call brightness increase";
+      };
+      "XF86MonBrightnessDown" = {
+        _props.allow-when-locked = true;
+        spawn-sh = "noctalia-shell ipc call brightness decrease";
+      };
+      "Mod+Alt+Equal" = {
+        _props.hotkey-overlay-title = "DDC Raise Brightness";
+        spawn-sh = "noctalia-shell ipc call brightness increase";
+      };
+      "Mod+Alt+Minus" = {
+        _props.hotkey-overlay-title = "DDC Lower Brightness";
+        spawn-sh = "noctalia-shell ipc call brightness decrease";
+      };
+    }
+    // brightnessBinds;
 }
