@@ -265,7 +265,6 @@ in {
       };
     }
 
-    # Disabled in the original via `/-window-rule` (KDL slashdash comment).
     # Uncomment to block KeePassXC / GNOME Secrets from screen capture:
     # {
     #   window-rule = {
@@ -312,7 +311,7 @@ in {
       # ── Applications ──────────────────────────────────────────────────────
       "Mod+Shift+B" = {
         _props.hotkey-overlay-title = "Open Browser";
-        spawn = "zen";
+        spawn = "zen-beta";
       };
       "Mod+Shift+X" = {
         _props.hotkey-overlay-title = "File Manager";
