@@ -6,13 +6,26 @@
 }: let
   cfg = config.my.features.desktop.apps.browsers.zen-browser;
 
-  extension = shortId: guid: {
-    name = guid;
-    value = {
-      install_url = "https://addons.mozilla.org/en-US/firefox/downloads/latest/${shortId}/latest.xpi";
-      installation_mode = "normal_installed";
+  mkPluginUrl = id: "https://addons.mozilla.org/en-US/firefox/downloads/latest/${id}/latest.xpi";
+
+  mkExtensionEntry = {
+    id,
+    pinned ? false,
+  }: let
+    base = {
+      install_url = mkPluginUrl id;
+      installation_mode = "force_installed";
     };
-  };
+  in
+    if pinned
+    then base // {default_area = "navbar";}
+    else base;
+
+  # Lets an entry be either a full mkExtensionEntry attrset or just the slug
+  mkExtensionSettings = builtins.mapAttrs (_: entry:
+    if builtins.isAttrs entry
+    then entry
+    else mkExtensionEntry {id = entry;});
 
   baseSettings = {
     # Fingerprinting
@@ -124,12 +137,18 @@
     "zen.welcome-screen.seen" = true;
   };
 
-  extensions = [
-    (extension "ublock-origin" "uBlock0@raymondhill.net")
-    # (extension "canvasblocker" "CanvasBlocker@kkapsner.de")
-    (extension "proton-pass" "78272b6fa58f4a1abaac99321d503a20@proton.me")
-    (extension "darkreader" "addon@darkreader.org")
-  ];
+  extensions = {
+    "uBlock0@raymondhill.net" = mkExtensionEntry {
+      id = "ublock-origin";
+      pinned = true;
+    };
+    "78272b6fa58f4a1abaac99321d503a20@proton.me" = mkExtensionEntry {
+      id = "proton-pass";
+      pinned = true;
+    };
+    "addon@darkreader.org" = "darkreader";
+    # "CanvasBlocker@kkapsner.de" = "canvasblocker";
+  };
 in {
   imports = [
     inputs.zen-browser.homeModules.beta
@@ -185,7 +204,7 @@ in {
           ImproveSuggest = false;
         };
 
-        ExtensionSettings = builtins.listToAttrs extensions;
+        ExtensionSettings = mkExtensionSettings extensions;
       };
 
       profiles.suavicrema = {
