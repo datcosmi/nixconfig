@@ -21,33 +21,14 @@
     then base // {default_area = "navbar";}
     else base;
 
-  # Lets an entry be either a full mkExtensionEntry attrset or just the slug
+  # An entry in extensions is either just the slug or { id, pinned }
   mkExtensionSettings = builtins.mapAttrs (_: entry:
-    if builtins.isAttrs entry
-    then entry
-    else mkExtensionEntry {id = entry;});
+    if builtins.isString entry
+    then mkExtensionEntry {id = entry;}
+    else mkExtensionEntry {inherit (entry) id pinned;});
 
   baseSettings = {
-    # Fingerprinting
-    "privacy.resistFingerprinting" = true;
-    "privacy.resistFingerprinting.letterboxing" = false;
-    "privacy.resistFingerprinting.autoDeclineNoUserInputCanvasPrompts" = true;
-    "privacy.trackingprotection.fingerprinting.enabled" = true;
-    "privacy.trackingprotection.cryptomining.enabled" = true;
-    "webgl.disable-fail-if-major-performance-caveat" = true;
-
-    # Tracking protection / cookies
-    "browser.contentblocking.category" = "strict";
-    "privacy.trackingprotection.enabled" = true;
-    "privacy.trackingprotection.socialtracking.enabled" = true;
-    "privacy.query_stripping.enabled" = true;
-    "privacy.query_stripping.enabled.pbmode" = true;
-    "privacy.donottrackheader.enabled" = true;
-    "privacy.globalprivacycontrol.enabled" = true;
-    "network.cookie.cookieBehavior" = 5; # 5 = Total Cookie Protection (state partitioning)
-    "network.http.referer.XOriginTrimmingPolicy" = 2;
-
-    # Don't wipe state on exit
+    # Keep state across restarts
     "privacy.sanitize.sanitizeOnShutdown" = false;
     "privacy.clearOnShutdown.cookies" = false;
     "privacy.clearOnShutdown.history" = false;
@@ -102,86 +83,75 @@
     "browser.uitour.enabled" = false;
     "browser.shell.checkDefaultBrowser" = false;
 
-    # Network: no speculative connections / prefetch
-    "network.dns.disablePrefetch" = true;
-    "network.prefetch-next" = false;
-    "network.predictor.enabled" = false;
-    "network.http.speculative-parallel-limit" = 0;
-    "browser.urlbar.speculativeConnect.enabled" = false;
-    "browser.send_pings" = false;
-    "network.captive-portal-service.enabled" = false;
-    "network.connectivity-service.enabled" = false;
-
-    # Transport security
-    "dom.security.https_only_mode" = true;
-    "security.ssl.require_safe_negotiation" = true;
-    "security.tls.enable_0rtt_data" = false;
-    "network.IDN_show_punycode" = true;
-
-    # WebRTC: keep it working, stop local-IP leaks
-    "media.peerconnection.ice.default_address_only" = true;
-
-    # Search / forms / passwords
-    "browser.search.suggest.enabled" = false;
-    "browser.urlbar.suggest.searches" = false;
-    "browser.formfill.enable" = false;
-    "extensions.formautofill.creditCards.enabled" = false;
-    "extensions.formautofill.addresses.enabled" = false;
-    "signon.rememberSignons" = false;
-    "signon.autofillForms" = false;
-
-    # Safe Browsing: keep local protection, drop remote lookups
-    "browser.safebrowsing.downloads.remote.enabled" = false;
-
     # Zen specifics
     "zen.welcome-screen.seen" = true;
-  };
-
-  extensions = {
-    "uBlock0@raymondhill.net" = mkExtensionEntry {
-      id = "ublock-origin";
-      pinned = true;
-    };
-    "78272b6fa58f4a1abaac99321d503a20@proton.me" = mkExtensionEntry {
-      id = "proton-pass";
-      pinned = true;
-    };
-    "addon@darkreader.org" = "darkreader";
-    "74145f27-f039-47ce-a470-a662b129930a" = "clearurls";
-    # "CanvasBlocker@kkapsner.de" = "canvasblocker";
   };
 in {
   imports = [
     inputs.zen-browser.homeModules.beta
+    ./hardening.nix
   ];
 
-  options.my.features.desktop.apps.browsers.zen-browser.enable = lib.mkEnableOption "Enable Zen Browser";
+  options.my.features.desktop.apps.browsers.zen-browser = {
+    enable = lib.mkEnableOption "Enable Zen Browser";
+
+    profile = lib.mkOption {
+      type = lib.types.str;
+      default = "default";
+      description = "Name of the Zen profile that the modules write into";
+    };
+
+    extensions = lib.mkOption {
+      type = with lib.types;
+        attrsOf (either str (submodule {
+          options = {
+            id = lib.mkOption {
+              type = str;
+              description = "Add-on slug on addons.mozilla.org.";
+            };
+            pinned = lib.mkOption {
+              type = bool;
+              default = false;
+              description = "Pin the extension button to the navbar.";
+            };
+          };
+        }));
+      default = {};
+      example = {
+        "addon@darkreader.org" = "darkreader";
+        "uBlock0@raymondhill.net" = {
+          id = "ublock-origin";
+          pinned = true;
+        };
+      };
+      description = "Extensions to force-install";
+    };
+  };
 
   config = lib.mkIf cfg.enable {
+    # Always on
+    my.features.desktop.apps.browsers.zen-browser.extensions = {
+      "uBlock0@raymondhill.net" = {
+        id = "ublock-origin";
+        pinned = true;
+      };
+      "addon@darkreader.org" = "darkreader";
+    };
+
     programs.zen-browser = {
       enable = true;
 
-      setAsDefaultBrowser = true;
+      setAsDefaultBrowser = lib.mkDefault true;
 
       policies = {
         DisableAppUpdate = true;
         DisableTelemetry = true;
         DisablePocket = true;
         DisableFirefoxStudies = true;
-        DisableFirefoxAccounts = true;
         DisableFeedbackCommands = true;
         DontCheckDefaultBrowser = true;
         NoDefaultBookmarks = true;
-        OfferToSaveLogins = false;
         PasswordManagerEnabled = false;
-
-        HttpsOnlyMode = "force_enabled";
-
-        DNSOverHTTPS = {
-          Enabled = true;
-          ProviderURL = "https://dns.quad9.net/dns-query";
-          Fallback = true;
-        };
 
         UserMessaging = {
           ExtensionRecommendations = false;
@@ -191,31 +161,18 @@ in {
           UrlbarInterventions = false;
         };
 
-        EnableTrackingProtection = {
-          Value = true;
-          Locked = true;
-          Cryptomining = true;
-          Fingerprinting = true;
-          EmailTracking = true;
-        };
-
         FirefoxSuggest = {
           WebSuggestions = false;
           SponsoredSuggestions = false;
           ImproveSuggest = false;
         };
 
-        ExtensionSettings = mkExtensionSettings extensions;
+        ExtensionSettings = mkExtensionSettings cfg.extensions;
       };
 
-      profiles.suavicrema = {
+      profiles.${cfg.profile} = {
         id = 0;
         isDefault = true;
-
-        search = {
-          force = true;
-          default = "ddg";
-        };
 
         settings = lib.mapAttrs (_: lib.mkDefault) baseSettings;
       };
