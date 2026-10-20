@@ -42,7 +42,7 @@ in {
           "zen.workspaces.continue-where-left-off" = false;
         };
 
-        containersForce = false;
+        containersForce = true;
         containers = {
           Personal = {
             id = 1;
@@ -66,7 +66,7 @@ in {
           };
         };
 
-        spacesForce = false;
+        spacesForce = true;
         spaces = {
           "Personal" = {
             id = spaceIds.personal;
@@ -79,12 +79,28 @@ in {
                 url = "https://youtube.com";
                 position = 101;
                 isEssential = true;
+                container = 1;
               };
               "Whatsapp" = {
                 id = "28e81889-e3e4-49a0-b9c7-ccd3ad28307c";
                 url = "https://web.whatsapp.com";
                 position = 102;
                 isEssential = true;
+                container = 1;
+              };
+              "Twitter" = {
+                id = "66f40e07-cce4-4b2f-b0d9-fa1378b04c94";
+                url = "https://x.com";
+                position = 103;
+                isEssential = true;
+                container = 1;
+              };
+              "Reddit" = {
+                id = "eb20432e-2239-48e1-9946-e68474c35159";
+                url = "https://reddit.com";
+                position = 104;
+                isEssential = true;
+                container = 1;
               };
             };
           };
@@ -93,22 +109,105 @@ in {
             position = 2000;
             icon = "💻";
             container = 2;
+            pins = {
+              "GitHub" = {
+                id = "48e8a119-5a14-4826-9545-91c8e8dd3bf6";
+                url = "https://github.com";
+                position = 101;
+                isEssential = true;
+                container = 2;
+              };
+              "Claude" = {
+                id = "918ec525-d5de-4700-a0f7-33aa4cb6ffcc";
+                url = "https://claude.ai";
+                position = 102;
+                isEssential = true;
+                container = 2;
+              };
+              "ChaBiBiPi" = {
+                id = "cf646475-e7d8-4147-9da4-39857000470f";
+                url = "https://chatgpt.com";
+                position = 103;
+                isEssential = true;
+                container = 2;
+              };
+              "MyNixOS" = {
+                id = "c15bf767-c870-4d8b-a5ad-95d4ace0ed25";
+                url = "https://mynixos.com";
+                position = 104;
+                isEssential = true;
+                container = 2;
+              };
+            };
           };
           "Professional" = {
             id = spaceIds.professional;
             position = 3000;
             icon = "💼";
             container = 3;
+            pins = {
+              "ProtonDrive" = {
+                id = "d2769513-6fea-4346-8b3d-b5c67fa4740a";
+                url = "https://drive.proton.me";
+                position = 101;
+                isEssential = true;
+                container = 3;
+              };
+              "ProtonMail" = {
+                id = "3aba17b3-5162-4daa-b430-4a1e394df28b";
+                url = "https://mail.proton.me";
+                position = 102;
+                isEssential = true;
+                container = 3;
+              };
+              "LinkedIn" = {
+                id = "3ce84843-a83c-4d89-ab40-4cade20c37b6";
+                url = "https://linkedin.com";
+                position = 103;
+                isEssential = true;
+                container = 3;
+              };
+              "Indeed" = {
+                id = "e3081027-ed2d-42cd-ac16-b1dba4b15896";
+                url = "https://indeed.com";
+                position = 104;
+                isEssential = true;
+                container = 3;
+              };
+              "Overleaf" = {
+                id = "0e56d3ae-7418-4ed2-b509-d69b91f8f7f3";
+                url = "https://overleaf.com";
+                position = 105;
+                isEssential = true;
+                container = 3;
+              };
+            };
           };
           "Shopping" = {
             id = spaceIds.shopping;
             position = 4000;
-            icon = "💼";
+            icon = "🛒";
             container = 4;
+            pins = {
+              "Amazon" = {
+                id = "fbe04397-42e6-4767-84e6-9a13bd15958e";
+                url = "https://amazon.com.mx";
+                position = 101;
+                isEssential = true;
+                container = 4;
+              };
+              "MercadoLibre" = {
+                id = "df0eb859-3f50-48fc-8f69-46fd377dc184";
+                url = "https://mercadolibre.com.mx";
+                position = 102;
+                isEssential = true;
+                container = 4;
+              };
+            };
           };
         };
 
-        pinsForce = false;
+        pinsForce = true;
         pinsForceAction = "demote";
       };
     };
