@@ -5,6 +5,7 @@
   ...
 }: let
   cfg = config.my.features.desktop.apps.browsers.zen-browser;
+  theme = config.my.features.theme;
 
   mkPluginUrl = id: "https://addons.mozilla.org/firefox/downloads/latest/${id}/latest.xpi";
 
@@ -176,6 +177,11 @@ in {
 
         settings = lib.mapAttrs (_: lib.mkDefault) baseSettings;
       };
+    };
+
+    home.file.".config/zen/suavicrema/chrome" = lib.mkIf (theme.palette == "catppuccin-mocha") {
+      source = ./chrome;
+      recursive = true;
     };
   };
 }
