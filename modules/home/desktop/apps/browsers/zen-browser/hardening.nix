@@ -102,8 +102,15 @@ in {
         };
 
         SanitizeOnShutdown = {
-          FormData = true;
           Cache = true;
+          Cookies = false;
+          Downloads = true;
+          History = true;
+          Sessions = true;
+          SiteSettings = true;
+          OfflineApps = false;
+          FormData = true;
+          Locked = true;
         };
       };
 

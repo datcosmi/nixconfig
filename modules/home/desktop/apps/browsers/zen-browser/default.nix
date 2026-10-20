@@ -29,16 +29,7 @@
     else mkExtensionEntry {inherit (entry) id pinned;});
 
   baseSettings = {
-    # Keep state across restarts
-    "privacy.sanitize.sanitizeOnShutdown" = false;
-    "privacy.clearOnShutdown.cookies" = false;
-    "privacy.clearOnShutdown.history" = false;
-    "privacy.clearOnShutdown.sessions" = false;
-    "privacy.clearOnShutdown.cache" = false;
-    "privacy.clearOnShutdown.offlineApps" = false;
-    "privacy.clearOnShutdown_v2.cookiesAndStorage" = false;
-    "privacy.clearOnShutdown_v2.historyFormDataAndDownloads" = false;
-    "privacy.clearOnShutdown_v2.cache" = false;
+    # Cookies and session store
     "network.cookie.lifetimePolicy" = 0;
     "browser.sessionstore.resume_from_crash" = true;
 
@@ -86,6 +77,7 @@
 
     # Zen specifics
     "zen.welcome-screen.seen" = true;
+    "zen.urlbar.behavior" = "float";
   };
 in {
   imports = [
