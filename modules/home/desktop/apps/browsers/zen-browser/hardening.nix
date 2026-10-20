@@ -78,6 +78,7 @@ in {
   config = lib.mkIf (cfg.enable && hcfg.enable) {
     my.features.desktop.apps.browsers.zen-browser.extensions = {
       "{74145f27-f039-47ce-a470-a662b129930a}" = "clearurls";
+      "jid1-BoFifL9Vbdl2zQ@jetpack" = "decentraleyes";
       # "CanvasBlocker@kkapsner.de" = "canvasblocker";
     };
 
