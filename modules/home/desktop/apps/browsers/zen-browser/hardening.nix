@@ -19,6 +19,7 @@
     "privacy.query_stripping.enabled.pbmode" = true;
     "privacy.donottrackheader.enabled" = true;
     "privacy.globalprivacycontrol.enabled" = true;
+    "privacy.spoof_english" = 1;
     "network.cookie.cookieBehavior" = 5; # 5 = Total Cookie Protection (state partitioning)
     "network.http.referer.XOriginTrimmingPolicy" = 2;
 
@@ -57,6 +58,10 @@
     "privacy.resistFingerprinting" = true;
     "privacy.resistFingerprinting.letterboxing" = false;
     "privacy.resistFingerprinting.autoDeclineNoUserInputCanvasPrompts" = true;
+    "privacy.resistFingerprinting.randomization.canvas.use_siphash" = true;
+    "privacy.resistFingerprinting.randomization.daily_reset.enabled" = true;
+    "privacy.resistFingerprinting.randomization.daily_reset.private.enabled" = true;
+    "privacy.resistFingerprinting.block_mozAddonManager" = true;
     "webgl.disable-fail-if-major-performance-caveat" = true;
   };
 in {
@@ -93,6 +98,11 @@ in {
           Cryptomining = true;
           Fingerprinting = true;
           EmailTracking = true;
+        };
+
+        SanitizeOnShutdown = {
+          FormData = true;
+          Cache = true;
         };
       };
 
