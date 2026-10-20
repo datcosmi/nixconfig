@@ -34,7 +34,7 @@
     desktop = {
       apps = {
         enable = true;
-        browsers.librewolf.enable = false;
+        browsers.zen-browser.hardening.enable = true;
         music.tidal.enable = false;
       };
 

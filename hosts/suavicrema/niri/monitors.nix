@@ -60,7 +60,7 @@
 
     {
       window-rule = {
-        match._props.app-id = "(firefox|zen|librewolf)$";
+        match._props.app-id = "(firefox|zen-beta|librewolf)$";
         opacity = 1.0;
         open-maximized = true;
         open-maximized-to-edges = false;
@@ -71,7 +71,7 @@
     {
       window-rule = {
         match._props = {
-          app-id = "zen";
+          app-id = "zen-beta";
           title = "Library";
         };
         open-floating = true;
