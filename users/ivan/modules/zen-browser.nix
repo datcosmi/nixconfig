@@ -22,6 +22,7 @@ in {
           id = "proton-pass";
           pinned = true;
         };
+        "amptra@keepa.com" = "keepa";
       };
     };
 
