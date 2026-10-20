@@ -1,6 +1,5 @@
 {
   pkgs,
-  lib,
   helpers,
   ...
 }: {
@@ -23,4 +22,6 @@
     enable = true;
     defaultEditor = true;
   };
+
+  nix.settings.trusted-users = ["ivan"];
 }
