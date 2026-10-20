@@ -29,6 +29,18 @@ in {
     programs.zen-browser = {
       policies = {
         OfferToSaveLogins = false;
+        SearchSuggestEnabled = false;
+
+        Preferences = {
+          "browser.urlbar.suggest.searches" = {
+            Value = false;
+            Status = "locked";
+          };
+          "browser.urlbar.quicksuggest.enabled" = {
+            Value = false;
+            Status = "locked";
+          };
+        };
       };
 
       profiles.suavicrema = {
