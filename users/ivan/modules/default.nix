@@ -10,5 +10,6 @@
     ./ssh.nix
     ./shairport-sync.nix
     ./gh.nix
+    ./zen-browser.nix
   ];
 }
