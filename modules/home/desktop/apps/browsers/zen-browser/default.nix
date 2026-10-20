@@ -6,7 +6,7 @@
 }: let
   cfg = config.my.features.desktop.apps.browsers.zen-browser;
 
-  mkPluginUrl = id: "https://addons.mozilla.org/en-US/firefox/downloads/latest/${id}/latest.xpi";
+  mkPluginUrl = id: "https://addons.mozilla.org/firefox/downloads/latest/${id}/latest.xpi";
 
   mkExtensionEntry = {
     id,
