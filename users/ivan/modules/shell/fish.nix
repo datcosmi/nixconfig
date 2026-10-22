@@ -20,10 +20,10 @@ in {
 
         # cd = "z";
 
-        nix-rebuild = "sudo nixos-rebuild switch --flake ~/nixconfig";
-        flake-check = "nix flake check ~/nixconfig";
-        flake-update = "cd ~/nixconfig && nix flake update";
-        update-nix = "cd ~/nixconfig && nix flake update && sudo nixos-rebuild switch --flake ~/nixconfig";
+        nix-rebuild = "sudo nixos-rebuild switch --flake ~/.nixconfig";
+        flake-check = "nix flake check ~/.nixconfig";
+        flake-update = "cd ~/.nixconfig && nix flake update";
+        update-nix = "cd ~/.nixconfig && nix flake update && sudo nixos-rebuild switch --flake ~/.nixconfig";
         list-gen = "nix profile history --profile /nix/var/nix/profiles/system";
         del-gen = "sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations";
         gc = "sudo nix-collect-garbage";
@@ -35,9 +35,9 @@ in {
       };
 
       shellAbbrs = {
-        nr = "sudo nixos-rebuild switch --flake ~/nixconfig";
-        nrt = "sudo nixos-rebuild test --flake ~/nixconfig";
-        fc = "nix flake check ~/nixconfig";
+        nr = "sudo nixos-rebuild switch --flake ~/.nixconfig";
+        nrt = "sudo nixos-rebuild test --flake ~/.nixconfig";
+        fc = "nix flake check ~/.nixconfig";
         cf = "clear && fastfetch";
         nd = "nix develop";
 

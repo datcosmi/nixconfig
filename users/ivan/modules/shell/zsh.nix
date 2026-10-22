@@ -21,12 +21,12 @@ in {
 
         shell = "source ~/.zshrc";
 
-        nix-rebuild = "sudo nixos-rebuild switch --flake $HOME/nixconfig";
-        # nix-rebuild = "sudo nixos-rebuild switch --flake $HOME/nixconfig#suavicrema";
-        flake-check = "nix flake check $HOME/nixconfig";
-        flake-update = "cd ~/nixconfig; nix flake update";
-        update-nix = "cd ~/nixconfig; nix flake update; sudo nixos-rebuild switch --flake $HOME/nixconfig";
-        # upgrade-nix = "cd ~/nixconfig; nix flake update; sudo nixos-rebuild switch --upgrade";
+        nix-rebuild = "sudo nixos-rebuild switch --flake $HOME/.nixconfig";
+        # nix-rebuild = "sudo nixos-rebuild switch --flake $HOME/.nixconfig#suavicrema";
+        flake-check = "nix flake check $HOME/.nixconfig";
+        flake-update = "cd ~/.nixconfig; nix flake update";
+        update-nix = "cd ~/.nixconfig; nix flake update; sudo nixos-rebuild switch --flake $HOME/.nixconfig";
+        # upgrade-nix = "cd ~/.nixconfig; nix flake update; sudo nixos-rebuild switch --upgrade";
 
         list-gen = "nix profile history --profile /nix/var/nix/profiles/system";
         # gc-keep = "sudo nix-env --profile /nix/var/nix/profiles/system --delete-generations +6";
