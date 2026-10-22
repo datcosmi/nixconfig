@@ -8,13 +8,17 @@
   isNvidia = cfg.gpu.vendor == "nvidia";
 in {
   config = lib.mkIf isNvidia {
+    assertions = [
+      {
+        assertion = !cfg.hybrid || (cfg.prime.intelBusId != null && cfg.prime.nvidiaBusId != null);
+        message = "my.hardware.hybrid = true requires my.hardware.prime.intelBusId and my.hardware.prime.nvidiaBusId.";
+      }
+    ];
+
     services.xserver.videoDrivers = ["nvidia"];
 
     hardware.nvidia = {
       open = cfg.gpu.openDrivers;
-      modesetting.enable = true;
-      videoAcceleration = true;
-      nvidiaSettings = true;
       package = cfg.gpu.nvidiaPackage;
 
       powerManagement = lib.mkIf cfg.needSuspend {
@@ -27,13 +31,12 @@ in {
           enable = true;
           enableOffloadCmd = true;
         };
-        intelBusId = cfg.prime.intelBusId;
-        nvidiaBusId = cfg.prime.nvidiaBusId;
+        inherit (cfg.prime) intelBusId nvidiaBusId;
       };
     };
 
     hardware.graphics.extraPackages = with pkgs; [
-      nvidia-vaapi-driver
+      nvtopPackages.nvidia
     ];
   };
 }
