@@ -4,7 +4,8 @@
   lib,
   ...
 }: let
-  cfg = config.my.features.wayland;
+  cfg = config.my.features.desktop.niri;
+  hw = config.my.hardware;
 in {
   imports = [./nvidia.nix];
 
@@ -15,7 +16,14 @@ in {
       hardware.graphics = {
         enable = true;
         enable32Bit = true;
+
+        extraPackages = lib.optionals hw.hybrid [pkgs.intel-media-driver];
       };
+
+      environment.systemPackages = with pkgs; [
+        vulkan-tools # vulkaninfo, vkcube
+        libva-utils # vainfo
+      ];
     }
 
     (lib.mkIf cfg.enable {
