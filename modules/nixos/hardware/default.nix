@@ -90,4 +90,9 @@ with lib; {
       description = "Has a wifi antenna";
     };
   };
+
+  config = {
+    # Wi-Fi, Bluetooth, GPU firmware...
+    hardware.enableRedistributableFirmware = lib.mkDefault true;
+  };
 }
