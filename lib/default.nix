@@ -16,7 +16,7 @@ in rec {
     lib.nixosSystem {
       inherit system;
 
-      specialArgs = {inherit inputs;} // {helpers = {inherit mkUser;};};
+      specialArgs = {inherit inputs hostname;} // {helpers = {inherit mkUser;};};
 
       modules =
         [
