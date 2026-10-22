@@ -11,7 +11,6 @@
     ./clipboard
     ./login
     ./gaming
-    ./display.nix
 
     ./cache.nix
   ];

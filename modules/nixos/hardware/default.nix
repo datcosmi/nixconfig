@@ -9,6 +9,7 @@ with lib; {
     ./power.nix
     ./memory.nix
     ./keyboard.nix
+    ./display.nix
   ];
 
   options.my.hardware = {
