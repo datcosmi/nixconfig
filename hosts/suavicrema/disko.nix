@@ -86,18 +86,6 @@
                         "discard=async"
                       ];
                     };
-
-                    "@snapshots" = {
-                      mountpoint = "/.snapshots";
-                      mountOptions = [
-                        "subvol=@snapshots"
-                        "compress=zstd:3"
-                        "noatime"
-                        "ssd"
-                        "space_cache=v2"
-                        "discard=async"
-                      ];
-                    };
                   };
                 };
               };
