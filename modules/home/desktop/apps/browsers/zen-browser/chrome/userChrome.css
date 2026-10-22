@@ -185,7 +185,7 @@
 
   /* Space between the inner background's edge and its content */
   #TabsToolbar {
-    padding: 8px !important;
+    padding: 6px !important;
     box-sizing: border-box !important;
   }
 }
