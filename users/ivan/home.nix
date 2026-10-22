@@ -92,7 +92,7 @@
   programs.nh = {
     enable = true;
     clean.enable = true;
-    clean.extraArgs = "--keep-since 10d --keep 6";
+    clean.extraArgs = "--keep-since 10d --keep 10 --no-gcroots --optimise";
     flake = "${config.home.homeDirectory}/nixconfig";
   };
 }
