@@ -1,8 +1,4 @@
-{
-  config,
-  pkgs,
-  ...
-}: {
+{config, ...}: {
   imports = [
     ./hardware-configuration.nix
     ./disko.nix
@@ -18,7 +14,6 @@
       vendor = "nvidia";
       openDrivers = false; # Nvidia MX150 needs the propietary drivers
       nvidiaPackage = config.boot.kernelPackages.nvidiaPackages.legacy_580;
-      nvidiaGeneration = "pascal";
     };
 
     hybrid = true;
@@ -81,12 +76,6 @@
     boot.plymouth.enable = true;
 
     theme.palette = "catppuccin-mocha";
-  };
-
-  hardware.graphics = {
-    extraPackages = with pkgs; [
-      intel-media-driver
-    ];
   };
 
   system.stateVersion = "26.11";

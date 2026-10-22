@@ -1,4 +1,4 @@
-{lib, ...}: {
+{
   imports = [
     ./hardware-configuration.nix
     ./disko.nix
@@ -15,7 +15,6 @@
     gpu = {
       vendor = "nvidia";
       openDrivers = true;
-      nvidiaGeneration = "turing";
     };
 
     ssd = true;
