@@ -53,6 +53,8 @@ in {
           "signon.rememberSignons" = false;
           "signon.autofillForms" = false;
           "zen.workspaces.continue-where-left-off" = false;
+          "zen.pinned-tab-manager.restore-pinned-tabs-to-pinned-url" = true;
+          "zen.tabs.ctrl-tab.ignore-pending-tabs" = true;
         };
 
         containersForce = true;
