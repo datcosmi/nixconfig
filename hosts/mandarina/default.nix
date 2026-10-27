@@ -67,6 +67,7 @@
         theme.silentSDDM = true;
       };
 
+      networking.firewall.backend = "firewalld";
       services.docker.enable = true;
     };
 
