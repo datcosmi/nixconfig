@@ -34,7 +34,10 @@
     desktop = {
       apps = {
         enable = true;
-        browsers.zen-browser.hardening.enable = true;
+        browsers.zen-browser = {
+          hardening.enable = true;
+          makeDefault = true;
+        };
         music.tidal.enable = false;
       };
 
@@ -54,7 +57,6 @@
 
     shell = {
       enable = true;
-      # zsh.oh-my-zsh.enable = true;
     };
 
     dev.enable = true;
@@ -68,14 +70,6 @@
       zathura
       celluloid
     ];
-
-    defaultApplications = {
-      "text/html" = "zen.desktop";
-      "x-scheme-handler/http" = "zen.desktop";
-      "x-scheme-handler/https" = "zen.desktop";
-      "x-scheme-handler/about" = "zen.desktop";
-      "x-scheme-handler/unknown" = "zen.desktop";
-    };
   };
 
   home.file.".face".source = ./avatar.png;

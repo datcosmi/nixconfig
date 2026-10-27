@@ -93,6 +93,7 @@ in {
   imports = [
     inputs.zen-browser.homeModules.beta
     ./hardening.nix
+    ./xdg.nix
   ];
 
   options.my.features.desktop.apps.browsers.zen-browser = {
@@ -143,8 +144,6 @@ in {
 
     programs.zen-browser = {
       enable = true;
-
-      setAsDefaultBrowser = lib.mkDefault true;
 
       policies = {
         DisableAppUpdate = true;
