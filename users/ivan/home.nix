@@ -17,7 +17,7 @@
   programs.git = {
     settings = {
       user = {
-        email = "cli.garcia@pm.me";
+        email = "dev@cligarcia.com";
         name = "Iván García";
       };
     };
