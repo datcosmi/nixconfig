@@ -42,13 +42,13 @@ in rec {
                 (inputs.import-tree ../modules/home)
                 inputs.catppuccin.homeModules.catppuccin
               ];
-              users =
-                lib.genAttrs users
-                (u: import ../users/${u}/home.nix);
+              users = lib.genAttrs users (u: {
+                imports = [(inputs.import-tree ../users/${u})];
+              });
             };
           }
         ]
-        ++ map (u: ../users/${u}/default.nix) users;
+        ++ map (u: ../users/${u}/_nixos.nix) users;
     };
 
   mkUser = {
