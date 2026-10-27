@@ -20,9 +20,9 @@ in rec {
 
       modules =
         [
-          ../hosts/${hostname}
-          ../modules/options
-          ../modules/nixos
+          (inputs.import-tree ../hosts/${hostname})
+          (inputs.import-tree ../modules/options)
+          (inputs.import-tree ../modules/nixos)
 
           hmModule
           diskoModule
@@ -38,8 +38,8 @@ in rec {
               backupFileExtension = "backup";
               extraSpecialArgs = {inherit inputs hostname;};
               sharedModules = [
-                ../modules/options
-                ../modules/home
+                (inputs.import-tree ../modules/options)
+                (inputs.import-tree ../modules/home)
                 inputs.catppuccin.homeModules.catppuccin
               ];
               users =
