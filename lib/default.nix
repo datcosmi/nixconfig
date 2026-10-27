@@ -35,7 +35,7 @@ in rec {
             home-manager = {
               useGlobalPkgs = true;
               useUserPackages = true;
-              backupFileExtension = "backup";
+              backupFileExtension = "bak";
               extraSpecialArgs = {inherit inputs hostname;};
               sharedModules = [
                 (inputs.import-tree ../modules/options)
