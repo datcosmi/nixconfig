@@ -13,7 +13,18 @@ in {
     (lib.mkIf cfg.enable {
       home.packages = with pkgs; [
         nautilus
+
+        # Extensions
+        sushi
       ];
+
+      xdg.configFile."gtk-3.0/bookmarks".text = ''
+        file://${config.home.homeDirectory}/Downloads Downloads
+        file://${config.home.homeDirectory}/Documents Documents
+        file://${config.home.homeDirectory}/Projects Projects
+        file://${config.home.homeDirectory}/Pictures Pictures
+        file://${config.home.homeDirectory}/Videos Videos
+      '';
     })
 
     (lib.mkIf (cfg.enable && theme.gtk == "adwaita") {
