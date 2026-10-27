@@ -19,6 +19,8 @@ in {
             "wifi-sec.psk-flags" = "0";
           };
         };
+        ethernet.macAddress = "stable";
+        connectionConfig."ipv6.ip6-privacy" = 2;
       };
 
       systemd.services.NetworkManager-wait-online.enable = false;
@@ -29,8 +31,16 @@ in {
     })
 
     (lib.mkIf (cfg.enable && wifi) {
-      networking.wireless.iwd.enable = true;
-      networking.networkmanager.wifi.backend = "iwd";
+      networking = {
+        wireless.iwd.enable = true;
+        networkmanager = {
+          wifi = {
+            backend = "iwd";
+            macAddress = "random";
+            scanRandMacAddress = true;
+          };
+        };
+      };
     })
   ];
 }
