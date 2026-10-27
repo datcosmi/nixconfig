@@ -4,10 +4,6 @@
   pkgs,
   ...
 }: {
-  imports = [
-    ./modules
-  ];
-
   home = {
     username = "ivan";
     homeDirectory = "/home/ivan";
