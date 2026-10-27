@@ -9,6 +9,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     my.features.shell = {
+      nh.enable = lib.mkDefault true;
       starship.enable = lib.mkDefault true;
       fastfetch.enable = lib.mkDefault true;
       bash.enable = lib.mkDefault true;
@@ -27,6 +28,7 @@ in {
   };
 
   imports = [
+    ./nh.nix
     ./starship.nix
     ./fastfetch.nix
     ./zsh
