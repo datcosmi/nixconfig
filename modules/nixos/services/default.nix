@@ -19,6 +19,7 @@ in {
     ./hamachi.nix
     ./sunshine.nix
     ./appimage.nix
+    ./thumbnailers.nix
   ];
 
   options.my.features.system.services.enable = lib.mkEnableOption "System services";
