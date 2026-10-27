@@ -92,8 +92,6 @@
 in {
   imports = [
     inputs.zen-browser.homeModules.beta
-    ./hardening.nix
-    ./xdg.nix
   ];
 
   options.my.features.desktop.apps.browsers.zen-browser = {

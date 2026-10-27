@@ -24,8 +24,4 @@ in {
 
     programs.dircolors.enableZshIntegration = true;
   };
-
-  imports = [
-    ./oh-my-zsh.nix
-  ];
 }

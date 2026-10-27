@@ -12,8 +12,4 @@ in {
       proton-vpn.enable = lib.mkDefault true;
     };
   };
-
-  imports = [
-    ./proton
-  ];
 }

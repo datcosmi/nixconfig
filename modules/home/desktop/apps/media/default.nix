@@ -14,10 +14,4 @@ in {
       loupe.enable = lib.mkDefault true;
     };
   };
-
-  imports = [
-    ./localsend.nix
-    ./vlc.nix
-    ./loupe.nix
-  ];
 }

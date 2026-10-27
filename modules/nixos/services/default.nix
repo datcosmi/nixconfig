@@ -5,23 +5,6 @@
 }: let
   cfg = config.my.features.system.services;
 in {
-  imports = [
-    ./core.nix
-
-    ./printing.nix
-    ./bluetooth.nix
-    ./audio.nix
-    ./flatpak.nix
-    ./keyring.nix
-    ./polkit-agent.nix
-    ./desktop.nix
-    ./docker.nix
-    ./hamachi.nix
-    ./sunshine.nix
-    ./appimage.nix
-    ./thumbnailers.nix
-  ];
-
   options.my.features.system.services.enable = lib.mkEnableOption "System services";
 
   config = lib.mkIf cfg.enable {

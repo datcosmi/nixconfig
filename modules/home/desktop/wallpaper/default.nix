@@ -12,8 +12,4 @@ in {
       awww.enable = lib.mkDefault true;
     };
   };
-
-  imports = [
-    ./awww.nix
-  ];
 }

@@ -12,8 +12,4 @@ in {
       discord.enable = lib.mkDefault true;
     };
   };
-
-  imports = [
-    ./discord.nix
-  ];
 }

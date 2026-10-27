@@ -14,10 +14,4 @@ in {
       libreoffice.enable = lib.mkDefault true;
     };
   };
-
-  imports = [
-    ./obsidian.nix
-    ./zathura.nix
-    ./libreoffice.nix
-  ];
 }

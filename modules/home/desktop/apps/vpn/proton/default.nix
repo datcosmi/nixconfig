@@ -14,9 +14,4 @@ in {
       cli.enable = lib.mkDefault true;
     };
   };
-
-  imports = [
-    ./cli.nix
-    ./gui.nix
-  ];
 }

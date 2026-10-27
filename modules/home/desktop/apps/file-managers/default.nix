@@ -12,8 +12,4 @@ in {
       nautilus.enable = lib.mkDefault true;
     };
   };
-
-  imports = [
-    ./nautilus.nix
-  ];
 }

@@ -13,8 +13,6 @@
   in
     merged // lib.optionalAttrs (children != []) {_children = children;};
 in {
-  imports = [./lock.nix];
-
   options.my.features.desktop.niri.baseConfig = lib.mkOption {
     type = lib.types.attrs;
     default = {};

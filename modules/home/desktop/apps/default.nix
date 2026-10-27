@@ -24,20 +24,4 @@ in {
       recording.enable = lib.mkDefault true;
     };
   };
-
-  imports = [
-    ./music
-    ./browsers
-    ./file-managers
-    ./communication
-    ./media
-    ./auth
-    ./productivity
-    ./torrent
-    ./vpn
-    ./tui
-    ./remote
-    ./system
-    ./recurding
-  ];
 }

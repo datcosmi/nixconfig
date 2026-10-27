@@ -4,14 +4,6 @@
   ...
 }:
 with lib; {
-  imports = [
-    ./ssd.nix
-    ./power.nix
-    ./memory.nix
-    ./keyboard.nix
-    ./display.nix
-  ];
-
   options.my.hardware = {
     display = {
       internalBacklight = mkOption {

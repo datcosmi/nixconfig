@@ -15,11 +15,4 @@ in {
       wleave.enable = lib.mkDefault true;
     };
   };
-
-  imports = [
-    ./swaync.nix
-    ./waybar.nix
-    ./wleave.nix
-    ./swayosd.nix
-  ];
 }

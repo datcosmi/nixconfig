@@ -25,10 +25,4 @@ in {
       };
     };
   };
-
-  imports = [
-    ./regular.nix
-    ./nerdfonts.nix
-    ./emoji.nix
-  ];
 }

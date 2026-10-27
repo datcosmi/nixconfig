@@ -1,5 +1,0 @@
-{pkgs, ...}: {
-  imports = [
-    ./cliphist.nix
-  ];
-}

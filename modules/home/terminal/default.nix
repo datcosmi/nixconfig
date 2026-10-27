@@ -5,12 +5,6 @@
 }: let
   cfg = config.my.features.terminal;
 in {
-  imports = [
-    ./kitty.nix
-    ./ghostty.nix
-    ./alacritty.nix
-  ];
-
   options.my.features.terminal.enable = lib.mkEnableOption "Enable all terminal emulators";
 
   config = lib.mkIf cfg.enable {

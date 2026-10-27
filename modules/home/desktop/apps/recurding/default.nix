@@ -12,8 +12,4 @@ in {
       obs-studio.enable = lib.mkDefault true;
     };
   };
-
-  imports = [
-    ./obs-studio.nix
-  ];
 }

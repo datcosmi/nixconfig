@@ -6,12 +6,6 @@
 }: let
   cfg = config.my.features.desktop;
 in {
-  imports = [
-    ./apps
-    ./wm
-    ./themes
-  ];
-
   options.my.features.desktop.enable = lib.mkEnableOption "Desktop stack";
 
   config = lib.mkIf cfg.enable {

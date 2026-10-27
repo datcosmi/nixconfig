@@ -7,8 +7,6 @@
   cfg = config.my.features.desktop.niri;
   hw = config.my.hardware;
 in {
-  imports = [./nvidia.nix];
-
   config = lib.mkMerge [
     {
       services.xserver.enable = true;

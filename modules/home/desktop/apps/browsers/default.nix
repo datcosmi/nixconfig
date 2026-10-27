@@ -5,11 +5,6 @@
 }: let
   cfg = config.my.features.desktop.apps.browsers;
 in {
-  imports = [
-    ./vivaldi.nix
-    ./librewolf.nix
-    ./zen-browser
-  ];
 
   options.my.features.desktop.apps.browsers.enable = lib.mkEnableOption "Enable browser apps";
 

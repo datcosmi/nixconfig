@@ -13,9 +13,4 @@ in {
       ente-auth.enable = lib.mkDefault true;
     };
   };
-
-  imports = [
-    ./proton-pass.nix
-    ./ente-auth.nix
-  ];
 }

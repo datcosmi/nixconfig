@@ -16,12 +16,4 @@ in {
       wiremix.enable = lib.mkDefault true;
     };
   };
-
-  imports = [
-    ./btop.nix
-    ./yazi.nix
-    ./impala.nix
-    ./bluetui.nix
-    ./wiremix.nix
-  ];
 }

@@ -5,15 +5,6 @@
 }: let
   cfg = config.my.features.dev;
 in {
-  imports = [
-    ./git
-    ./ssh.nix
-    ./tmux.nix
-    ./lsp.nix
-    ./treesitter.nix
-    ./devenv.nix
-  ];
-
   options.my.features.dev.enable = lib.mkEnableOption "Developer tools";
 
   config = lib.mkIf cfg.enable {

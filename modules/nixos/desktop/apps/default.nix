@@ -5,10 +5,6 @@
 }: let
   cfg = config.my.features.desktop.apps;
 in {
-  imports = [
-    ./gnome-disks.nix
-  ];
-
   options.my.features.desktop.apps.enable = lib.mkEnableOption "Desktop applications";
 
   config = lib.mkIf cfg.enable {

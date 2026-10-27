@@ -12,8 +12,4 @@ in {
       mission-center.enable = lib.mkDefault true;
     };
   };
-
-  imports = [
-    ./mission-center.nix
-  ];
 }

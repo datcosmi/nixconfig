@@ -12,8 +12,4 @@ in {
       qbittorrent.enable = lib.mkDefault true;
     };
   };
-
-  imports = [
-    ./qbittorrent.nix
-  ];
 }

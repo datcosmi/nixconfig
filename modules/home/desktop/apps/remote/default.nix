@@ -14,9 +14,4 @@ in {
       moonlight.enable = lib.mkDefault true;
     };
   };
-
-  imports = [
-    ./anydesk.nix
-    ./moonlight.nix
-  ];
 }

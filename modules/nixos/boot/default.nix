@@ -6,11 +6,6 @@
 }: let
   cfg = config.my.features.theme;
 in {
-  imports = [
-    ./nvidia.nix
-    ./plymouth.nix
-  ];
-
   config = lib.mkMerge [
     {
       boot = {

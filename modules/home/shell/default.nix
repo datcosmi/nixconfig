@@ -26,22 +26,4 @@ in {
       dircolors.enable = lib.mkDefault true;
     };
   };
-
-  imports = [
-    ./nh.nix
-    ./starship.nix
-    ./fastfetch.nix
-    ./zsh
-    ./fish.nix
-    ./bash.nix
-    ./bat.nix
-    ./eza.nix
-    ./fzf.nix
-    ./ripgrep.nix
-    ./jq.nix
-    ./fd.nix
-    ./zoxide.nix
-    ./tealdeer.nix
-    ./dircolors.nix
-  ];
 }

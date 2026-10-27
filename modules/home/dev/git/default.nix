@@ -26,9 +26,4 @@ in {
       gh.enable = lib.mkDefault true;
     };
   };
-
-  imports = [
-    ./lazygit.nix
-    ./gh.nix
-  ];
 }

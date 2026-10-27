@@ -17,8 +17,4 @@ in {
       };
     };
   };
-
-  imports = [
-    ./silent-sddm.nix
-  ];
 }
