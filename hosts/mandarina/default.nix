@@ -1,8 +1,5 @@
 {config, ...}: {
   imports = [
-    ./hardware-configuration.nix
-    ./disko.nix
-
     ../../profiles/desktop.nix
     ../../profiles/gaming.nix
   ];
@@ -60,8 +57,8 @@
   my.features = {
     desktop.niri = {
       enable = true;
-      monitorsConfig = import ./niri/monitors.nix;
-      inputsConfig = import ./niri/inputs.nix;
+      monitorsConfig = import ./_niri/monitors.nix;
+      inputsConfig = import ./_niri/inputs.nix;
     };
 
     system = {
