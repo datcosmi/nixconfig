@@ -19,14 +19,14 @@
     };
 
     nix.gc = {
-      automatic = true;
-      dates = "daily";
-      options = "--delete-older-than 10d";
+      automatic = false;
+      # dates = "daily";
+      # options = "--delete-older-than 10d";
     };
 
     nix.optimise = {
       automatic = true;
-      dates = ["daily"];
+      dates = ["weekly"];
       persistent = true;
     };
 
