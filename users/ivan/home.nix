@@ -48,7 +48,7 @@
       wallpaper.awww.enable = false;
       custom.niriLockSuspend.enable = false;
       shell.noctalia.enable = true;
-      niri.baseConfig = import ./modules/niri/base-settings.nix;
+      niri.baseConfig = import ./modules/_niri/base-settings.nix;
     };
 
     shell = {
