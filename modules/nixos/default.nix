@@ -12,6 +12,7 @@
     ./login
     ./gaming
 
+    ./common.nix
     ./cache.nix
   ];
 }

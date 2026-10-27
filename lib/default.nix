@@ -21,7 +21,6 @@ in rec {
       modules =
         [
           ../hosts/${hostname}
-          ../modules/nixos/common.nix
           ../modules/options
           ../modules/nixos
 
