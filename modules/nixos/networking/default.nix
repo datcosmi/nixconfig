@@ -10,6 +10,7 @@ in {
   config = lib.mkIf cfg.enable {
     my.features.system.networking = {
       dns.enable = lib.mkDefault true;
+      ssh.enable = lib.mkDefault true;
       firewall = {
         enable = lib.mkDefault true;
         backend = lib.mkDefault "nixos";
