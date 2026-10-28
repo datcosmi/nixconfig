@@ -22,7 +22,11 @@
   my.features = {
     theme = {
       dark = true;
-      palette = "catppuccin-mocha";
+      palette = "catppuccin";
+      catppuccin = {
+        flavor = "mocha";
+        accent = "pink";
+      };
       gtk = "adwaita";
       cursor = "bibata-ice";
     };

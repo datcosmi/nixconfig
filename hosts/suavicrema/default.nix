@@ -69,7 +69,13 @@
 
     boot.plymouth.enable = true;
 
-    theme.palette = "catppuccin-mocha";
+    theme = {
+      palette = "catppuccin";
+      catppuccin = {
+        flavor = "mocha";
+        accent = "pink";
+      };
+    };
   };
 
   system.stateVersion = "26.11";
