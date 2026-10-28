@@ -7,7 +7,8 @@
   ...
 }: let
   cfg = config.my.features.desktop.shell.noctalia;
-  c = config.my.features.theme.colors;
+  theme = config.my.features.theme;
+  c = theme.colors;
 
   isLaptop = hostname == "mandarina";
 
@@ -313,8 +314,8 @@ in {
         };
       };
 
-      colors = {
-        mPrimary = c.pink;
+      colors = lib.mkIf (theme.palette == "catppuccin") {
+        mPrimary = c.${theme.catppuccin.accent};
         mOnPrimary = c.base;
         mSecondary = c.lavender;
         mOnSecondary = c.base;
