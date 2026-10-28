@@ -15,19 +15,7 @@
     else "prefer-light";
 in
   with lib; {
-    options.my.features.theme.dark = mkOption {
-      type = types.bool;
-      default = true;
-      description = "Whether to use dark mode.";
-    };
-
     config = mkIf (cfg.gtk == "adwaita") {
-      my.features.theme.cursor = lib.mkDefault (
-        if cfg.dark
-        then "bibata-classic"
-        else "bibata-ice"
-      );
-
       gtk = {
         enable = true;
 
