@@ -107,7 +107,7 @@ in {
           Downloads = true;
           History = true;
           Sessions = true;
-          SiteSettings = true;
+          SiteSettings = false;
           OfflineApps = false;
           FormData = true;
           Locked = true;
