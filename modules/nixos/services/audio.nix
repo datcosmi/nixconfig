@@ -124,12 +124,24 @@ in {
           "pipewire.service"
           "wireplumber.service"
         ];
+        wants = ["wireplumber.service"];
         wantedBy = ["graphical-session.target"];
         partOf = ["graphical-session.target"];
         serviceConfig = {
           Type = "oneshot";
           RemainAfterExit = true;
-          ExecStart = "${pkgs.wireplumber}/bin/wpctl set-mute @DEFAULT_AUDIO_SINK@ 0";
+          # Wait for the sink to exist before unmuting
+          ExecStart = pkgs.writeShellScript "unmute-default-sink" ''
+            wpctl=${pkgs.wireplumber}/bin/wpctl
+            for _ in $(seq 1 50); do
+              if $wpctl inspect @DEFAULT_AUDIO_SINK@ >/dev/null 2>&1; then
+                exec $wpctl set-mute @DEFAULT_AUDIO_SINK@ 0
+              fi
+              sleep 0.2
+            done
+            echo "No default audio sink after 10s, skipping unmute" >&2
+            exit 0
+          '';
         };
       };
     })
