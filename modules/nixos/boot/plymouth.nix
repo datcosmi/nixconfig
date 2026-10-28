@@ -20,18 +20,12 @@ in {
         ];
       };
 
-      initrd.systemd.enable = true;
-
       # Enable "Silent boot"
-      consoleLogLevel = 0;
-      initrd.verbose = false;
+      consoleLogLevel = 3;
       kernelParams = [
         "quiet"
-        "loglevel=0"
-        "noirqdebug"
-        "udev.log_level=3"
         "rd.udev.log_level=3"
-        "systemd.show_status=auto"
+        "rd.systemd.show_status=auto"
       ];
     };
   };
