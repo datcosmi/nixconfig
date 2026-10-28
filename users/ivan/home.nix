@@ -20,17 +20,6 @@
   };
 
   my.features = {
-    theme = {
-      dark = true;
-      palette = "catppuccin";
-      catppuccin = {
-        flavor = "mocha";
-        accent = "pink";
-      };
-      gtk = "adwaita";
-      cursor = "bibata-ice";
-    };
-
     desktop = {
       apps = {
         enable = true;
