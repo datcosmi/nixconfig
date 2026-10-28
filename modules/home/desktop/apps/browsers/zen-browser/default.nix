@@ -88,6 +88,9 @@
     "zen.welcome-screen.seen" = true;
     "zen.urlbar.behavior" = "float";
     "zen.view.compact.toolbar-hide-after-hover.duration" = toolbarHoverDuration;
+
+    # Firefox needs this enabled to load custom CSS
+    "toolkit.legacyUserProfileCustomizations.stylesheets" = hasCatppuccin;
   };
 in {
   imports = [
