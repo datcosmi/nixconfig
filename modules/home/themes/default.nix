@@ -7,7 +7,7 @@
 in {
   config = lib.mkIf cfg.enable {
     home.file."${config.xdg.userDirs.pictures}/Wallpapers" = {
-      source = ./wallpapers;
+      source = ../../../assets/wallpapers;
       recursive = true;
     };
   };
