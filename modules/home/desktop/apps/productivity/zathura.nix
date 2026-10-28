@@ -12,9 +12,6 @@ in {
   config = lib.mkIf cfg.enable {
     programs.zathura.enable = true;
 
-    catppuccin.zathura = lib.mkIf (theme.palette == "catppuccin-mocha") {
-      enable = true;
-      flavor = "mocha";
-    };
+    catppuccin.zathura.enable = theme.palette == "catppuccin";
   };
 }

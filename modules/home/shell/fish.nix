@@ -5,6 +5,7 @@
   ...
 }: let
   cfg = config.my.features.shell.fish;
+  theme = config.my.features.theme;
 in {
   options.my.features.shell.fish.enable = lib.mkEnableOption "Enable fish shell";
 
@@ -18,5 +19,7 @@ in {
     };
 
     programs.dircolors.enableFishIntegration = true;
+
+    catppuccin.fish.enable = theme.palette == "catppuccin";
   };
 }

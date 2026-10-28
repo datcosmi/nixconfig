@@ -5,6 +5,7 @@
   ...
 }: let
   cfg = config.my.features.terminal.ghostty;
+  theme = config.my.features.theme;
 in {
   options.my.features.terminal.ghostty.enable = lib.mkEnableOption "Enable ghostty terminal";
 
@@ -23,5 +24,7 @@ in {
         mouse-scroll-multiplier = 1.0;
       };
     };
+
+    catppuccin.ghostty.enable = theme.palette == "catppuccin";
   };
 }

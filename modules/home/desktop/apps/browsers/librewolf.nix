@@ -5,6 +5,7 @@
   ...
 }: let
   cfg = config.my.features.desktop.apps.browsers.librewolf;
+  theme = config.my.features.theme;
 in {
   options.my.features.desktop.apps.browsers.librewolf.enable = lib.mkEnableOption "Enable librewolf app";
 
@@ -53,5 +54,7 @@ in {
         };
       };
     };
+
+    catppuccin.librewolf.enable = theme.palette == "catppuccin";
   };
 }

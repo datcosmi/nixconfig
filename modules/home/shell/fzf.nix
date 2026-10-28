@@ -6,6 +6,7 @@
 }: let
   cfg = config.my.features.shell.fzf;
   shell = config.my.features.shell;
+  theme = config.my.features.theme;
 in {
   options.my.features.shell.fzf.enable = lib.mkEnableOption "Enable fzf shell tool";
 
@@ -17,5 +18,7 @@ in {
       enableZshIntegration = shell.zsh.enable;
       enableFishIntegration = shell.fish.enable;
     };
+
+    catppuccin.fzf.enable = theme.palette == "catppuccin";
   };
 }

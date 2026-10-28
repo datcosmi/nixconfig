@@ -24,9 +24,6 @@ in {
       };
     };
 
-    catppuccin.obs = lib.mkIf (theme.palette == "catppuccin-mocha") {
-      enable = true;
-      flavor = "mocha";
-    };
+    catppuccin.obs.enable = theme.palette == "catppuccin";
   };
 }

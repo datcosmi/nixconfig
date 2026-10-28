@@ -5,6 +5,7 @@
   ...
 }: let
   cfg = config.my.features.dev.git.lazygit;
+  theme = config.my.features.theme;
 in {
   options.my.features.dev.git.lazygit.enable = lib.mkEnableOption "Enable lazygit TUI";
 
@@ -12,5 +13,7 @@ in {
     programs.lazygit = {
       enable = true;
     };
+
+    catppuccin.lazygit.enable = theme.palette == "catppuccin";
   };
 }

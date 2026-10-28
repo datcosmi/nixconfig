@@ -47,10 +47,9 @@ in {
       '';
     };
 
-    catppuccin.tmux = lib.mkIf (theme.palette == "catppuccin-mocha") {
-      enable = true;
-      flavor = "mocha";
-      extraConfig = ''
+    catppuccin.tmux = {
+      enable = theme.palette == "catppuccin";
+      extraConfig = lib.mkIf (theme.palette == "catppuccin") ''
         set -g @catppuccin_window_status_style "rounded"
         set -g status-right-length 100
         set -g status-left-length 100
@@ -61,7 +60,7 @@ in {
         set -g @catppuccin_window_current_text " #W"
         set -g @catppuccin_window_text " #W"
         set -g pane-border-style "fg=${c.surface0}"
-        set -g pane-active-border-style "fg=${c.pink}"
+        set -g pane-active-border-style "fg=${c.${theme.catppuccin.accent}}"
       '';
     };
   };

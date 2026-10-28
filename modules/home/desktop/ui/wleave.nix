@@ -7,6 +7,7 @@
 }: let
   cfg = config.my.features.desktop.ui.wleave;
   wayland = osConfig.my.features.wayland;
+  theme = config.my.features.theme;
 in {
   options.my.features.desktop.ui.wleave.enable = lib.mkEnableOption "Enable wleave tool";
 
@@ -53,5 +54,7 @@ in {
         ];
       };
     };
+
+    catppuccin.wleave.enable = theme.palette == "catppuccin";
   };
 }

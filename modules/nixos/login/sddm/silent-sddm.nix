@@ -16,8 +16,8 @@ in {
       {
         enable = true;
       }
-      // lib.optionalAttrs (theme.palette == "catppuccin-mocha") {
-        theme = lib.mkDefault "catppuccin-mocha";
+      // lib.optionalAttrs (theme.palette == "catppuccin") {
+        theme = lib.mkDefault "catppuccin-${theme.catppuccin.flavor}";
       };
 
     systemd.tmpfiles.rules =
