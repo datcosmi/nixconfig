@@ -2,8 +2,34 @@
 with lib; {
   options.my.features.theme = {
     palette = mkOption {
-      type = types.nullOr (types.enum ["catppuccin-mocha"]);
+      type = types.nullOr (types.enum ["catppuccin"]);
       default = null;
+    };
+
+    catppuccin = {
+      flavor = mkOption {
+        type = types.enum ["latte" "frappe" "macchiato" "mocha"];
+        default = "mocha";
+      };
+      accent = mkOption {
+        type = types.enum [
+          "rosewater"
+          "flamingo"
+          "pink"
+          "mauve"
+          "red"
+          "maroon"
+          "peach"
+          "yellow"
+          "green"
+          "teal"
+          "sky"
+          "sapphire"
+          "blue"
+          "lavender"
+        ];
+        default = "pink";
+      };
     };
 
     gtk = mkOption {
