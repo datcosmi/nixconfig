@@ -37,6 +37,25 @@ with lib; {
       default = null;
     };
 
+    dark = mkOption {
+      type = types.bool;
+      default = true;
+      description = "Whether to use dark mode.";
+    };
+
+    # Derived from `cursor`, `gtk` and `dark`; read this, don't set it.
+    cursorSpec = mkOption {
+      internal = true;
+      type = types.nullOr (types.submodule {
+        options = {
+          name = mkOption {type = types.str;};
+          package = mkOption {type = types.package;};
+          size = mkOption {type = types.int;};
+        };
+      });
+      default = null;
+    };
+
     cursor = mkOption {
       type = types.nullOr (types.enum [
         "bibata-classic"
