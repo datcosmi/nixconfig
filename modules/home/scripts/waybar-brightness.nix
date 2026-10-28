@@ -1,4 +1,13 @@
-{pkgs, ...}: let
+{
+  pkgs,
+  osConfig,
+  config,
+  lib,
+  ...
+}: let
+  cfg = config.my.features.desktop.ui.waybar;
+  wayland = osConfig.my.features.wayland;
+
   brightnessCtl = pkgs.writeShellScriptBin "waybar-brightness" ''
     BUS1=2
     BUS2=4
@@ -36,5 +45,7 @@
     esac
   '';
 in {
-  home.packages = [brightnessCtl];
+  config = lib.mkIf (wayland.enable && cfg.enable) {
+    home.packages = [brightnessCtl];
+  };
 }

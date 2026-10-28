@@ -7,7 +7,7 @@
       pkgs.rofi
     ];
     text = ''
-      python3 ${./toggle-audio-output.py} "$@"
+      python3 ${./audio-switcher.py} "$@"
     '';
   };
 in {
