@@ -21,7 +21,7 @@ in rec {
       modules =
         [
           (inputs.import-tree ../hosts/${hostname})
-          (inputs.import-tree ../modules/options)
+          (inputs.import-tree ../modules/shared)
           (inputs.import-tree ../modules/nixos)
 
           hmModule
@@ -38,7 +38,7 @@ in rec {
               backupFileExtension = "bak";
               extraSpecialArgs = {inherit inputs hostname;};
               sharedModules = [
-                (inputs.import-tree ../modules/options)
+                (inputs.import-tree ../modules/shared)
                 (inputs.import-tree ../modules/home)
                 inputs.catppuccin.homeModules.catppuccin
               ];
