@@ -17,7 +17,7 @@
     "privacy.trackingprotection.socialtracking.enabled" = true;
     "privacy.query_stripping.enabled" = true;
     "privacy.query_stripping.enabled.pbmode" = true;
-    "privacy.donottrackheader.enabled" = true;
+    "privacy.donottrackheader.enabled" = false; # Deprecated feature, better manually set to false
     "privacy.globalprivacycontrol.enabled" = true;
     "privacy.spoof_english" = 1;
     "network.cookie.cookieBehavior" = 5; # 5 = Total Cookie Protection (state partitioning)
