@@ -9,7 +9,7 @@
 
   # Loading the custom Catppuccin userChrome.css seems to break the toolbar's hover area, but apparently
   # it can be fixed by absurdly elevating the hover duration value ??? so what the hell sure
-  hasCatppuccin = theme.palette == "catppuccin-mocha";
+  hasCatppuccin = theme.palette == "catppuccin";
 
   toolbarHoverDuration =
     if hasCatppuccin
@@ -182,7 +182,7 @@ in {
     };
 
     home.file.".config/zen/suavicrema/chrome" = lib.mkIf hasCatppuccin {
-      source = ./chrome;
+      source = ./chrome/catppuccin/${theme.catppuccin.flavor};
       recursive = true;
     };
   };
