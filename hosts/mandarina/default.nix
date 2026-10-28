@@ -79,6 +79,9 @@
         flavor = "mocha";
         accent = "pink";
       };
+      gtk = "adwaita";
+      dark = true;
+      cursor = "bibata-ice";
     };
   };
 
