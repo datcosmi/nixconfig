@@ -7,14 +7,7 @@
   cfg = config.my.features.desktop.apps.browsers.zen-browser;
   theme = config.my.features.theme;
 
-  # Loading the custom Catppuccin userChrome.css seems to break the toolbar's hover area, but apparently
-  # it can be fixed by absurdly elevating the hover duration value ??? so what the hell sure
-  hasCatppuccin = theme.palette == "catppuccin";
-
-  toolbarHoverDuration =
-    if hasCatppuccin
-    then 600000
-    else 1000;
+  hasCatppuccinTheme = theme.palette == "catppuccin";
 
   mkPluginUrl = id: "https://addons.mozilla.org/firefox/downloads/latest/${id}/latest.xpi";
 
@@ -87,10 +80,10 @@
     # Zen specifics
     "zen.welcome-screen.seen" = true;
     "zen.urlbar.behavior" = "float";
-    "zen.view.compact.toolbar-hide-after-hover.duration" = toolbarHoverDuration;
+    "zen.view.compact.toolbar-hide-after-hover.duration" = 1000;
 
     # Firefox needs this enabled to load custom CSS
-    "toolkit.legacyUserProfileCustomizations.stylesheets" = hasCatppuccin;
+    "toolkit.legacyUserProfileCustomizations.stylesheets" = hasCatppuccinTheme;
   };
 in {
   imports = [
@@ -181,7 +174,7 @@ in {
       };
     };
 
-    home.file.".config/zen/suavicrema/chrome" = lib.mkIf hasCatppuccin {
+    home.file.".config/zen/suavicrema/chrome" = lib.mkIf hasCatppuccinTheme {
       source = ./chrome/catppuccin/${theme.catppuccin.flavor};
       recursive = true;
     };
