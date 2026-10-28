@@ -1,6 +1,7 @@
 {
   lib,
   config,
+  pkgs,
   ...
 }: let
   cfg = config.my.features.desktop.apps.browsers.zen-browser;
@@ -46,7 +47,26 @@ in {
       profiles.suavicrema = {
         search = {
           force = true;
-          default = lib.mkDefault "ddg";
+          default = "ddg";
+
+          engines = {
+            mynixos = {
+              name = "My NixOS";
+              urls = [
+                {
+                  template = "https://mynixos.com/search?q={searchTerms}";
+                  params = [
+                    {
+                      name = "query";
+                      value = "searchTerms";
+                    }
+                  ];
+                }
+              ];
+              icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
+              definedAliases = ["@nx"];
+            };
+          };
         };
 
         settings = {
