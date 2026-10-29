@@ -46,6 +46,7 @@ in {
         nb = "nh os boot";
         ni = "nh os info | bat -l conf -p";
         nrb = "nh os rollback";
+        ncl = "nh clean all --keep-since 10d --keep 10 --optimise";
       };
 
       functions = {
