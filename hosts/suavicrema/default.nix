@@ -62,7 +62,6 @@
 
       services = {
         docker.enable = true;
-        hamachi.enable = true;
         sunshine.enable = true;
       };
     };
