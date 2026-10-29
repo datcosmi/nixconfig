@@ -4,7 +4,8 @@
   lib,
   ...
 }: let
-  cfg = config.my.features.desktop.niri;
+  cfg = config.my.features.desktop;
+  niri = config.my.features.desktop.niri;
   hw = config.my.hardware;
 in {
   config = lib.mkMerge [
@@ -27,14 +28,16 @@ in {
     (lib.mkIf cfg.enable {
       xdg.portal = {
         enable = true;
+
         extraPortals = [
-          pkgs.xdg-desktop-portal-hyprland
+          pkgs.xdg-desktop-portal-gnome
           pkgs.xdg-desktop-portal-gtk
         ];
-        config.common = {
-          default = "gtk";
-          "org.freedesktop.impl.portal.ScreenCast" = "hyprland";
-          "org.freedesktop.impl.portal.RemoteDesktop" = "hyprland";
+
+        config.niri = lib.mkIf niri.enable {
+          default = ["gnome" "gtk"];
+
+          "org.freedesktop.impl.portal.FileChooser" = ["gtk"];
         };
       };
     })
