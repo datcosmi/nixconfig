@@ -12,6 +12,10 @@ in {
   config = lib.mkIf cfg.enable {
     programs.lazygit = {
       enable = true;
+
+      settings = {
+        git.autoFetch = false;
+      };
     };
 
     catppuccin.lazygit.enable = theme.palette == "catppuccin";
