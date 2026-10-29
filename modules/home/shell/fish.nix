@@ -13,7 +13,7 @@ in {
     programs.fish = {
       enable = true;
 
-      shellInit = ''
+      interactiveShellInit = ''
         set -g fish_greeting
       '';
     };
